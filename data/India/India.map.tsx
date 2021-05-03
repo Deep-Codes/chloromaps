@@ -5,6 +5,7 @@ import { useAtom } from 'jotai';
 import { MapStoreType } from '@/typings/map.store';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
+import resolveLegendData from '@/lib/resolveLegendData';
 import { IndianStateCodes } from './IndiaStateCode';
 
 export const IndiaMap = () => {
@@ -41,10 +42,12 @@ export const IndiaMap = () => {
                             },
                             map.defaultFillColor
                         );
+                        const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
                         // @ts-ignore
                         setMap((p) => ({
                             ...p,
-                            mapData: mapDataCopy
+                            mapData: mapDataCopy,
+                            legendData: legendDataCopy
                         }));
                     }}
                     // @ts-ignore

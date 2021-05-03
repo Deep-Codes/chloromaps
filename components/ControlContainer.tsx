@@ -10,6 +10,7 @@ import { useAtom } from 'jotai';
 import React from 'react';
 import ColorPickerInput from './ColorPickerInput';
 import InputLabel from './InputLabel';
+import LegendControls from './LegendControls';
 import PaletteBox from './PaletteBox';
 
 interface Props {
@@ -55,6 +56,8 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
             <Spacer y={0.7} />
             <PaletteBox data={map.mapData} setColor={handleAttrChange} />
             <Spacer y={0.7} />
+            <LegendControls />
+            <Spacer y={0.7} />
             <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
                 Download Map
             </Button>
@@ -86,6 +89,10 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
             <Spacer y={0.5} />
             <div style={{ width: '300px' }}>
                 <Code>{JSON.stringify(map.mapData)}</Code>
+            </div>
+            <Spacer y={0.5} />
+            <div style={{ width: '300px' }}>
+                <Code>{JSON.stringify(map.legendData)}</Code>
             </div>
         </div>
     );
