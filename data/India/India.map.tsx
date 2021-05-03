@@ -15,6 +15,7 @@ export const IndiaMap = () => {
         <>
             {hover !== '' && (
                 <ReactTooltip id="india" type="error">
+                    {/* @ts-ignore */}
                     <span style={{ fontWeight: 'bold' }}>{IndianStateCodes[hover]}</span>
                 </ReactTooltip>
             )}
@@ -34,16 +35,19 @@ export const IndiaMap = () => {
                         const mapDataCopy = fillColorOnClick(
                             map.mapData,
                             {
+                                // @ts-ignore
                                 code: e.target.id,
                                 fill: map.mapFillColor
                             },
                             map.defaultFillColor
                         );
+                        // @ts-ignore
                         setMap((p) => ({
                             ...p,
                             mapData: mapDataCopy
                         }));
                     }}
+                    // @ts-ignore
                     onMouseOver={(e) => setHover(e.target.id)}
                     onMouseLeave={() => setHover('')}>
                     <path

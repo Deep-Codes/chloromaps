@@ -10,6 +10,7 @@ import InputLabel from './InputLabel';
 const ControlContainer = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
+        // @ts-ignore
         setMap((st: MapStoreType) => ({
             ...st,
             [a]: v
