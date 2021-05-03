@@ -49,7 +49,7 @@ const ControlContainer = () => {
                 type="mapFillColor"
             />
             <Spacer y={0.7} />
-            <PaletteBox data={map.mapData} />
+            <PaletteBox data={map.mapData} setColor={handleAttrChange} />
             <Spacer y={0.7} />
             <Button icon={<Download />} onClick={() => downloadMap()}>
                 Download Map
