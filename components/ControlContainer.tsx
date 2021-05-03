@@ -1,4 +1,5 @@
 import downloadMap from '@/lib/downloadMap';
+import resetMap from '@/lib/resetMap';
 import { mapAtom } from '@/store/map.store';
 import { MapStoreType } from '@/typings/map.store';
 import { Button, Code, Input, Spacer } from '@geist-ui/react';
@@ -43,8 +44,20 @@ const ControlContainer = () => {
                 setColor={handleAttrChange}
                 type="mapFillColor"
             />
-            <Spacer y={0.5} />
+            <Spacer y={0.7} />
             <Button onClick={() => downloadMap()}>Download Map</Button>
+            <Spacer y={0.7} />
+            <Button
+                onClick={() => {
+                    resetMap(map.mapData, map.defaultFillColor);
+                    // @ts-ignore
+                    setMap((st: MapStoreType) => ({
+                        ...st,
+                        mapData: []
+                    }));
+                }}>
+                Reset Map
+            </Button>
             <Spacer y={0.5} />
             <div style={{ width: '300px' }}>
                 <Code>{JSON.stringify(map.mapData)}</Code>
