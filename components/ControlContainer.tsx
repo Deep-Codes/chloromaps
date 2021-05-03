@@ -84,15 +84,15 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
             </Button>
             <Spacer y={0.5} />
             <div style={{ width: '300px' }}>
+                <Code>{JSON.stringify(map.legendData)}</Code>
+            </div>
+            <Spacer y={0.5} />
+            <div style={{ width: '300px' }}>
                 <Code>{JSON.stringify(getColorUsed(map.mapData))}</Code>
             </div>
             <Spacer y={0.5} />
             <div style={{ width: '300px' }}>
                 <Code>{JSON.stringify(map.mapData)}</Code>
-            </div>
-            <Spacer y={0.5} />
-            <div style={{ width: '300px' }}>
-                <Code>{JSON.stringify(map.legendData)}</Code>
             </div>
         </div>
     );
