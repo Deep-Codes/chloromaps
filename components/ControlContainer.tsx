@@ -62,6 +62,10 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
                 Download Map
             </Button>
             <Spacer y={0.7} />
+            <Button icon={<Download />} onClick={() => downloadMap('legend')}>
+                Download Leg
+            </Button>
+            <Spacer y={0.7} />
             <Button
                 icon={<RefreshCcw />}
                 onClick={() => {

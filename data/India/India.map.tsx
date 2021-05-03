@@ -13,7 +13,7 @@ export const IndiaMap = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData);
     return (
-        <>
+        <div className="flex flex-col">
             {hover !== '' && (
                 <ReactTooltip id="india">
                     {/* @ts-ignore */}
@@ -203,6 +203,6 @@ export const IndiaMap = () => {
                     />
                 </g>
             </svg>
-        </>
+        </div>
     );
 };
