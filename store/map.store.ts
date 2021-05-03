@@ -2,7 +2,7 @@ import { MapStoreType } from '@/typings/map.store'
 import { atom } from 'jotai'
 
 export const mapAtom = atom<MapStoreType>({
-  defaultFillColor: '#ff677d',
+  defaultFillColor: 'black',
   mapStrokeColor: 'white',
   mapBackgroundColor: 'black',
   mapStrokeWidth: '1',

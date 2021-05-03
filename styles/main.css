@@ -21,3 +21,8 @@
 .absolute {
     position: absolute;
 }
+
+/* Margins and Paddings */
+.mt-4 {
+    margin-top: 1rem;
+}
