@@ -1,0 +1,20 @@
+import React from 'react';
+import { Spacer, Text } from '@geist-ui/react';
+
+interface Props {
+    text: string;
+}
+
+const InputLabel: React.FC<Props> = ({ text }) => (
+    <div className="label">
+        <Text small>{text}</Text>
+        <Spacer y={0.2} />
+        <style jsx>{`
+            .label {
+                opacity: 0.6;
+            }
+        `}</style>
+    </div>
+);
+
+export default InputLabel;
