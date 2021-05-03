@@ -6,6 +6,7 @@ import { MapStoreType } from '@/typings/map.store';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
+import LegendContainer from '@/components/LegendContainer';
 import { EuropeCountryCodes } from './EuropeCountryCode';
 
 export const EuropeMap = () => {
@@ -13,7 +14,7 @@ export const EuropeMap = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData);
     return (
-        <>
+        <div className="flex flex-col">
             {hover !== '' && (
                 <ReactTooltip id="europe">
                     {/* @ts-ignore */}
@@ -29,6 +30,7 @@ export const EuropeMap = () => {
                 data-tip
                 data-for="europe"
                 version="1.2"
+                width={684}
                 viewBox="0 0 1000 684">
                 <g
                     style={{ pointerEvents: 'visible' }}
@@ -237,6 +239,7 @@ export const EuropeMap = () => {
                     <circle cx="521" cy="266.6" id="2" />
                 </g>
             </svg>
-        </>
+            <LegendContainer data={map.legendData} />
+        </div>
     );
 };

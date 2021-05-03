@@ -6,6 +6,7 @@ import { MapStoreType } from '@/typings/map.store';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
+import LegendContainer from '@/components/LegendContainer';
 import { UsaStateCodes } from './UsaStateCodes';
 
 export const UsaMap = () => {
@@ -13,7 +14,7 @@ export const UsaMap = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData);
     return (
-        <>
+        <div className="flex flex-col">
             {hover !== '' && (
                 <ReactTooltip id="usa">
                     {/* @ts-ignore */}
@@ -29,6 +30,7 @@ export const UsaMap = () => {
                 fill="none"
                 data-tip
                 data-for="usa"
+                width={600}
                 viewBox="0 0 1000 589">
                 <g
                     style={{ pointerEvents: 'visible' }}
@@ -366,6 +368,7 @@ export const UsaMap = () => {
                     />
                 </g>
             </svg>
-        </>
+            <LegendContainer data={map.legendData} />
+        </div>
     );
 };
