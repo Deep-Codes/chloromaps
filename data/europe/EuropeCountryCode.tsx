@@ -35,5 +35,8 @@ export const EuropeCountryCodes = {
     SE: 'Sweden',
     UA: 'Ukraine',
     FR: 'France',
-    ES: 'Spain'
+    ES: 'Spain',
+    TR: 'Turkey',
+    XK: 'Kosovo',
+    CY: 'Cyprus'
 };
