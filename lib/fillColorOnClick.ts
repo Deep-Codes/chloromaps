@@ -6,7 +6,11 @@ const fillColorOnClick = (arr: MapData[] , obj: MapData , def: string): MapData[
     if(arr[idx].fill === def){
       arr[idx].fill = obj.fill
     }else{
-      arr[idx].fill = def;
+      const ex = document.getElementById(arr[idx].code);
+      if(ex){
+        ex.style.fill = 'none'
+      }
+      arr.splice(idx, 1);
     }
   }else{
     arr.push(obj)
