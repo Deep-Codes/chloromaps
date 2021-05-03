@@ -14,7 +14,7 @@ export const IndiaMap = () => {
     return (
         <>
             {hover !== '' && (
-                <ReactTooltip id="india" type="error">
+                <ReactTooltip id="india">
                     {/* @ts-ignore */}
                     <span style={{ fontWeight: 'bold' }}>{IndianStateCodes[hover]}</span>
                 </ReactTooltip>

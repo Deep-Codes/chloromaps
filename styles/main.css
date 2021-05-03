@@ -1,6 +1,9 @@
 .flex {
     display: flex;
 }
+.flex-wrap {
+    flex-wrap: wrap;
+}
 .flex-center {
     display: flex;
     justify-content: center;
