@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
-import fillAllMap from '@/lib/fillAllMap';
 import resetMap from '@/lib/resetMap';
 import { mapAtom } from '@/store/map.store';
 import { MapStoreType } from '@/typings/map.store';
@@ -46,7 +45,7 @@ const LegendControls = () => {
     };
     return (
         <div className="ctx">
-            <InputLabel text="Legend Settings" />
+            {map.legendData.length > 0 && <InputLabel text="Legend Settings" />}{' '}
             {map.legendData.map((dt, i) => (
                 <div key={dt.fill} className="flex-center justify-between m-1">
                     <div

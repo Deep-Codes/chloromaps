@@ -5,6 +5,7 @@ import { useAtom } from 'jotai';
 import { MapStoreType } from '@/typings/map.store';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
+import resolveLegendData from '@/lib/resolveLegendData';
 import { UsaStateCodes } from './UsaStateCodes';
 
 export const UsaMap = () => {
@@ -45,6 +46,13 @@ export const UsaMap = () => {
                         setMap((p) => ({
                             ...p,
                             mapData: mapDataCopy
+                        }));
+                        const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
+                        // @ts-ignore
+                        setMap((p) => ({
+                            ...p,
+                            mapData: mapDataCopy,
+                            legendData: legendDataCopy
                         }));
                     }}
                     // @ts-ignore
