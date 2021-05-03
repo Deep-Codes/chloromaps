@@ -1,11 +1,11 @@
 import downloadConfig from '@/lib/downloadConfig';
 import downloadMap from '@/lib/downloadMap';
-import getColorUsed from '@/lib/getColorUsed';
 import resetMap from '@/lib/resetMap';
+import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { MapStoreType } from '@/typings/map.store';
-import { Button, Code, Input, Spacer } from '@geist-ui/react';
-import { Download, RefreshCcw, Save } from '@geist-ui/react-icons';
+import { Button, Input, Spacer } from '@geist-ui/react';
+import { Download, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import ColorPickerInput from './ColorPickerInput';
@@ -59,11 +59,11 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
             <LegendControls />
             <Spacer y={0.7} />
             <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
-                Download Map
+                Map
             </Button>
             <Spacer y={0.7} />
             <Button icon={<Download />} onClick={() => downloadMap('legend')}>
-                Download Leg
+                Legend
             </Button>
             <Spacer y={0.7} />
             <Button
@@ -73,6 +73,7 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
                     // @ts-ignore
                     setMap((st: MapStoreType) => ({
                         ...st,
+                        legendData: [],
                         mapData: []
                     }));
                 }}>
@@ -86,18 +87,30 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
                 }}>
                 Save Config
             </Button>
-            <Spacer y={0.5} />
-            <div style={{ width: '300px' }}>
-                <Code>{JSON.stringify(map.legendData)}</Code>
+            <Spacer y={0.7} />
+            <div className="relative">
+                <Button icon={<Upload />}>
+                    <input
+                        className="file-input pointer"
+                        type="file"
+                        // @ts-ignore
+                        onChange={(e) => uploadConfig(e.target.files[0], setMap)}
+                        // onClick={(e: any) => (e.target.value = null)}
+                    />
+                    Upload Config
+                </Button>
             </div>
-            <Spacer y={0.5} />
-            <div style={{ width: '300px' }}>
-                <Code>{JSON.stringify(getColorUsed(map.mapData))}</Code>
-            </div>
-            <Spacer y={0.5} />
-            <div style={{ width: '300px' }}>
-                <Code>{JSON.stringify(map.mapData)}</Code>
-            </div>
+
+            <style jsx>{`
+                .file-input {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 150px;
+                    height: 100%;
+                    opacity: 0;
+                }
+            `}</style>
         </div>
     );
 };
