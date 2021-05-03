@@ -8,6 +8,7 @@ export const mapAtom = atom<MapStoreType>({
   mapStrokeWidth: '1',
   mapFillColor: '#ff677d',
   mapData: [],
+  legendData: [],
 })
 
 export const fillAtom = atom<String>('');
