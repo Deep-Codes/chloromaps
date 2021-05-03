@@ -1,0 +1,39 @@
+import getColorUsed from '@/lib/getColorUsed';
+import { MapData } from '@/typings/map.store';
+import React from 'react';
+import InputLabel from './InputLabel';
+
+interface Props {
+    data: MapData[];
+}
+
+const PaletteBox: React.FC<Props> = ({ data }) => {
+    const dt = getColorUsed(data);
+    return (
+        <div>
+            {dt.length > 0 && (
+                <>
+                    <InputLabel text="Colors Used" />
+                    <div className="flex flex-wrap w">
+                        {dt.map((d) => (
+                            <div key={d} className="box pointer" style={{ backgroundColor: d }} />
+                        ))}
+                    </div>
+                </>
+            )}
+            <style jsx>{`
+                .box {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 2px;
+                    margin-right: 5px;
+                }
+                .w {
+                    max-width: 320px;
+                }
+            `}</style>
+        </div>
+    );
+};
+
+export default PaletteBox;

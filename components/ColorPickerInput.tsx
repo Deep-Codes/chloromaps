@@ -54,10 +54,11 @@ const ColorPickerInput: React.FC<Props> = ({ placeHolder, color, setColor, type 
                     }
                     .picker-container {
                         background-color: ${theme.palette.accents_1};
+                        border: 1px solid ${theme.palette.accents_2};
                         padding: 20px;
                         z-index: 1000;
                         top: 125%;
-                        left: 0;
+                        left: -5%;
                         border-radius: 5px;
                     }
                 `}</style>

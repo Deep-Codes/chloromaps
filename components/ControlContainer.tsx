@@ -1,5 +1,6 @@
 import downloadConfig from '@/lib/downloadConfig';
 import downloadMap from '@/lib/downloadMap';
+import getColorUsed from '@/lib/getColorUsed';
 import resetMap from '@/lib/resetMap';
 import { mapAtom } from '@/store/map.store';
 import { MapStoreType } from '@/typings/map.store';
@@ -9,6 +10,7 @@ import { useAtom } from 'jotai';
 import React from 'react';
 import ColorPickerInput from './ColorPickerInput';
 import InputLabel from './InputLabel';
+import PaletteBox from './PaletteBox';
 
 const ControlContainer = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
@@ -47,6 +49,8 @@ const ControlContainer = () => {
                 type="mapFillColor"
             />
             <Spacer y={0.7} />
+            <PaletteBox data={map.mapData} />
+            <Spacer y={0.7} />
             <Button icon={<Download />} onClick={() => downloadMap()}>
                 Download Map
             </Button>
@@ -71,6 +75,10 @@ const ControlContainer = () => {
                 }}>
                 Save Config
             </Button>
+            <Spacer y={0.5} />
+            <div style={{ width: '300px' }}>
+                <Code>{JSON.stringify(getColorUsed(map.mapData))}</Code>
+            </div>
             <Spacer y={0.5} />
             <div style={{ width: '300px' }}>
                 <Code>{JSON.stringify(map.mapData)}</Code>
