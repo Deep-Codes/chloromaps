@@ -1,13 +1,13 @@
 import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
-import { IndiaMap } from '@/data/India/India.map';
-import ControlContainer from '@/components/ControlContainer';
+import Link from 'next/link';
 
 const Home: React.FC = () => (
     <MainLayout>
-        <div className="flex justify-between">
-            <ControlContainer />
-            <IndiaMap />
+        <div className="flex flex-col">
+            <Link href="/india">India</Link>
+            <Link href="/usa">Usa</Link>
+            <Link href="/europe">Europe</Link>
         </div>
     </MainLayout>
 );

@@ -12,7 +12,11 @@ import ColorPickerInput from './ColorPickerInput';
 import InputLabel from './InputLabel';
 import PaletteBox from './PaletteBox';
 
-const ControlContainer = () => {
+interface Props {
+    mapId: string;
+}
+
+const ControlContainer: React.FC<Props> = ({ mapId }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -51,7 +55,7 @@ const ControlContainer = () => {
             <Spacer y={0.7} />
             <PaletteBox data={map.mapData} setColor={handleAttrChange} />
             <Spacer y={0.7} />
-            <Button icon={<Download />} onClick={() => downloadMap()}>
+            <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
                 Download Map
             </Button>
             <Spacer y={0.7} />
