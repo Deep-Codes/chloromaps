@@ -5,25 +5,36 @@ interface Props {
     data: LegendData[];
 }
 
+/*
+
+Notes:
+
+Initiality keep height and viewbox as 0
+and increase/decrease as element are added/removed
+
+if height = 30 then viewBox="0 0 364 30"
+
+*/
+
 const LegendContainer = ({ data }: Props) => (
-    <>
-        {data.map((dt: LegendData, i: number) => (
-            <svg key={dt.fill} x="5%" height={30} y={`${5 + i * 4}px`}>
-                <rect stroke="none" width={30} height={30} fill={dt.fill} />
-                <text
-                    x="15%"
-                    y="50%"
-                    dominantBaseline="middle"
-                    fontSize="24px"
-                    fontFamily="Inter"
-                    fontWeight="500"
-                    stroke="none"
-                    fill="white">
-                    {dt.text || 'FallBack Text'}
-                </text>
-            </svg>
-        ))}
-    </>
+    <svg
+        id="legend"
+        width="364"
+        height="380"
+        viewBox="0 0 364 380"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <g id="legend-group">
+            {data.map((dt: LegendData, i: number) => (
+                <svg key={dt.fill} height={30} y={`${30 * i + 5}`}>
+                    <rect x="55" y="5" width="20" height="20" fill={dt.fill} />
+                    <text fontFamily="Roboto" fill="white" x="85" y="20">
+                        {dt.text}
+                    </text>
+                </svg>
+            ))}
+        </g>
+    </svg>
 );
 
 export default LegendContainer;

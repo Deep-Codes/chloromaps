@@ -6,6 +6,7 @@ import { MapStoreType } from '@/typings/map.store';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
+import LegendContainer from '@/components/LegendContainer';
 import { IndianStateCodes } from './IndiaStateCode';
 
 export const IndiaMap = () => {
@@ -203,6 +204,7 @@ export const IndiaMap = () => {
                     />
                 </g>
             </svg>
+            <LegendContainer data={map.legendData} />
         </div>
     );
 };
