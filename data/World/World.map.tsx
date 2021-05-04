@@ -14,7 +14,7 @@ export const WorldMap = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData);
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col map-container">
             {hover !== '' && (
                 <ReactTooltip id="world">
                     {/* @ts-ignore */}

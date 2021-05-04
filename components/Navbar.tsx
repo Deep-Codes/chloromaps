@@ -3,12 +3,17 @@ import { themeAtom } from '@/store/theme.store';
 import { useAtom } from 'jotai';
 import { Button, Text } from '@geist-ui/react';
 import { Sun } from '@geist-ui/react-icons';
+import Link from 'next/link';
 
 const Navbar = () => {
     const [theme, setTheme] = useAtom(themeAtom);
     return (
         <nav>
-            <Text h4>Chloromaps</Text>
+            <Link href="/">
+                <Text className="pointer" h4>
+                    Chloromaps
+                </Text>
+            </Link>
             <Button
                 style={{ minWidth: `50px` }}
                 size="small"
