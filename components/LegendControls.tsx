@@ -43,6 +43,13 @@ const LegendControls = () => {
         }));
         resetMap(removeCodes, map.defaultFillColor);
     };
+    const handleColor = (v: string) => {
+        // @ts-ignore
+        setMap((prev) => ({
+            ...prev,
+            mapFillColor: v
+        }));
+    };
     return (
         <div className="ctx">
             {map.legendData.length > 0 && <InputLabel text="Legend Settings" />}{' '}
@@ -53,7 +60,11 @@ const LegendControls = () => {
                         onClick={() => toggleHideLegend(i)}>
                         {dt.hide ? <EyeOff size={20} /> : <Eye size={20} />}
                     </div>
-                    <div style={{ backgroundColor: dt.fill }} className="box" />
+                    <div
+                        style={{ backgroundColor: dt.fill }}
+                        onClick={() => handleColor(dt.fill)}
+                        className="box pointer"
+                    />
                     <Input
                         size="mini"
                         placeholder="Legend Value"
