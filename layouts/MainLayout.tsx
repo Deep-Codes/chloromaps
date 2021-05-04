@@ -15,14 +15,14 @@ const MainLayout = ({ children }: Props) => (
         </div>
         <style jsx>{`
             .page {
+                display: flex;
+                flex-direction: column;
                 min-height: 100vh;
-                min-width: 360px;
                 max-width: 1000px;
                 margin: 0 auto;
             }
             @media screen and (max-width: 760px) {
                 .page {
-                    width: 100%;
                     padding: 0 10px;
                 }
             }
