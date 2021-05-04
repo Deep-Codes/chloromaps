@@ -7,6 +7,7 @@ import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/LegendContainer';
+import getCodesOfColor from '@/lib/getCodesOfColor';
 import { EuropeCountryCodes } from './EuropeCountryCode';
 
 export const EuropeMap = () => {
@@ -50,6 +51,10 @@ export const EuropeMap = () => {
                             mapData: mapDataCopy
                         }));
                         const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
+                        legendDataCopy.forEach((f, i) => {
+                            const temp = getCodesOfColor(mapDataCopy, f.fill);
+                            legendDataCopy[i].codesArr = temp;
+                        });
                         // @ts-ignore
                         setMap((p) => ({
                             ...p,

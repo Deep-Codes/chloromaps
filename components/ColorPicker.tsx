@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { colorPickerPalette } from '@/data/colors';
@@ -14,7 +15,7 @@ const ColorPicker: React.FC<Props> = ({ color, handleColor }) => (
         <HexColorPicker color={color} onChange={handleColor} />
         <div className="flex flex-col mt-4">
             {colorPickerPalette.map((d, i) => (
-                <div key={d[i]} className="flex justify-between">
+                <div key={`${d[i]}-${i}`} className="flex justify-between">
                     {d.map((el) => (
                         <div
                             onClick={() => handleColor(el)}

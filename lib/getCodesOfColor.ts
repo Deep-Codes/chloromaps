@@ -7,7 +7,7 @@ const getCodesOfColor = (arr: MapData[] , fill: string): string[] => {
     }
     return ''
   })
-  return codesArr
+  return codesArr.filter(e => e !== '')
 }
 
 export default getCodesOfColor;
