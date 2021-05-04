@@ -12,12 +12,19 @@ import InputLabel from './InputLabel';
 
 const LegendControls = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
-    const toggleHideLegend = (i: number) => {
+    const toggleHideLegend = (i: number, f: string) => {
         const lgDataCopy = map.legendData;
         lgDataCopy[i].hide = !lgDataCopy[i].hide;
+        const mapDataCopy = map.mapData;
+        mapDataCopy.forEach((mp) => {
+            if (mp.fill === f) {
+                mp.hide = !mp.hide;
+            }
+        });
         // @ts-ignore
         setMap((prev) => ({
             ...prev,
+            mapData: mapDataCopy,
             legendData: lgDataCopy
         }));
     };
@@ -57,7 +64,7 @@ const LegendControls = () => {
                 <div key={dt.fill} className="flex-center justify-between m-1">
                     <div
                         className="icon-btn flex-center pointer"
-                        onClick={() => toggleHideLegend(i)}>
+                        onClick={() => toggleHideLegend(i, dt.fill)}>
                         {dt.hide ? <EyeOff size={20} /> : <Eye size={20} />}
                     </div>
                     <div

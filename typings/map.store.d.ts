@@ -1,6 +1,7 @@
 export interface MapData {
   code: string;
   fill: string;
+  hide: boolean;
 }
 
 export interface LegendData {

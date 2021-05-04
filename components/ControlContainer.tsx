@@ -57,7 +57,7 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
             <PaletteBox data={map.mapData} setColor={handleAttrChange} />
             <Spacer y={0.7} />
             <LegendControls />
-            <Spacer y={0.7} />
+            <Spacer y={2} />
             <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
                 Map
             </Button>
