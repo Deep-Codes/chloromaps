@@ -45,10 +45,10 @@ export const IndiaMap = () => {
                             map.defaultFillColor
                         );
                         const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
-                        legendDataCopy.forEach((f, i) => {
-                            const temp = getCodesOfColor(mapDataCopy, f.fill);
-                            legendDataCopy[i].codesArr = temp;
-                        });
+                        // legendDataCopy.forEach((f, i) => {
+                        //     const temp = getCodesOfColor(mapDataCopy, f.fill);
+                        //     legendDataCopy[i].codesArr = temp;
+                        // });
                         // @ts-ignore
                         setMap((p) => ({
                             ...p,

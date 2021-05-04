@@ -7,7 +7,7 @@ export interface LegendData {
   fill: string;
   hide: boolean;
   text: string;
-  codesArr: string[] 
+  // codesArr: string[] 
 }
 
 export interface MapStoreType {
