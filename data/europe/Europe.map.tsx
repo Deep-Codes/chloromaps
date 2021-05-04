@@ -7,7 +7,6 @@ import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/LegendContainer';
-import getCodesOfColor from '@/lib/getCodesOfColor';
 import { EuropeCountryCodes } from './EuropeCountryCode';
 
 export const EuropeMap = () => {
@@ -31,7 +30,7 @@ export const EuropeMap = () => {
                 data-tip
                 data-for="europe"
                 version="1.2"
-                width={684}
+                height={500}
                 viewBox="0 0 1000 684">
                 <g
                     style={{ pointerEvents: 'visible' }}

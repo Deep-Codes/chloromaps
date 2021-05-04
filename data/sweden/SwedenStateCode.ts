@@ -1,0 +1,23 @@
+export const SwedenStateCodes =  {
+  "SWE178": "Gävleborg", 
+  "SWE179": "Jönköping", 
+  "SWE180": "Kalmar", 
+  "SWE181": "Dalarna", 
+  "SWE182": "Kronoberg", 
+  "SWE183": "Orebro", 
+  "SWE184": "Östergötland", 
+  "SWE185": "Södermanland", 
+  "SWE186": "Västmanland", 
+  "SWE187": "Halland", 
+  "SWE188": "Värmland", 
+  "SWE189": "Jämtland", 
+  "SWE190": "Norrbotten", 
+  "SWE191": "Västernorrland", 
+  "SWE192": "Västerbotten", 
+  "SWE193": "Gotland", 
+  "SWE194": "Stockholm", 
+  "SWE195": "Uppsala", 
+  "SWE262": "Blekinge", 
+  "SWE3428": "Västra Götaland", 
+  "SWE3429": "Skåne"
+}

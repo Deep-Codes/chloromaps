@@ -100,10 +100,6 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
                     Upload Config
                 </Button>
             </div>
-            <Spacer y={0.5} />
-            <div style={{ width: '300px' }}>
-                <Code>{JSON.stringify(map.legendData)}</Code>
-            </div>
 
             <style jsx>{`
                 .file-input {

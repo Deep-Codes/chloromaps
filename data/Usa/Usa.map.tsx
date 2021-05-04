@@ -7,7 +7,6 @@ import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/LegendContainer';
-import getCodesOfColor from '@/lib/getCodesOfColor';
 import { UsaStateCodes } from './UsaStateCodes';
 
 export const UsaMap = () => {
@@ -31,7 +30,7 @@ export const UsaMap = () => {
                 fill="none"
                 data-tip
                 data-for="usa"
-                width={600}
+                height={400}
                 viewBox="0 0 1000 589">
                 <g
                     style={{ pointerEvents: 'visible' }}
