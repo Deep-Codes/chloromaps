@@ -14,7 +14,7 @@ export const UsaMap = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData);
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col map-container">
             {hover !== '' && (
                 <ReactTooltip id="usa">
                     {/* @ts-ignore */}
@@ -30,7 +30,7 @@ export const UsaMap = () => {
                 fill="none"
                 data-tip
                 data-for="usa"
-                height={400}
+                width={700}
                 viewBox="0 0 1000 589">
                 <g
                     style={{ pointerEvents: 'visible' }}

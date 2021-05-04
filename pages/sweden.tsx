@@ -5,7 +5,7 @@ import { SwedenMap } from '@/data/sweden/sweden.map';
 
 const Home: React.FC = () => (
     <MainLayout>
-        <div className="flex justify-between">
+        <div className="flex justify-between container">
             <ControlContainer mapId="sweden-map" />
             <SwedenMap />
         </div>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 const Home: React.FC = () => (
     <MainLayout>
         <div className="flex flex-col">
+            <Link href="/world">World 🌏</Link>
             <Link href="/india">India 🇮🇳</Link>
             <Link href="/usa">Usa 🇺🇸</Link>
             <Link href="/europe">Europe 🇪🇺</Link>

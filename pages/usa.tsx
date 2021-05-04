@@ -5,7 +5,7 @@ import { UsaMap } from '@/data/Usa/Usa.map';
 
 const Home: React.FC = () => (
     <MainLayout>
-        <div className="flex justify-between">
+        <div className="flex justify-between container">
             <ControlContainer mapId="usa-map" />
             <UsaMap />
         </div>

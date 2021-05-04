@@ -5,7 +5,7 @@ import { EuropeMap } from '@/data/europe/Europe.map';
 
 const Home: React.FC = () => (
     <MainLayout>
-        <div className="flex justify-between">
+        <div className="flex justify-between container">
             <ControlContainer mapId="europe-map" />
             <EuropeMap />
         </div>

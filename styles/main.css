@@ -29,3 +29,11 @@
 .mt-4 {
     margin-top: 1rem;
 }
+.map-container {
+    overflow-x: scroll;
+}
+@media screen and (max-width: 800px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+}
