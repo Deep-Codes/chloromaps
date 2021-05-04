@@ -4,7 +4,7 @@ import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { MapStoreType } from '@/typings/map.store';
-import { Button, Input, Spacer } from '@geist-ui/react';
+import { Button, Code, Input, Spacer } from '@geist-ui/react';
 import { Download, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
@@ -99,6 +99,10 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
                     />
                     Upload Config
                 </Button>
+            </div>
+            <Spacer y={0.5} />
+            <div style={{ width: '300px' }}>
+                <Code>{JSON.stringify(map.legendData)}</Code>
             </div>
 
             <style jsx>{`
