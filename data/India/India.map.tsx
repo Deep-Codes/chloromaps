@@ -8,6 +8,7 @@ import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/LegendContainer';
 import useDragDrop from 'hooks/use-drag-drop';
+import { Button } from '@geist-ui/react';
 import { IndianStateCodes } from './IndiaStateCode';
 
 export const IndiaMap = () => {
@@ -15,8 +16,10 @@ export const IndiaMap = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData, map.defaultFillColor);
     const [position, handleMouseDown, handleMouseUp] = useDragDrop();
+    const [isDrag, setIsDrag] = React.useState(false);
     return (
         <div className="flex flex-col map-container">
+            <Button onClick={() => setIsDrag(!isDrag)}>Drag {isDrag ? 'True' : 'False'}</Button>
             {hover !== '' && (
                 <ReactTooltip id="india">
                     {/* @ts-ignore */}
@@ -42,28 +45,33 @@ export const IndiaMap = () => {
                     <g
                         style={{ pointerEvents: 'visible' }}
                         onClick={(e) => {
-                            const mapDataCopy = fillColorOnClick(
-                                map.mapData,
-                                {
-                                    // @ts-ignore
-                                    code: e.target.id,
-                                    fill: map.mapFillColor,
-                                    hide: false
-                                },
-                                map.defaultFillColor
-                            );
-                            // ? Updates the legend
-                            const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
-                            // legendDataCopy.forEach((f, i) => {
-                            //     const temp = getCodesOfColor(mapDataCopy, f.fill);
-                            //     legendDataCopy[i].codesArr = temp;
-                            // });
-                            // @ts-ignore
-                            setMap((p) => ({
-                                ...p,
-                                mapData: mapDataCopy,
-                                legendData: legendDataCopy
-                            }));
+                            if (!isDrag) {
+                                const mapDataCopy = fillColorOnClick(
+                                    map.mapData,
+                                    {
+                                        // @ts-ignore
+                                        code: e.target.id,
+                                        fill: map.mapFillColor,
+                                        hide: false
+                                    },
+                                    map.defaultFillColor
+                                );
+                                // ? Updates the legend
+                                const legendDataCopy = resolveLegendData(
+                                    map.legendData,
+                                    mapDataCopy
+                                );
+                                // legendDataCopy.forEach((f, i) => {
+                                //     const temp = getCodesOfColor(mapDataCopy, f.fill);
+                                //     legendDataCopy[i].codesArr = temp;
+                                // });
+                                // @ts-ignore
+                                setMap((p) => ({
+                                    ...p,
+                                    mapData: mapDataCopy,
+                                    legendData: legendDataCopy
+                                }));
+                            }
                         }}
                         // @ts-ignore
                         onMouseOver={(e) => setHover(e.target.id)}
