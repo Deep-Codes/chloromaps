@@ -8,7 +8,6 @@ export interface LegendData {
   fill: string;
   hide: boolean;
   text: string;
-  index: number;
   // codesArr: string[] 
 }
 

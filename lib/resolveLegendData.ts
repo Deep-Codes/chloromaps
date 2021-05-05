@@ -1,5 +1,4 @@
 import { LegendData, MapData } from "@/typings/map.store";
-import getCodesOfColor from "./getCodesOfColor";
 import getColorUsed from "./getColorUsed";
 
 
@@ -13,7 +12,6 @@ const resolveLegendData = (lg: LegendData[] , mp: MapData[]): LegendData[] => {
         fill: d,
         text: '',
         hide: false,
-        index: lg.length+1
       })
     }else{
       newLgArr.push(lg[idx])
