@@ -16,14 +16,30 @@ export const IndiaMap = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData, map.defaultFillColor);
     const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
+    const initVbox = [1000, 1136];
+    const [vBox, setVBox] = React.useState<number[]>(initVbox);
     const [isDrag, setIsDrag] = React.useState(false);
     const resetToolBox = () => {
         // @ts-ignore
         setPosition({ x: 0, y: 0, coords: { x: 0, y: 0 } });
+        setVBox(initVbox);
+    };
+    const zoomFactor = 1.1;
+    const onZoomIn = () => {
+        setVBox([vBox[0] / zoomFactor, vBox[1] / zoomFactor]);
+    };
+    const onZoomOut = () => {
+        setVBox([vBox[0] * zoomFactor, vBox[1] * zoomFactor]);
     };
     return (
         <div className="flex flex-col map-container relative">
-            <MapToolBox reset={resetToolBox} isDrag={isDrag} setIsDrag={setIsDrag} />
+            <MapToolBox
+                reset={resetToolBox}
+                isDrag={isDrag}
+                setIsDrag={setIsDrag}
+                onZoomIn={onZoomIn}
+                onZoomOut={onZoomOut}
+            />
             {hover !== '' && (
                 <ReactTooltip id="india">
                     {/* @ts-ignore */}
@@ -33,7 +49,7 @@ export const IndiaMap = () => {
             <svg
                 id="india-map"
                 width="600"
-                viewBox="0 0 1000 1136"
+                viewBox={`0 0 ${vBox[0]} ${vBox[1]}`}
                 fill="none"
                 stroke={map.mapStrokeColor}
                 strokeWidth={map.mapStrokeWidth}

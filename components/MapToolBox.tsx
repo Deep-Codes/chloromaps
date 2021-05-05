@@ -6,13 +6,15 @@ interface Props {
     isDrag: boolean;
     setIsDrag: React.Dispatch<React.SetStateAction<boolean>>;
     reset: () => void;
+    onZoomIn: () => void;
+    onZoomOut: () => void;
 }
 
-const MapToolBox: React.FC<Props> = ({ reset, isDrag, setIsDrag }) => (
+const MapToolBox: React.FC<Props> = ({ onZoomIn, onZoomOut, reset, isDrag, setIsDrag }) => (
     <div className="absolute box">
         <ButtonGroup size="small">
-            <Button auto icon={<ZoomIn />} />
-            <Button auto icon={<ZoomOut />} />
+            <Button onClick={() => onZoomIn()} auto icon={<ZoomIn />} />
+            <Button onClick={() => onZoomOut()} auto icon={<ZoomOut />} />
             <Button
                 onClick={() => setIsDrag(!isDrag)}
                 auto
