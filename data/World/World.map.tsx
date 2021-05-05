@@ -57,7 +57,7 @@ export const WorldMap = () => {
                 strokeWidth={map.mapStrokeWidth}
                 version="1.2"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="50 0 1412 707"
+                viewBox={`50 0 ${vBox[0]} ${vBox[1]}`}
                 width={800}>
                 <svg
                     // @ts-ignore

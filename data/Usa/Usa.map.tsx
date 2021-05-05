@@ -16,7 +16,7 @@ export const UsaMap = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData, map.defaultFillColor);
     const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
-    const initVbox = [1000, 1136];
+    const initVbox = [1000, 589];
     const [vBox, setVBox] = React.useState<number[]>(initVbox);
     const [isDrag, setIsDrag] = React.useState(false);
     const resetToolBox = () => {
@@ -56,7 +56,7 @@ export const UsaMap = () => {
                 data-tip
                 data-for="usa"
                 width={700}
-                viewBox="0 0 1000 589">
+                viewBox={`0 0 ${vBox[0]} ${vBox[1]}`}>
                 <svg
                     // @ts-ignore
                     x={position.x}

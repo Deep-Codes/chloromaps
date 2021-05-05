@@ -56,7 +56,7 @@ export const EuropeMap = () => {
                 data-for="europe"
                 version="1.2"
                 width={684}
-                viewBox="0 0 1000 684">
+                viewBox={`0 0 ${vBox[0]} ${vBox[1]}`}>
                 <svg
                     // @ts-ignore
                     x={position.x}
