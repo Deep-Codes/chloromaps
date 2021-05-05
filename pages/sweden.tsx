@@ -2,12 +2,11 @@ import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
 import ControlContainer from '@/components/ControlContainer';
 import { SwedenMap } from '@/data/sweden/Sweden.map';
-import { SwedenStateCodes } from '@/data/sweden/SwedenStateCode';
 
 const Home: React.FC = () => (
     <MainLayout>
         <div className="flex justify-between container">
-            <ControlContainer stateCodes={SwedenStateCodes} mapId="sweden-map" />
+            <ControlContainer mapId="sweden-map" />
             <SwedenMap />
         </div>
     </MainLayout>
