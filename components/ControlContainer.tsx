@@ -9,15 +9,17 @@ import { Download, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import ColorPickerInput from './ColorPickerInput';
+import HideMapRegions from './HideMapRegions';
 import InputLabel from './InputLabel';
 import LegendControls from './LegendControls';
 import PaletteBox from './PaletteBox';
 
 interface Props {
     mapId: string;
+    stateCodes: { [key: string]: string };
 }
 
-const ControlContainer: React.FC<Props> = ({ mapId }) => {
+const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -57,6 +59,8 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
             <PaletteBox data={map.mapData} setColor={handleAttrChange} />
             <Spacer y={0.7} />
             <LegendControls />
+            <Spacer y={1} />
+            <HideMapRegions stateCodes={stateCodes} />
             <Spacer y={2} />
             <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
                 Map
