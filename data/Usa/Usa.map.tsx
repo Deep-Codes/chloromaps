@@ -12,7 +12,7 @@ import { UsaStateCodes } from './UsaStateCodes';
 export const UsaMap = () => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
-    fillAllMap(map.mapData);
+    fillAllMap(map.mapData, map.defaultFillColor);
     return (
         <div className="flex flex-col map-container">
             {hover !== '' && (
@@ -40,7 +40,8 @@ export const UsaMap = () => {
                             {
                                 // @ts-ignore
                                 code: e.target.id,
-                                fill: map.mapFillColor
+                                fill: map.mapFillColor,
+                                hide: false
                             },
                             map.defaultFillColor
                         );

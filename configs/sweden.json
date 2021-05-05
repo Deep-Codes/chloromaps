@@ -1,0 +1,38 @@
+{
+    "defaultFillColor": "black",
+    "mapStrokeColor": "white",
+    "mapBackgroundColor": "black",
+    "mapStrokeWidth": "1",
+    "mapFillColor": "#E91E63",
+    "mapData": [
+        { "code": "SWE194", "fill": "#880E4F", "hide": false },
+        { "code": "SWE3429", "fill": "#C2185B", "hide": false },
+        { "code": "SWE3428", "fill": "#C2185B", "hide": false },
+        { "code": "SWE185", "fill": "#EC407A", "hide": false },
+        { "code": "SWE181", "fill": "#EC407A", "hide": false },
+        { "code": "SWE178", "fill": "#EC407A", "hide": false },
+        { "code": "SWE192", "fill": "#EC407A", "hide": false },
+        { "code": "SWE188", "fill": "#EC407A", "hide": false },
+        { "code": "SWE191", "fill": "#EC407A", "hide": false },
+        { "code": "SWE180", "fill": "#EC407A", "hide": false },
+        { "code": "SWE190", "fill": "#EC407A", "hide": false },
+        { "code": "SWE182", "fill": "#EC407A", "hide": false },
+        { "code": "SWE189", "fill": "#F48FB1", "hide": false },
+        { "code": "SWE262", "fill": "#F48FB1", "hide": false },
+        { "code": "SWE193", "fill": "#FCE4EC", "hide": false },
+        { "code": "SWE186", "fill": "#EC407A", "hide": false },
+        { "code": "SWE184", "fill": "#E91E63", "hide": false },
+        { "code": "SWE195", "fill": "#E91E63", "hide": false },
+        { "code": "SWE179", "fill": "#E91E63", "hide": false },
+        { "code": "SWE187", "fill": "#E91E63", "hide": false },
+        { "code": "SWE183", "fill": "#E91E63", "hide": false }
+    ],
+    "legendData": [
+        { "fill": "#880E4F", "text": "2million +", "hide": false },
+        { "fill": "#C2185B", "text": "1-2million", "hide": false },
+        { "fill": "#E91E63", "text": "300-500k", "hide": false },
+        { "fill": "#EC407A", "text": "200-300k", "hide": false },
+        { "fill": "#F48FB1", "text": "100-200k", "hide": false },
+        { "fill": "#FCE4EC", "text": "< 100k", "hide": false }
+    ]
+}
