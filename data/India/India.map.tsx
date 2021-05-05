@@ -32,7 +32,7 @@ export const IndiaMap = () => {
         setVBox([vBox[0] * zoomFactor, vBox[1] * zoomFactor]);
     };
     return (
-        <div className="flex flex-col map-container relative">
+        <div className="flex flex-col map-container">
             <MapToolBox
                 reset={resetToolBox}
                 isDrag={isDrag}
