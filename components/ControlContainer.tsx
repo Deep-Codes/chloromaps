@@ -28,6 +28,13 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             [a]: v
         }));
     };
+    const handleHideStates = (newArr: string[]) => {
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            hideStates: newArr
+        }));
+    };
     return (
         <div>
             <div className="flex flex-col">
@@ -60,7 +67,11 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             <Spacer y={0.7} />
             <LegendControls />
             <Spacer y={1} />
-            <HideMapRegions stateCodes={stateCodes} />
+            <HideMapRegions
+                val={map.hideStates}
+                handleHideStates={handleHideStates}
+                stateCodes={stateCodes}
+            />
             <Spacer y={2} />
             <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
                 Map

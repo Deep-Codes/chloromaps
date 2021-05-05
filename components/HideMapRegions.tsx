@@ -4,13 +4,21 @@ import InputLabel from './InputLabel';
 
 interface Props {
     stateCodes: { [key: string]: string };
+    val: string[];
+    handleHideStates: (s: string[]) => void;
 }
 
-const HideMapRegions: React.FC<Props> = ({ stateCodes }) => (
+const HideMapRegions: React.FC<Props> = ({ val, stateCodes, handleHideStates }) => (
     <div>
         <InputLabel text="Remove States / Regions from Map" />
         <Spacer y={0.3} />
-        <Select placeholder="Select States to Remove" multiple width="200px" initialValue={[]}>
+        <Select
+            value={val}
+            onChange={(e: string[]) => handleHideStates(e)}
+            placeholder="Select States to Remove"
+            multiple
+            width="200px"
+            initialValue={[]}>
             {Object.keys(stateCodes).map((e) => (
                 <Select.Option key={e} value={e}>
                     {stateCodes[e]}
