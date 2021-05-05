@@ -15,11 +15,15 @@ export const IndiaMap = () => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData, map.defaultFillColor);
-    const [position, handleMouseDown, handleMouseUp] = useDragDrop();
+    const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
     const [isDrag, setIsDrag] = React.useState(false);
+    const resetToolBox = () => {
+        // @ts-ignore
+        setPosition({ x: 0, y: 0, coords: { x: 0, y: 0 } });
+    };
     return (
         <div className="flex flex-col map-container relative">
-            <MapToolBox isDrag={isDrag} setIsDrag={setIsDrag} />
+            <MapToolBox reset={resetToolBox} isDrag={isDrag} setIsDrag={setIsDrag} />
             {hover !== '' && (
                 <ReactTooltip id="india">
                     {/* @ts-ignore */}
@@ -41,7 +45,8 @@ export const IndiaMap = () => {
                     x={position.x}
                     y={position.y}
                     onMouseDown={handleMouseDown}
-                    onMouseUp={handleMouseUp}>
+                    onMouseUp={handleMouseUp}
+                    className={isDrag ? 'cursor-move' : ''}>
                     <g
                         style={{ pointerEvents: 'visible' }}
                         onClick={(e) => {

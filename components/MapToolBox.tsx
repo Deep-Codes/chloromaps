@@ -5,9 +5,10 @@ import { Move, ZoomIn, ZoomOut, Repeat } from '@geist-ui/react-icons';
 interface Props {
     isDrag: boolean;
     setIsDrag: React.Dispatch<React.SetStateAction<boolean>>;
+    reset: () => void;
 }
 
-const MapToolBox: React.FC<Props> = ({ isDrag, setIsDrag }) => (
+const MapToolBox: React.FC<Props> = ({ reset, isDrag, setIsDrag }) => (
     <div className="absolute box">
         <ButtonGroup size="small">
             <Button auto icon={<ZoomIn />} />
@@ -17,7 +18,7 @@ const MapToolBox: React.FC<Props> = ({ isDrag, setIsDrag }) => (
                 auto
                 icon={<Move stroke={isDrag ? 'white' : 'grey'} />}
             />
-            <Button auto icon={<Repeat />} />
+            <Button onClick={() => reset()} auto icon={<Repeat />} />
         </ButtonGroup>
         <style jsx>{`
             .box {

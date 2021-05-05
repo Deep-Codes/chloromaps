@@ -46,7 +46,9 @@ const useDragDrop = () => {
         setPosition((pos) => ({ ...pos, coords: { x: 0, y: 0 } }));
     };
 
-    return [position  , handleMouseDown  , handleMouseUp]
+
+
+    return [position  , setPosition , handleMouseDown  , handleMouseUp]
 }
 
 export default useDragDrop;

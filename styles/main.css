@@ -37,3 +37,6 @@
         flex-direction: column-reverse;
     }
 }
+.cursor-move {
+    cursor: all-scroll;
+}
