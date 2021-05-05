@@ -51,13 +51,6 @@ const LegendControls = () => {
         }));
         resetMap(removeCodes, map.defaultFillColor);
     };
-    const handleColor = (v: string) => {
-        // @ts-ignore
-        setMap((prev) => ({
-            ...prev,
-            mapFillColor: v
-        }));
-    };
     return (
         <div className="ctx">
             {map.legendData.length > 0 && <InputLabel text="Legend Settings" />}{' '}

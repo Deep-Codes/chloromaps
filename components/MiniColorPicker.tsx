@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
 import { colorPickerPalette } from '@/data/colors';
-import resolveLegendData from '@/lib/resolveLegendData';
 import { MapStoreType } from '@/typings/map.store';
 import { useTheme } from '@geist-ui/react';
 import React from 'react';

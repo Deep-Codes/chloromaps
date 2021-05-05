@@ -13,7 +13,7 @@ const resolveLegendData = (lg: LegendData[] , mp: MapData[]): LegendData[] => {
         fill: d,
         text: '',
         hide: false,
-        codesArr: []
+        index: lg.length+1
       })
     }else{
       newLgArr.push(lg[idx])
