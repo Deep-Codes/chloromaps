@@ -42,7 +42,7 @@ const MiniColorPicker: React.FC<Props> = ({ index, bgColor, map, setMap }) => {
                     <div className="picker absolute">
                         <div className="flex flex-col ">
                             {colorPickerPalette.map((d, i) => (
-                                <div key={`${d[i]}-${i}`} className="flex justify-between">
+                                <div key={`${d[i]}-${i}`} className="flex justify-evenly">
                                     {d.map((el) => (
                                         <div
                                             onClick={() => handleColor(el)}
@@ -68,7 +68,8 @@ const MiniColorPicker: React.FC<Props> = ({ index, bgColor, map, setMap }) => {
                 .picker {
                     background-color: ${theme.palette.accents_1};
                     border: 1px solid ${theme.palette.accents_2};
-                    padding: 5px;
+                    padding-top: 5px;
+                    padding-left: 5px;
                     z-index: 1000;
                     top: 150%;
                     left: -5%;
@@ -79,7 +80,6 @@ const MiniColorPicker: React.FC<Props> = ({ index, bgColor, map, setMap }) => {
                     width: 20px;
                     height: 20px;
                     border-radius: 2px;
-                    margin-right: 5px;
                 }
             `}</style>
         </>
