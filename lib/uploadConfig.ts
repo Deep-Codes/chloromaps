@@ -2,7 +2,7 @@
 import fillAllMap from "./fillAllMap";
 
 // @ts-ignore
-const uploadConfig = (file , setMap) => {
+const uploadConfig = (file , setMap , def) => {
   let fileReader: any;
 
   const handleConfigUpload = (f: any) => {
@@ -14,7 +14,7 @@ const uploadConfig = (file , setMap) => {
   const handleFileRead = () => {
     const content = fileReader.result;
     setMap(JSON.parse(content))
-    fillAllMap(JSON.parse(content).mapData)
+    fillAllMap(JSON.parse(content).mapData ,def )
   };
 
   handleConfigUpload(file)

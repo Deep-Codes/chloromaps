@@ -93,8 +93,10 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
                     <input
                         className="file-input pointer"
                         type="file"
-                        // @ts-ignore
-                        onChange={(e) => uploadConfig(e.target.files[0], setMap)}
+                        onChange={(e) =>
+                            // @ts-ignore
+                            uploadConfig(e.target.files[0], setMap, map.defaultFillColors)
+                        }
                         // onClick={(e: any) => (e.target.value = null)}
                     />
                     Upload Config

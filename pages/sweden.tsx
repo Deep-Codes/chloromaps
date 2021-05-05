@@ -1,7 +1,7 @@
 import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
 import ControlContainer from '@/components/ControlContainer';
-import { SwedenMap } from '@/data/sweden/sweden.map';
+import { SwedenMap } from '@/data/sweden/Sweden.map';
 
 const Home: React.FC = () => (
     <MainLayout>
