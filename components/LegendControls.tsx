@@ -9,6 +9,7 @@ import { Eye, XCircle, EyeOff } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import InputLabel from './InputLabel';
+import MiniColorPicker from './MiniColorPicker';
 
 const LegendControls = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
@@ -67,11 +68,7 @@ const LegendControls = () => {
                         onClick={() => toggleHideLegend(i, dt.fill)}>
                         {dt.hide ? <EyeOff size={20} /> : <Eye size={20} />}
                     </div>
-                    <div
-                        style={{ backgroundColor: dt.fill }}
-                        onClick={() => handleColor(dt.fill)}
-                        className="box pointer"
-                    />
+                    <MiniColorPicker index={i} map={map} setMap={setMap} bgColor={dt.fill} />
                     <Input
                         size="mini"
                         placeholder="Legend Value"

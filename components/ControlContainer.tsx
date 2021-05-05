@@ -4,7 +4,7 @@ import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { MapStoreType } from '@/typings/map.store';
-import { Button, Code, Input, Spacer } from '@geist-ui/react';
+import { Button, Input, Spacer } from '@geist-ui/react';
 import { Download, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';

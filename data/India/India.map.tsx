@@ -44,6 +44,7 @@ export const IndiaMap = () => {
                             },
                             map.defaultFillColor
                         );
+                        // ? Updates the legend
                         const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
                         // legendDataCopy.forEach((f, i) => {
                         //     const temp = getCodesOfColor(mapDataCopy, f.fill);
