@@ -7,46 +7,14 @@ import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/LegendContainer';
+import useDragDrop from 'hooks/use-drag-drop';
 import { IndianStateCodes } from './IndiaStateCode';
 
 export const IndiaMap = () => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     fillAllMap(map.mapData, map.defaultFillColor);
-    const [position, setPosition] = React.useState({ x: 50, y: 50, coords: {} });
-
-    const handleMouseMove = React.useRef((e) => {
-        setPosition((position) => {
-            const xDiff = position.coords.x - e.pageX;
-            const yDiff = position.coords.y - e.pageY;
-            return {
-                x: position.x - xDiff,
-                y: position.y - yDiff,
-                coords: {
-                    x: e.pageX,
-                    y: e.pageY
-                }
-            };
-        });
-    });
-
-    const handleMouseDown = (e) => {
-        const { pageX } = e;
-        const { pageY } = e;
-        setPosition((position) => ({
-            ...position,
-            coords: {
-                x: pageX,
-                y: pageY
-            }
-        }));
-        document.addEventListener('mousemove', handleMouseMove.current);
-    };
-
-    const handleMouseUp = () => {
-        document.removeEventListener('mousemove', handleMouseMove.current);
-        setPosition((position) => ({ ...position, coords: {} }));
-    };
+    const [position, handleMouseDown, handleMouseUp] = useDragDrop();
     return (
         <div className="flex flex-col map-container">
             {hover !== '' && (
