@@ -11,7 +11,7 @@ interface Props {
 }
 
 const MapToolBox: React.FC<Props> = ({ onZoomIn, onZoomOut, reset, isDrag, setIsDrag }) => (
-    <div className="absolute box">
+    <div className="box">
         <ButtonGroup size="small">
             <Button onClick={() => onZoomIn()} auto icon={<ZoomIn />} />
             <Button onClick={() => onZoomOut()} auto icon={<ZoomOut />} />
@@ -24,8 +24,8 @@ const MapToolBox: React.FC<Props> = ({ onZoomIn, onZoomOut, reset, isDrag, setIs
         </ButtonGroup>
         <style jsx>{`
             .box {
-                top: 0;
-                right: 0;
+                margin-left: auto;
+                margin-bottom: 10px;
             }
         `}</style>
     </div>
