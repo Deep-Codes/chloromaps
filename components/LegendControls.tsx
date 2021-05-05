@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
+import reOrderArrayElements from '@/lib/reOrderArrElements';
 import resetMap from '@/lib/resetMap';
 import { mapAtom } from '@/store/map.store';
 import { MapStoreType } from '@/typings/map.store';
 import { Input } from '@geist-ui/react';
-import { Eye, XCircle, EyeOff } from '@geist-ui/react-icons';
+import { Eye, XCircle, EyeOff, ChevronUp, ChevronDown } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import InputLabel from './InputLabel';
@@ -51,6 +52,28 @@ const LegendControls = () => {
         }));
         resetMap(removeCodes, map.defaultFillColor);
     };
+    const handleLegendPosChange = (idx: number, up: boolean) => {
+        const len = map.legendData.length;
+        const copy = map.legendData;
+        if (up) {
+            if (idx === 0) {
+                reOrderArrayElements(copy, copy[idx], idx, len - 1);
+            } else {
+                reOrderArrayElements(copy, copy[idx], idx, idx - 1);
+            }
+        } else if (!up) {
+            if (idx === len - 1) {
+                reOrderArrayElements(copy, copy[idx], idx, 0);
+            } else {
+                reOrderArrayElements(copy, copy[idx], idx, idx + 1);
+            }
+        }
+        // @ts-ignore
+        setMap((prev) => ({
+            ...prev,
+            legendData: copy
+        }));
+    };
     return (
         <div className="ctx">
             {map.legendData.length > 0 && <InputLabel text="Legend Settings" />}{' '}
@@ -73,11 +96,22 @@ const LegendControls = () => {
                         onClick={() => handleRemoveLegend(i, dt.fill)}>
                         <XCircle size={20} />
                     </div>
+                    <div className="flex-center flex-col up-down pointer">
+                        <ChevronUp onClick={() => handleLegendPosChange(i, true)} />
+                        <ChevronDown onClick={() => handleLegendPosChange(i, false)} />
+                    </div>
                 </div>
             ))}
             <style jsx>{`
+                .up-down {
+                    opacity: 0.6;
+                    height: 30px;
+                }
+                .up-down:hover {
+                    opacity: 1;
+                }
                 .ctx {
-                    width: 250px;
+                    width: 280px;
                 }
                 .box {
                     width: 20px;
