@@ -55,12 +55,15 @@ export const IndiaMap = () => {
                 strokeWidth={map.mapStrokeWidth}
                 xmlns="http://www.w3.org/2000/svg"
                 data-tip
-                data-for="india"
-                style={{ border: '1px solid red' }}>
+                data-for="india">
                 <svg
+                    // @ts-ignore
                     x={position.x}
+                    // @ts-ignore
                     y={position.y}
+                    // @ts-ignore
                     onMouseDown={handleMouseDown}
+                    // @ts-ignore
                     onMouseUp={handleMouseUp}
                     className={isDrag ? 'cursor-move' : ''}>
                     <g
