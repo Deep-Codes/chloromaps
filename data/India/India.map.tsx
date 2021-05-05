@@ -8,7 +8,7 @@ import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/LegendContainer';
 import useDragDrop from 'hooks/use-drag-drop';
-import { Button } from '@geist-ui/react';
+import MapToolBox from '@/components/MapToolBox';
 import { IndianStateCodes } from './IndiaStateCode';
 
 export const IndiaMap = () => {
@@ -18,8 +18,8 @@ export const IndiaMap = () => {
     const [position, handleMouseDown, handleMouseUp] = useDragDrop();
     const [isDrag, setIsDrag] = React.useState(false);
     return (
-        <div className="flex flex-col map-container">
-            <Button onClick={() => setIsDrag(!isDrag)}>Drag {isDrag ? 'True' : 'False'}</Button>
+        <div className="flex flex-col map-container relative">
+            <MapToolBox isDrag={isDrag} setIsDrag={setIsDrag} />
             {hover !== '' && (
                 <ReactTooltip id="india">
                     {/* @ts-ignore */}
