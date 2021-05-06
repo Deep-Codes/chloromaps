@@ -14,7 +14,9 @@ import { WorldCountryCodes } from './WorldCountryCodes';
 export const WorldMap = () => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
-    fillAllMap(map.mapData, map.defaultFillColor);
+    React.useMemo(() => {
+        fillAllMap(map.mapData, map.defaultFillColor);
+    }, [map]);
     const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
     const initVbox = [1412, 707];
     const [vBox, setVBox] = React.useState<number[]>(initVbox);

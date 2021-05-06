@@ -14,7 +14,9 @@ import { IndianStateCodes } from './IndiaStateCode';
 export const IndiaMap = () => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
-    fillAllMap(map.mapData, map.defaultFillColor);
+    React.useMemo(() => {
+        fillAllMap(map.mapData, map.defaultFillColor);
+    }, [map]);
     const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
     const initVbox = [1000, 1136];
     const [vBox, setVBox] = React.useState<number[]>(initVbox);
