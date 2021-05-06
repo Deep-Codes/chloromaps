@@ -3,7 +3,6 @@ import { themeAtom } from '@/store/theme.store';
 import { useAtom } from 'jotai';
 import { Button } from '@geist-ui/react';
 import { Sun } from '@geist-ui/react-icons';
-import Link from 'next/link';
 import Logo from '@/assets/logo/Logo';
 
 const Navbar = () => {

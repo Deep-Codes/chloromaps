@@ -27,13 +27,13 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
             [a]: v
         }));
     };
-    const handleHideStates = (newArr: string[]) => {
-        // @ts-ignore
-        setMap((st: MapStoreType) => ({
-            ...st,
-            hideStates: newArr
-        }));
-    };
+    // const handleHideStates = (newArr: string[]) => {
+    //     // @ts-ignore
+    //     setMap((st: MapStoreType) => ({
+    //         ...st,
+    //         hideStates: newArr
+    //     }));
+    // };
     return (
         <div>
             <div className="flex flex-col">
