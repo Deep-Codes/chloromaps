@@ -11,11 +11,11 @@ const Navbar = () => {
     return (
         <nav>
             <div className="flex">
-                <Link href="/">
+                <a href="/">
                     <>
-                        <Logo fill={theme ? 'white' : 'black'} />
+                        <Logo className="pointer" fill={theme ? 'white' : 'black'} />
                     </>
-                </Link>
+                </a>
             </div>
 
             <Button

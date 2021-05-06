@@ -10,7 +10,7 @@ export const mapDt = [
     },
     {
         name: 'India',
-        text: 'All 30 States Based on Mercator Projection.',
+        text: 'All Indian States Based on Mercator Projection.',
         link: '/india'
     },
     {
@@ -22,6 +22,11 @@ export const mapDt = [
         name: 'Europe',
         text: 'Both EU + Non-EU , Based on Robinson Projection.',
         link: '/europe'
+    },
+    {
+        name: 'Russia',
+        text: 'Russian Federation, Based on Mercator Projection.',
+        link: '/russia'
     },
     {
         name: 'Sweden',
@@ -54,18 +59,10 @@ const Home: React.FC = () => (
                 font-size: 70px;
                 line-height: 1;
                 margin-top: 40px;
-                background: linear-gradient(45deg, #0070f4 10%, #0dded8 50%);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
             }
             .hero-text {
                 margin-top: 50px;
                 margin-bottom: 50px;
-                background: linear-gradient(45deg, #0070f4 10%, #0dded8 50%);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
             }
         `}</style>
     </MainLayout>
