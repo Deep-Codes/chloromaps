@@ -1,19 +1,23 @@
 import React from 'react';
 import { themeAtom } from '@/store/theme.store';
 import { useAtom } from 'jotai';
-import { Button, Text } from '@geist-ui/react';
+import { Button } from '@geist-ui/react';
 import { Sun } from '@geist-ui/react-icons';
 import Link from 'next/link';
+import Logo from '@/assets/logo/Logo';
 
 const Navbar = () => {
     const [theme, setTheme] = useAtom(themeAtom);
     return (
         <nav>
-            <Link href="/">
-                <Text className="pointer" h4>
-                    Chloromaps
-                </Text>
-            </Link>
+            <div className="flex">
+                <Link href="/">
+                    <>
+                        <Logo fill={theme ? 'white' : 'black'} />
+                    </>
+                </Link>
+            </div>
+
             <Button
                 style={{ minWidth: `50px` }}
                 size="small"

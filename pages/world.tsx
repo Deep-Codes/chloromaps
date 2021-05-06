@@ -5,7 +5,7 @@ import { WorldMap } from '@/data/World/World.map';
 
 const Home: React.FC = () => (
     <MainLayout>
-        <div className="flex justify-between container">
+        <div className="flex flex-col-rev ">
             <ControlContainer mapId="world-map" />
             <WorldMap />
         </div>

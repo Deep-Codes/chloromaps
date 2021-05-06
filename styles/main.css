@@ -4,6 +4,9 @@
 .flex-wrap {
     flex-wrap: wrap;
 }
+.flex-col-rev {
+    flex-direction: column-reverse;
+}
 .flex-center {
     display: flex;
     justify-content: center;
