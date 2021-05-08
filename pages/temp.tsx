@@ -1,3 +1,4 @@
+import LegendGradient from '@/components/LegendGradient';
 import { colorPickerPalette } from '@/data/colors';
 import { WorldMap } from '@/data/World/World.map';
 import { WorldCountryCodes } from '@/data/World/WorldCountryCodes';
@@ -31,17 +32,7 @@ const Temp = () => {
             <WorldMap />
 
             <div className="flex-center flex-col mx-auto">
-                <svg width={660} height={50}>
-                    <defs>
-                        <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
-                            {colorPickerPalette[count].map((g, i) => (
-                                <stop key={g} offset={`${i * 10}%`} stopColor={g} />
-                            ))}
-                        </linearGradient>
-                    </defs>
-
-                    <rect x={10} y={10} width={600} height={30} fill="url(#linear)" />
-                </svg>
+                <LegendGradient gradArr={colorPickerPalette[count]} />
                 <Spacer y={0.5} />
                 <Button onClick={() => handleCount()}>Change</Button>
             </div>
