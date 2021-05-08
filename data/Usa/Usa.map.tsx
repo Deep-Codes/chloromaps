@@ -99,8 +99,7 @@ export const UsaMap = () => {
                                 legendData: legendDataCopy
                             }));
                         }}
-                        // @ts-ignore
-                        onMouseOver={(e) => setHover(e.target.id)}
+                        onMouseOver={(e) => setHover((e.target as SVGGElement).id)}
                         onMouseLeave={() => setHover('')}>
                         <path
                             id="MA"

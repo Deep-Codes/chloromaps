@@ -96,8 +96,7 @@ export const SwedenMap = () => {
                                 legendData: legendDataCopy
                             }));
                         }}
-                        // @ts-ignore
-                        onMouseOver={(e) => setHover(e.target.id)}
+                        onMouseOver={(e) => setHover((e.target as SVGGElement).id)}
                         onMouseLeave={() => setHover('')}>
                         <path
                             d="M131.4 2189.5l-.8.4-2.4-3.2.2-.9 1-.2 1.3.4 1.3 1.1.2 1.1-.8 1.3z"

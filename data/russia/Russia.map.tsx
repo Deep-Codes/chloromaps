@@ -99,8 +99,7 @@ export const RussiaMap = () => {
                                 }));
                             }
                         }}
-                        // @ts-ignore
-                        onMouseOver={(e) => setHover(e.target.id)}
+                        onMouseOver={(e) => setHover((e.target as SVGGElement).id)}
                         onMouseLeave={() => setHover('')}>
                         <path
                             d="M297.3 346.4l.5.5-.5.3-.8-.7.2-.3.6.2zM217 25.7l-1-1.4-.2-1 1.1 1.2.1 1.2z"
