@@ -43,6 +43,7 @@ const LegendControls = () => {
         const mapDataCopy = map.mapData.filter((el) => el.fill !== fill);
         const removeCodes = map.mapData.filter((el) => el.fill === fill);
         const legDatCopy = map.legendData;
+        resetMap(removeCodes, 'none');
         legDatCopy.splice(i, 1);
         // @ts-ignore
         setMap((prev) => ({
@@ -50,7 +51,6 @@ const LegendControls = () => {
             legendData: legDatCopy,
             mapData: mapDataCopy
         }));
-        resetMap(removeCodes, map.defaultFillColor);
     };
     const handleLegendPosChange = (idx: number, up: boolean) => {
         const len = map.legendData.length;
