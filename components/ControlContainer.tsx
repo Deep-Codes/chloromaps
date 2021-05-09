@@ -65,6 +65,13 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             hideLegend: b
         }));
     };
+    const smoothGradient = (v: any) => {
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            legendSmoothGradient: v
+        }));
+    };
     return (
         <div>
             <div className="flex flex-col">
@@ -95,6 +102,9 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             <Spacer y={0.7} />
             <InputLabel text="Hide Legend" />
             <Toggle onChange={(e: any) => toggleHideLegend(e.target.checked)} size="large" />
+            <Spacer y={0.7} />
+            <InputLabel text="Smooth Gradient Legend" />
+            <Toggle onChange={(e: any) => smoothGradient(e.target.checked)} size="large" />
             <Spacer y={0.7} />
             <InputLabel text="Fill Random Data" />
             <Button icon={<Layers />} onClick={() => randomiseData()}>

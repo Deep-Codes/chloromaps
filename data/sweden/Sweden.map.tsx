@@ -193,7 +193,12 @@ export const SwedenMap = () => {
                 </svg>
             </svg>
 
-            {!map.hideLegend && <LegendContainer data={map.legendData} />}
+            {!map.hideLegend && (
+                <LegendContainer
+                    data={map.legendData}
+                    legendSmoothGradient={map.legendSmoothGradient}
+                />
+            )}
         </div>
     );
 };

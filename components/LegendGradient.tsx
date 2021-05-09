@@ -1,7 +1,8 @@
+import { LegendData } from '@/typings/map.store';
 import React from 'react';
 
 interface Props {
-    gradArr: string[];
+    gradArr: LegendData[];
     svgW?: number;
     svgH?: number;
     gradW?: number;
@@ -17,18 +18,23 @@ const LegendGradient: React.FC<Props> = ({
 }) => {
     const len = gradArr.length;
     return (
-        <svg width={svgW} height={svgH}>
+        <svg id="legend" className="mx-auto" width={svgW} height={svgH}>
             <defs>
                 <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
                     {gradArr.map((g, i) => (
-                        <stop key={g} offset={`${i * len}%`} stopColor={g} />
+                        <stop key={g.fill} offset={`${i * (100 / len)}%`} stopColor={g.fill} />
                     ))}
                 </linearGradient>
             </defs>
 
             {gradArr.map((g, i) => (
-                <text key={g} x={gradW / (len * 2) + (i * gradW) / len} y={20} fill="white">
-                    {i * len}
+                <text
+                    fontFamily="Arial"
+                    key={g.fill}
+                    x={gradW / (len * 2) + (i * gradW) / len}
+                    y={20}
+                    fill="white">
+                    {g.text}
                 </text>
             ))}
 
