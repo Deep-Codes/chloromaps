@@ -8,7 +8,6 @@ import React, { useEffect, useState } from 'react';
 
 const Temp = () => {
     const [count, setCount] = useState(0);
-    console.log(count);
     useEffect(() => {
         const temp = colorPickerPalette[count];
         const data = WorldCountryCodes;

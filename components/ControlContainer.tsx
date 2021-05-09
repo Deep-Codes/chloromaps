@@ -1,11 +1,12 @@
+import { colorPickerPalette } from '@/data/colors';
 import downloadConfig from '@/lib/downloadConfig';
 import downloadMap from '@/lib/downloadMap';
 import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
-import { MapStoreType } from '@/typings/map.store';
+import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
 import { Button, Input, Spacer } from '@geist-ui/react';
-import { Download, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
+import { Download, Layers, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import ColorPickerInput from './ColorPickerInput';
@@ -15,10 +16,10 @@ import PaletteBox from './PaletteBox';
 
 interface Props {
     mapId: string;
-    // stateCodes: { [key: string]: string };
+    stateCodes: { [key: string]: string };
 }
 
-const ControlContainer: React.FC<Props> = ({ mapId }) => {
+const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -34,6 +35,28 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
     //         hideStates: newArr
     //     }));
     // };
+    const randomiseData = () => {
+        const colorIdx = Math.floor(Math.random() * colorPickerPalette.length);
+        const legendData: LegendData[] = [];
+        colorPickerPalette[colorIdx].forEach((t, i) =>
+            legendData.push({ fill: t, text: `${i * 10}`, hide: false })
+        );
+        const mapData: MapData[] = [];
+        Object.keys(stateCodes).forEach((m) => {
+            const rand = Math.floor(Math.random() * 10);
+            mapData.push({
+                fill: colorPickerPalette[colorIdx][rand],
+                code: m,
+                hide: false
+            });
+        });
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            mapData,
+            legendData
+        }));
+    };
     return (
         <div>
             <div className="flex flex-col">
@@ -61,6 +84,11 @@ const ControlContainer: React.FC<Props> = ({ mapId }) => {
                 setColor={handleAttrChange}
                 type="mapFillColor"
             />
+            <Spacer y={0.7} />
+            <InputLabel text="Fill Random Data" />
+            <Button icon={<Layers />} onClick={() => randomiseData()}>
+                Randomise
+            </Button>
             <Spacer y={0.7} />
             <PaletteBox data={map.mapData} setColor={handleAttrChange} />
             <Spacer y={0.7} />
