@@ -10,6 +10,7 @@ export const mapAtom = atom<MapStoreType>({
   mapData: [],
   legendData: [],
   hideStates: [],
+  hideLegend: false
 })
 
 export const fillAtom = atom<String>('');

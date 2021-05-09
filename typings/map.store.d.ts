@@ -20,4 +20,5 @@ export interface MapStoreType {
   mapData: MapData[];
   legendData: LegendData[];
   hideStates: string[];
+  hideLegend: boolean;
 }

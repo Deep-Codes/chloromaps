@@ -947,7 +947,7 @@ export const WorldMap = () => {
                 </svg>
             </svg>
 
-            <LegendContainer data={map.legendData} />
+            {!map.hideLegend && <LegendContainer data={map.legendData} />}
         </div>
     );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { colorPickerPalette } from '@/data/colors';
 import downloadConfig from '@/lib/downloadConfig';
 import downloadMap from '@/lib/downloadMap';
@@ -5,7 +6,7 @@ import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
-import { Button, Input, Spacer } from '@geist-ui/react';
+import { Button, Input, Spacer, Toggle } from '@geist-ui/react';
 import { Download, Layers, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
@@ -57,6 +58,13 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             legendData
         }));
     };
+    const toggleHideLegend = (b: any) => {
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            hideLegend: b
+        }));
+    };
     return (
         <div>
             <div className="flex flex-col">
@@ -84,6 +92,9 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                 setColor={handleAttrChange}
                 type="mapFillColor"
             />
+            <Spacer y={0.7} />
+            <InputLabel text="Hide Legend" />
+            <Toggle onChange={(e: any) => toggleHideLegend(e.target.checked)} size="large" />
             <Spacer y={0.7} />
             <InputLabel text="Fill Random Data" />
             <Button icon={<Layers />} onClick={() => randomiseData()}>
