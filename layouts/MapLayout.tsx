@@ -15,6 +15,7 @@ interface Props {
     name: string;
     stateCodes: { [key: string]: string };
     width: number;
+    center?: boolean;
 }
 
 const MapLayout: React.FC<PropsWithChildren<Props>> = ({
@@ -22,6 +23,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
     name,
     stateCodes,
     width,
+    center,
     children
 }) => {
     const [hover, setHover] = React.useState('');
@@ -46,7 +48,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
         setVBox([vBox[0] * zoomFactor, vBox[1] * zoomFactor]);
     };
     return (
-        <div className="flex flex-col map-container">
+        <div className={`flex flex-col map-container ${center ? 'mx-auto' : ''}`}>
             <MapToolBox
                 reset={resetToolBox}
                 isDrag={isDrag}
