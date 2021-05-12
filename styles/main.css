@@ -40,12 +40,18 @@
     margin-top: 1rem;
 }
 .map-container {
+    margin-left: auto;
+    margin-right: auto;
     overflow-x: scroll;
     position: relative;
 }
 @media screen and (max-width: 800px) {
     .container {
         flex-direction: column-reverse;
+    }
+    .map-container {
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 .cursor-move {

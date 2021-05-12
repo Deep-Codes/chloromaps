@@ -3,12 +3,7 @@ import MapLayout from '@/layouts/MapLayout';
 import { RussiaStateCodes } from './RussiaStateCodes';
 
 export const RussiaMap = () => (
-    <MapLayout
-        name="russia"
-        width={800}
-        viewBox={[0, 0, 1000, 664]}
-        stateCodes={RussiaStateCodes}
-        center>
+    <MapLayout name="russia" width={800} viewBox={[0, 0, 1000, 664]} stateCodes={RussiaStateCodes}>
         <path
             d="M297.3 346.4l.5.5-.5.3-.8-.7.2-.3.6.2zM217 25.7l-1-1.4-.2-1 1.1 1.2.1 1.2z"
             id="RUS99"
