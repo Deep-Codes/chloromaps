@@ -35,6 +35,11 @@
     margin-right: auto;
 }
 
+path,
+text {
+    transition: fill 1s ease-in-out;
+}
+
 /* Margins and Paddings */
 .mt-4 {
     margin-top: 1rem;
