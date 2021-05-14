@@ -1,15 +1,15 @@
 export default {
-    title: 'Deepankar Bhade',
-    description: '19yo Programmer',
+    title: 'Chloromaps',
+    description: 'A Rapid Map Development and Editor , Ship maps Faster and without Pain.',
     author: 'Deepankar Bhade',
     openGraph: {
         type: 'website',
         locale: 'en_IN',
-        url: 'https://deepankarbhade.vercel.app/',
-        site_name: 'Deepankar Bhade',
+        url: 'https://chloromaps.vercel.app/',
+        site_name: 'Chloromaps | Develop Chloropeth Maps Faster',
         images: [
             {
-                url: `https://deepankarbhade.vercel.app/static/images/global/banner.png`,
+                url: `https://chloromaps.vercel.app/static/images/global/banner.png`,
                 width: 1920,
                 height: 1080,
                 alt: 'Deepankar Bhade'
