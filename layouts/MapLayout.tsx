@@ -9,6 +9,7 @@ import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/LegendContainer';
 import useDragDrop from 'hooks/use-drag-drop';
 import MapToolBox from '@/components/MapToolBox';
+import useDrag from 'hooks/use-drag';
 
 interface Props {
     viewBox: number[];
@@ -28,6 +29,8 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
 }) => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
+    const svgRef = React.useRef<SVGElement>(null);
+    useDrag(svgRef);
     React.useMemo(() => {
         fillAllMap(map.mapData, map.defaultFillColor);
     }, [map]);
@@ -63,6 +66,8 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                 </ReactTooltip>
             )}
             <svg
+                // @ts-ignore
+                ref={svgRef}
                 id={`${name}-map`}
                 data-tip
                 data-for={name}
@@ -81,9 +86,9 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                     // @ts-ignore
                     y={position.y}
                     // @ts-ignore
-                    onMouseDown={handleMouseDown}
+                    // onMouseDown={handleMouseDown}
                     // @ts-ignore
-                    onMouseUp={handleMouseUp}
+                    // onMouseUp={handleMouseUp}
                     className={isDrag ? 'cursor-move' : ''}>
                     <g
                         style={{ pointerEvents: 'visible' }}

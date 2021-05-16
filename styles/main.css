@@ -68,7 +68,11 @@ text {
 .draggable {
     cursor: move;
 }
-.text {
+text .text {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 5px;
+}
+.drag-label {
+    fill: white;
+    z-index: 100;
 }
