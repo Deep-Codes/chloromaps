@@ -1,56 +1,11 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import useDrag from 'hooks/use-drag';
 import React from 'react';
 
 const DragLabel = () => {
-    let selectedElement: any = false;
-    // Refer: https://www.petercollingridge.co.uk/tutorials/svg/interactive/dragging/
-    const makeDraggable = React.useCallback((evt: React.SyntheticEvent) => {
-        const svg = evt.target;
-        let offset: {
-            x: number;
-            y: number;
-        };
-        const drag = (evt: any) => {
-            if (selectedElement) {
-                evt.preventDefault();
-                const coord = getMousePosition(evt);
-                selectedElement.setAttributeNS(null, 'x', coord.x - offset.x);
-                selectedElement.setAttributeNS(null, 'y', coord.y - offset.y);
-            }
-        };
-        const endDrag = () => {
-            selectedElement = null;
-        };
-        const getMousePosition = (evt: any) => {
-            // @ts-ignore
-            const CTM = svg.getScreenCTM();
-            return {
-                x: (evt.clientX - CTM.e) / CTM.a,
-                y: (evt.clientY - CTM.f) / CTM.d
-            };
-        };
-        const startDrag = (evt: any) => {
-            if (evt.target.classList.contains('draggable')) {
-                selectedElement = evt.target;
-                offset = getMousePosition(evt);
-                offset.x -= parseFloat(selectedElement.getAttributeNS(null, 'x'));
-                offset.y -= parseFloat(selectedElement.getAttributeNS(null, 'y'));
-            }
-        };
-        svg.addEventListener('mousedown', startDrag);
-        svg.addEventListener('mousemove', drag);
-        svg.addEventListener('mouseup', endDrag);
-        svg.addEventListener('mouseleave', endDrag);
-    }, []);
-
     const svgRef = React.useRef<SVGElement>(null);
-    React.useEffect(() => {
-        if (svgRef !== undefined && svgRef !== null) {
-            // @ts-ignore
-            svgRef.current?.addEventListener('load', makeDraggable);
-        }
-    }, [makeDraggable]);
+    useDrag(svgRef);
     return (
         <div>
             <svg
