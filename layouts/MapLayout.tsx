@@ -7,8 +7,7 @@ import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/LegendContainer';
-import useDragDrop from 'hooks/use-drag-drop';
-import MapToolBox from '@/components/MapToolBox';
+import useDrag from 'hooks/use-drag';
 
 interface Props {
     viewBox: number[];
@@ -16,6 +15,7 @@ interface Props {
     stateCodes: { [key: string]: string };
     width: number;
     center?: boolean;
+    isHover?: boolean;
 }
 
 const MapLayout: React.FC<PropsWithChildren<Props>> = ({
@@ -24,38 +24,41 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
     stateCodes,
     width,
     center,
+    isHover = true,
     children
 }) => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
+    const svgRef = React.useRef<SVGElement>(null);
+    useDrag(svgRef);
     React.useMemo(() => {
         fillAllMap(map.mapData, map.defaultFillColor);
     }, [map]);
-    const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
-    const initVbox = [viewBox[2], viewBox[3]];
-    const [vBox, setVBox] = React.useState<number[]>(initVbox);
-    const [isDrag, setIsDrag] = React.useState(false);
-    const resetToolBox = () => {
-        // @ts-ignore
-        setPosition({ x: 0, y: 0, coords: { x: 0, y: 0 } });
-        setVBox(initVbox);
-    };
-    const zoomFactor = 1.1;
-    const onZoomIn = () => {
-        setVBox([vBox[0] / zoomFactor, vBox[1] / zoomFactor]);
-    };
-    const onZoomOut = () => {
-        setVBox([vBox[0] * zoomFactor, vBox[1] * zoomFactor]);
-    };
+    // const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
+    // const initVbox = [viewBox[2], viewBox[3]];
+    // const [vBox, setVBox] = React.useState<number[]>(initVbox);
+    // const [isDrag, setIsDrag] = React.useState(false);
+    // const resetToolBox = () => {
+    //     // @ts-ignore
+    //     setPosition({ x: 0, y: 0, coords: { x: 0, y: 0 } });
+    //     setVBox(initVbox);
+    // };
+    // const zoomFactor = 1.1;
+    // const onZoomIn = () => {
+    //     setVBox([vBox[0] / zoomFactor, vBox[1] / zoomFactor]);
+    // };
+    // const onZoomOut = () => {
+    //     setVBox([vBox[0] * zoomFactor, vBox[1] * zoomFactor]);
+    // };
     return (
         <div className={`flex flex-col map-container ${center ? 'mx-auto' : ''}`}>
-            <MapToolBox
+            {/* <MapToolBox
                 reset={resetToolBox}
                 isDrag={isDrag}
                 setIsDrag={setIsDrag}
                 onZoomIn={onZoomIn}
                 onZoomOut={onZoomOut}
-            />
+            /> */}
             {hover !== '' && (
                 <ReactTooltip id={name}>
                     {/* @ts-ignore */}
@@ -63,6 +66,8 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                 </ReactTooltip>
             )}
             <svg
+                // @ts-ignore
+                ref={svgRef}
                 id={`${name}-map`}
                 data-tip
                 data-for={name}
@@ -76,42 +81,57 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                 viewBox={viewBox.join(' ')}
                 width={width}>
                 <svg
-                    // @ts-ignore
-                    x={position.x}
-                    // @ts-ignore
-                    y={position.y}
-                    // @ts-ignore
-                    onMouseDown={handleMouseDown}
-                    // @ts-ignore
-                    onMouseUp={handleMouseUp}
-                    className={isDrag ? 'cursor-move' : ''}>
+                // @ts-ignore
+                // x={position.x}
+                // @ts-ignore
+                // y={position.y}
+                // @ts-ignore
+                // onMouseDown={handleMouseDown}
+                // @ts-ignore
+                // onMouseUp={handleMouseUp}
+                // className={isDrag ? 'cursor-move' : ''}
+                >
                     <g
                         style={{ pointerEvents: 'visible' }}
-                        onClick={(e) => {
-                            const mapDataCopy = fillColorOnClick(
-                                map.mapData,
-                                {
-                                    // @ts-ignore
-                                    code: e.target.id,
-                                    fill: map.mapFillColor,
-                                    hide: false
-                                },
-                                map.defaultFillColor
-                            );
-                            const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
-                            // legendDataCopy.forEach((f, i) => {
-                            //     const temp = getCodesOfColor(mapDataCopy, f.fill);
-                            //     legendDataCopy[i].codesArr = temp;
-                            // });
+                        onClick={(e: React.SyntheticEvent) => {
                             // @ts-ignore
-                            setMap((p) => ({
-                                ...p,
-                                mapData: mapDataCopy,
-                                legendData: legendDataCopy
-                            }));
+                            if (e.target.id) {
+                                const mapDataCopy = fillColorOnClick(
+                                    map.mapData,
+                                    {
+                                        // @ts-ignore
+                                        code: e.target.id,
+                                        fill: map.mapFillColor,
+                                        hide: false
+                                    },
+                                    map.defaultFillColor
+                                );
+                                const legendDataCopy = resolveLegendData(
+                                    map.legendData,
+                                    mapDataCopy
+                                );
+                                // legendDataCopy.forEach((f, i) => {
+                                //     const temp = getCodesOfColor(mapDataCopy, f.fill);
+                                //     legendDataCopy[i].codesArr = temp;
+                                // });
+                                // @ts-ignore
+                                setMap((p) => ({
+                                    ...p,
+                                    mapData: mapDataCopy,
+                                    legendData: legendDataCopy
+                                }));
+                            }
                         }}
-                        onMouseOver={(e) => setHover((e.target as SVGGElement).id)}
-                        onMouseLeave={() => setHover('')}>
+                        onMouseOver={(e) => {
+                            if (isHover) {
+                                setHover((e.target as SVGGElement).id);
+                            }
+                        }}
+                        onMouseLeave={() => {
+                            if (isHover) {
+                                setHover('');
+                            }
+                        }}>
                         {children}
                     </g>
                 </svg>
