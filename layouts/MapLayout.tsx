@@ -17,6 +17,7 @@ interface Props {
     stateCodes: { [key: string]: string };
     width: number;
     center?: boolean;
+    isHover?: boolean;
 }
 
 const MapLayout: React.FC<PropsWithChildren<Props>> = ({
@@ -25,6 +26,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
     stateCodes,
     width,
     center,
+    isHover = true,
     children
 }) => {
     const [hover, setHover] = React.useState('');
@@ -92,31 +94,45 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                     className={isDrag ? 'cursor-move' : ''}>
                     <g
                         style={{ pointerEvents: 'visible' }}
-                        onClick={(e) => {
-                            const mapDataCopy = fillColorOnClick(
-                                map.mapData,
-                                {
-                                    // @ts-ignore
-                                    code: e.target.id,
-                                    fill: map.mapFillColor,
-                                    hide: false
-                                },
-                                map.defaultFillColor
-                            );
-                            const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
-                            // legendDataCopy.forEach((f, i) => {
-                            //     const temp = getCodesOfColor(mapDataCopy, f.fill);
-                            //     legendDataCopy[i].codesArr = temp;
-                            // });
+                        onClick={(e: React.SyntheticEvent) => {
                             // @ts-ignore
-                            setMap((p) => ({
-                                ...p,
-                                mapData: mapDataCopy,
-                                legendData: legendDataCopy
-                            }));
+                            if (e.target.id) {
+                                const mapDataCopy = fillColorOnClick(
+                                    map.mapData,
+                                    {
+                                        // @ts-ignore
+                                        code: e.target.id,
+                                        fill: map.mapFillColor,
+                                        hide: false
+                                    },
+                                    map.defaultFillColor
+                                );
+                                const legendDataCopy = resolveLegendData(
+                                    map.legendData,
+                                    mapDataCopy
+                                );
+                                // legendDataCopy.forEach((f, i) => {
+                                //     const temp = getCodesOfColor(mapDataCopy, f.fill);
+                                //     legendDataCopy[i].codesArr = temp;
+                                // });
+                                // @ts-ignore
+                                setMap((p) => ({
+                                    ...p,
+                                    mapData: mapDataCopy,
+                                    legendData: legendDataCopy
+                                }));
+                            }
                         }}
-                        onMouseOver={(e) => setHover((e.target as SVGGElement).id)}
-                        onMouseLeave={() => setHover('')}>
+                        onMouseOver={(e) => {
+                            if (isHover) {
+                                setHover((e.target as SVGGElement).id);
+                            }
+                        }}
+                        onMouseLeave={() => {
+                            if (isHover) {
+                                setHover('');
+                            }
+                        }}>
                         {children}
                     </g>
                 </svg>
