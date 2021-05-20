@@ -6,7 +6,7 @@ import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
-import { Button, Input, Spacer, Toggle } from '@geist-ui/react';
+import { Button, Input, Spacer, Tabs, Toggle } from '@geist-ui/react';
 import { Download, Layers, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
@@ -73,99 +73,114 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         }));
     };
     return (
-        <div>
+        <div className="width">
             <div className="flex flex-col">
-                <InputLabel text="Border Width" />
-                <Input
-                    type="number"
-                    value={map.mapStrokeWidth}
-                    onChange={(e) => handleAttrChange(e.target.value, 'mapStrokeWidth')}
-                    placeholder="Border Width"
-                    min={0}
-                    step={0.1}
-                />
+                <Tabs initialValue="1" hideDivider>
+                    <Tabs.Item label="Edit" value="1">
+                        <Spacer y={1} />
+                        <InputLabel text="Border Width" />
+                        <Input
+                            type="number"
+                            value={map.mapStrokeWidth}
+                            onChange={(e) => handleAttrChange(e.target.value, 'mapStrokeWidth')}
+                            placeholder="Border Width"
+                            min={0}
+                            step={0.1}
+                        />
+                        <Spacer y={0.5} />
+                        <ColorPickerInput
+                            placeHolder="Map Border Color"
+                            color={map.mapStrokeColor}
+                            setColor={handleAttrChange}
+                            type="mapStrokeColor"
+                        />
+                        <Spacer y={0.5} />
+                        <ColorPickerInput
+                            placeHolder="Fill Color"
+                            color={map.mapFillColor}
+                            setColor={handleAttrChange}
+                            type="mapFillColor"
+                        />
+                        <Spacer y={0.7} />
+                        <InputLabel text="Hide Legend" />
+                        <Toggle
+                            onChange={(e: any) => toggleHideLegend(e.target.checked)}
+                            size="large"
+                        />
+                        <Spacer y={0.7} />
+                        <InputLabel text="Smooth Gradient Legend" />
+                        <Toggle
+                            onChange={(e: any) => smoothGradient(e.target.checked)}
+                            size="large"
+                        />
+                        <Spacer y={0.7} />
+                        <InputLabel text="Fill Random Data" />
+                        <Button icon={<Layers />} onClick={() => randomiseData()}>
+                            Randomise
+                        </Button>
+                        <Spacer y={0.7} />
+                        <PaletteBox data={map.mapData} setColor={handleAttrChange} />
+                        <Spacer y={0.7} />
+                        <LegendControls />
+                    </Tabs.Item>
+                    <Tabs.Item label="Label" value="2">
+                        Label Edit Section
+                    </Tabs.Item>
+                    <Tabs.Item label="Export" value="3">
+                        <Spacer y={1} />
+                        <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
+                            Map
+                        </Button>
+                        <Spacer y={0.7} />
+                        <Button icon={<Download />} onClick={() => downloadMap('legend')}>
+                            Legend
+                        </Button>
+                        <Spacer y={0.7} />
+                        <Button
+                            icon={<RefreshCcw />}
+                            onClick={() => {
+                                resetMap(map.mapData, map.defaultFillColor);
+                                // @ts-ignore
+                                setMap((st: MapStoreType) => ({
+                                    ...st,
+                                    legendData: [],
+                                    mapData: []
+                                }));
+                            }}>
+                            Reset Map
+                        </Button>
+                        <Spacer y={0.7} />
+                        <Button
+                            icon={<Save />}
+                            onClick={() => {
+                                downloadConfig(map);
+                            }}>
+                            Save Config
+                        </Button>
+                        <Spacer y={0.7} />
+                        <div className="relative">
+                            <Button icon={<Upload />}>
+                                <input
+                                    className="file-input pointer"
+                                    type="file"
+                                    onChange={(e) =>
+                                        // @ts-ignore
+                                        uploadConfig(
+                                            // @ts-ignore
+                                            e.target.files[0],
+                                            setMap,
+                                            // @ts-ignore
+                                            map.defaultFillColors
+                                        )
+                                    }
+                                    // onClick={(e: any) => (e.target.value = null)}
+                                />
+                                Upload Config
+                            </Button>
+                        </div>
+                    </Tabs.Item>
+                </Tabs>
             </div>
-            <Spacer y={0.5} />
-            <ColorPickerInput
-                placeHolder="Map Border Color"
-                color={map.mapStrokeColor}
-                setColor={handleAttrChange}
-                type="mapStrokeColor"
-            />
-            <Spacer y={0.5} />
-            <ColorPickerInput
-                placeHolder="Fill Color"
-                color={map.mapFillColor}
-                setColor={handleAttrChange}
-                type="mapFillColor"
-            />
-            <Spacer y={0.7} />
-            <InputLabel text="Hide Legend" />
-            <Toggle onChange={(e: any) => toggleHideLegend(e.target.checked)} size="large" />
-            <Spacer y={0.7} />
-            <InputLabel text="Smooth Gradient Legend" />
-            <Toggle onChange={(e: any) => smoothGradient(e.target.checked)} size="large" />
-            <Spacer y={0.7} />
-            <InputLabel text="Fill Random Data" />
-            <Button icon={<Layers />} onClick={() => randomiseData()}>
-                Randomise
-            </Button>
-            <Spacer y={0.7} />
-            <PaletteBox data={map.mapData} setColor={handleAttrChange} />
-            <Spacer y={0.7} />
-            <LegendControls />
-            <Spacer y={1} />
-            {/* <HideMapRegions
-                val={map.hideStates}
-                handleHideStates={handleHideStates}
-                stateCodes={stateCodes}
-            /> */}
-            <Spacer y={2} />
-            <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
-                Map
-            </Button>
-            <Spacer y={0.7} />
-            <Button icon={<Download />} onClick={() => downloadMap('legend')}>
-                Legend
-            </Button>
-            <Spacer y={0.7} />
-            <Button
-                icon={<RefreshCcw />}
-                onClick={() => {
-                    resetMap(map.mapData, map.defaultFillColor);
-                    // @ts-ignore
-                    setMap((st: MapStoreType) => ({
-                        ...st,
-                        legendData: [],
-                        mapData: []
-                    }));
-                }}>
-                Reset Map
-            </Button>
-            <Spacer y={0.7} />
-            <Button
-                icon={<Save />}
-                onClick={() => {
-                    downloadConfig(map);
-                }}>
-                Save Config
-            </Button>
-            <Spacer y={0.7} />
-            <div className="relative">
-                <Button icon={<Upload />}>
-                    <input
-                        className="file-input pointer"
-                        type="file"
-                        onChange={(e) =>
-                            // @ts-ignore
-                            uploadConfig(e.target.files[0], setMap, map.defaultFillColors)
-                        }
-                        // onClick={(e: any) => (e.target.value = null)}
-                    />
-                    Upload Config
-                </Button>
-            </div>
-
             <style jsx>{`
                 .file-input {
                     position: absolute;
@@ -174,6 +189,9 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     width: 150px;
                     height: 100%;
                     opacity: 0;
+                }
+                .width {
+                    width: 320px;
                 }
             `}</style>
         </div>
