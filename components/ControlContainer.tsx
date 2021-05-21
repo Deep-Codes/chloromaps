@@ -81,7 +81,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         );
     };
     return (
-        <div className="width">
+        <div>
             <div className="flex flex-col">
                 <Tabs initialValue="1" hideDivider>
                     <Tabs.Item
@@ -91,14 +91,16 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="1">
-                        <EditControls
-                            map={map}
-                            handleAttrChange={handleAttrChange}
-                            toggleHideLegend={toggleHideLegend}
-                            smoothGradient={smoothGradient}
-                            randomiseData={randomiseData}
-                            refreshMap={refreshMap}
-                        />
+                        <div className="control-box">
+                            <EditControls
+                                map={map}
+                                handleAttrChange={handleAttrChange}
+                                toggleHideLegend={toggleHideLegend}
+                                smoothGradient={smoothGradient}
+                                randomiseData={randomiseData}
+                                refreshMap={refreshMap}
+                            />
+                        </div>
                     </Tabs.Item>
                     <Tabs.Item
                         label={
@@ -107,14 +109,16 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="2">
-                        <EditControls
-                            map={map}
-                            handleAttrChange={handleAttrChange}
-                            toggleHideLegend={toggleHideLegend}
-                            smoothGradient={smoothGradient}
-                            randomiseData={randomiseData}
-                            refreshMap={refreshMap}
-                        />
+                        <div className="control-box">
+                            <EditControls
+                                map={map}
+                                handleAttrChange={handleAttrChange}
+                                toggleHideLegend={toggleHideLegend}
+                                smoothGradient={smoothGradient}
+                                randomiseData={randomiseData}
+                                refreshMap={refreshMap}
+                            />
+                        </div>
                     </Tabs.Item>
                     <Tabs.Item
                         label={
@@ -142,7 +146,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     height: 100%;
                     opacity: 0;
                 }
-                .width {
+                .control-box {
                     width: 320px;
                     height: 80vh;
                     padding-bottom: 100px;
