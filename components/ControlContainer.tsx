@@ -7,7 +7,7 @@ import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
 import { Button, Input, Spacer, Tabs, Toggle } from '@geist-ui/react';
-import { Download, Layers, RefreshCcw, Save, Upload } from '@geist-ui/react-icons';
+import { Download, Edit, Layers, RefreshCcw, Save, Upload, Type } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import ColorPickerInput from './ColorPickerInput';
@@ -76,7 +76,13 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         <div className="width">
             <div className="flex flex-col">
                 <Tabs initialValue="1" hideDivider>
-                    <Tabs.Item label="Edit" value="1">
+                    <Tabs.Item
+                        label={
+                            <>
+                                <Edit /> Edit{' '}
+                            </>
+                        }
+                        value="1">
                         <Spacer y={1} />
                         <InputLabel text="Border Width" />
                         <Input
@@ -123,11 +129,23 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         <Spacer y={0.7} />
                         <LegendControls />
                     </Tabs.Item>
-                    <Tabs.Item label="Label" value="2">
+                    <Tabs.Item
+                        label={
+                            <>
+                                <Type /> Label{' '}
+                            </>
+                        }
+                        value="2">
                         <Spacer y={1} />
                         Label Edit Section
                     </Tabs.Item>
-                    <Tabs.Item label="Export" value="3">
+                    <Tabs.Item
+                        label={
+                            <>
+                                <Upload /> Export{' '}
+                            </>
+                        }
+                        value="3">
                         <Spacer y={1} />
                         <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
                             Map
