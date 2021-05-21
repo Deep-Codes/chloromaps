@@ -124,6 +124,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         <LegendControls />
                     </Tabs.Item>
                     <Tabs.Item label="Label" value="2">
+                        <Spacer y={1} />
                         Label Edit Section
                     </Tabs.Item>
                     <Tabs.Item label="Export" value="3">
@@ -192,6 +193,10 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                 }
                 .width {
                     width: 320px;
+                    height: 80vh;
+                    padding-bottom: 100px;
+                    overflow-y: scroll;
+                    position: relative;
                 }
             `}</style>
         </div>
