@@ -1,19 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { colorPickerPalette } from '@/data/colors';
-import downloadConfig from '@/lib/downloadConfig';
-import downloadMap from '@/lib/downloadMap';
 import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
-import { Button, Input, Spacer, Tabs, Toggle } from '@geist-ui/react';
-import { Download, Edit, Layers, RefreshCcw, Save, Upload, Type } from '@geist-ui/react-icons';
+import { Tabs } from '@geist-ui/react';
+import { Edit, Upload, Type } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
-import ColorPickerInput from './ColorPickerInput';
-import InputLabel from './InputLabel';
-import LegendControls from './LegendControls';
-import PaletteBox from './PaletteBox';
+import EditControls from './Controls/EditControls';
+import ExportControls from './Controls/ExportControls';
 
 interface Props {
     mapId: string;
@@ -29,13 +25,6 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             [a]: v
         }));
     };
-    // const handleHideStates = (newArr: string[]) => {
-    //     // @ts-ignore
-    //     setMap((st: MapStoreType) => ({
-    //         ...st,
-    //         hideStates: newArr
-    //     }));
-    // };
     const randomiseData = () => {
         const colorIdx = Math.floor(Math.random() * colorPickerPalette.length);
         const legendData: LegendData[] = [];
@@ -72,6 +61,25 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             legendSmoothGradient: v
         }));
     };
+    const refreshMap = () => {
+        resetMap(map.mapData, map.defaultFillColor);
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            legendData: [],
+            mapData: []
+        }));
+    };
+    const uploadDataConfig = (e: any) => {
+        // @ts-ignore
+        uploadConfig(
+            // @ts-ignore
+            e.target.files[0],
+            setMap,
+            // @ts-ignore
+            map.defaultFillColors
+        );
+    };
     return (
         <div className="width">
             <div className="flex flex-col">
@@ -83,66 +91,14 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="1">
-                        <Spacer y={1} />
-                        <InputLabel text="Border Width" />
-                        <Input
-                            type="number"
-                            value={map.mapStrokeWidth}
-                            onChange={(e) => handleAttrChange(e.target.value, 'mapStrokeWidth')}
-                            placeholder="Border Width"
-                            min={0}
-                            step={0.1}
+                        <EditControls
+                            map={map}
+                            handleAttrChange={handleAttrChange}
+                            toggleHideLegend={toggleHideLegend}
+                            smoothGradient={smoothGradient}
+                            randomiseData={randomiseData}
+                            refreshMap={refreshMap}
                         />
-                        <Spacer y={0.5} />
-                        <ColorPickerInput
-                            placeHolder="Map Border Color"
-                            color={map.mapStrokeColor}
-                            setColor={handleAttrChange}
-                            type="mapStrokeColor"
-                        />
-                        <Spacer y={0.5} />
-                        <ColorPickerInput
-                            placeHolder="Fill Color"
-                            color={map.mapFillColor}
-                            setColor={handleAttrChange}
-                            type="mapFillColor"
-                        />
-                        <Spacer y={0.7} />
-                        <InputLabel text="Hide Legend" />
-                        <Toggle
-                            onChange={(e: any) => toggleHideLegend(e.target.checked)}
-                            size="large"
-                        />
-                        <Spacer y={0.7} />
-                        <InputLabel text="Smooth Gradient Legend" />
-                        <Toggle
-                            onChange={(e: any) => smoothGradient(e.target.checked)}
-                            size="large"
-                        />
-                        <Spacer y={0.7} />
-                        <InputLabel text="Fill Random Data" />
-                        <Button icon={<Layers />} onClick={() => randomiseData()}>
-                            Randomise
-                        </Button>
-                        <Spacer y={0.7} />
-                        <InputLabel text="Reset Map to Initial State" />
-                        <Button
-                            icon={<RefreshCcw />}
-                            onClick={() => {
-                                resetMap(map.mapData, map.defaultFillColor);
-                                // @ts-ignore
-                                setMap((st: MapStoreType) => ({
-                                    ...st,
-                                    legendData: [],
-                                    mapData: []
-                                }));
-                            }}>
-                            Reset Map
-                        </Button>
-                        <Spacer y={0.7} />
-                        <PaletteBox data={map.mapData} setColor={handleAttrChange} />
-                        <Spacer y={0.7} />
-                        <LegendControls />
                     </Tabs.Item>
                     <Tabs.Item
                         label={
@@ -151,8 +107,14 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="2">
-                        <Spacer y={1} />
-                        Label Edit Section
+                        <EditControls
+                            map={map}
+                            handleAttrChange={handleAttrChange}
+                            toggleHideLegend={toggleHideLegend}
+                            smoothGradient={smoothGradient}
+                            randomiseData={randomiseData}
+                            refreshMap={refreshMap}
+                        />
                     </Tabs.Item>
                     <Tabs.Item
                         label={
@@ -161,42 +123,12 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="3">
-                        <Spacer y={1} />
-                        <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
-                            Map
-                        </Button>
-                        <Spacer y={0.7} />
-                        <Button icon={<Download />} onClick={() => downloadMap('legend')}>
-                            Legend
-                        </Button>
-                        <Spacer y={0.7} />
-                        <Button
-                            icon={<Save />}
-                            onClick={() => {
-                                downloadConfig(map);
-                            }}>
-                            Save Config
-                        </Button>
-                        <Spacer y={0.7} />
-                        <div className="relative">
-                            <Button icon={<Upload />}>
-                                <input
-                                    className="file-input pointer"
-                                    type="file"
-                                    onChange={(e) =>
-                                        // @ts-ignore
-                                        uploadConfig(
-                                            // @ts-ignore
-                                            e.target.files[0],
-                                            setMap,
-                                            // @ts-ignore
-                                            map.defaultFillColors
-                                        )
-                                    }
-                                    // onClick={(e: any) => (e.target.value = null)}
-                                />
-                                Upload Config
-                            </Button>
+                        <div className="control-box">
+                            <ExportControls
+                                map={map}
+                                mapId={mapId}
+                                uploadDataConfig={uploadDataConfig}
+                            />
                         </div>
                     </Tabs.Item>
                 </Tabs>
