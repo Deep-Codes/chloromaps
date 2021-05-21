@@ -4,6 +4,8 @@ import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
+import { Tabs } from '@geist-ui/react';
+import { Edit, Type, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import EditControls from './Controls/EditControls';
@@ -105,13 +107,79 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <ExportControls map={map} mapId={mapId} uploadDataConfig={uploadDataConfig} />
                 </div>
             </div>
+            <div className="control-container-tabs">
+                <Tabs initialValue="1" hideDivider>
+                    <Tabs.Item
+                        label={
+                            <>
+                                <Edit /> Edit{' '}
+                            </>
+                        }
+                        value="1">
+                        <EditControls
+                            map={map}
+                            handleAttrChange={handleAttrChange}
+                            toggleHideLegend={toggleHideLegend}
+                            smoothGradient={smoothGradient}
+                            randomiseData={randomiseData}
+                            refreshMap={refreshMap}
+                        />
+                    </Tabs.Item>
+                    <Tabs.Item
+                        label={
+                            <>
+                                <Type /> Label{' '}
+                            </>
+                        }
+                        value="2">
+                        <EditControls
+                            map={map}
+                            handleAttrChange={handleAttrChange}
+                            toggleHideLegend={toggleHideLegend}
+                            smoothGradient={smoothGradient}
+                            randomiseData={randomiseData}
+                            refreshMap={refreshMap}
+                        />
+                    </Tabs.Item>
+                    <Tabs.Item
+                        label={
+                            <>
+                                <Upload /> Export{' '}
+                            </>
+                        }
+                        value="3">
+                        <div className="control-box">
+                            <ExportControls
+                                map={map}
+                                mapId={mapId}
+                                uploadDataConfig={uploadDataConfig}
+                            />
+                        </div>
+                    </Tabs.Item>
+                </Tabs>
+            </div>
             <style jsx>{`
                 .control-container {
-                    padding-top: 50px;
+                    padding-top: 30px;
                     display: flex;
                     justify-content: space-between;
                 }
+                .control-container-tabs {
+                    display: none;
+                    width: 320px;
+                    margin-right: auto;
+                    margin-left: auto;
+                }
                 .control-box {
+                }
+                @media screen and (max-width: 800px) {
+                    .control-container {
+                        display: none;
+                    }
+                    .control-container-tabs {
+                        padding-top: 30px;
+                        display: block;
+                    }
                 }
             `}</style>
         </div>
