@@ -8,7 +8,7 @@ import { labelAtom } from '@/store/label.store';
 import { LabelStoreType } from '@/typings/map.store';
 
 const Home: React.FC = () => {
-    const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
+    const [label] = useAtom<LabelStoreType>(labelAtom);
     return (
         <MainLayout>
             <div className="flex justify-between container">
