@@ -11,6 +11,7 @@ import { Download, Edit, Layers, RefreshCcw, Save, Upload, Type } from '@geist-u
 import { useAtom } from 'jotai';
 import React from 'react';
 import ColorPickerInput from './ColorPickerInput';
+import EditControls from './Controls/EditControls';
 import InputLabel from './InputLabel';
 import LegendControls from './LegendControls';
 import PaletteBox from './PaletteBox';
@@ -29,13 +30,6 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             [a]: v
         }));
     };
-    // const handleHideStates = (newArr: string[]) => {
-    //     // @ts-ignore
-    //     setMap((st: MapStoreType) => ({
-    //         ...st,
-    //         hideStates: newArr
-    //     }));
-    // };
     const randomiseData = () => {
         const colorIdx = Math.floor(Math.random() * colorPickerPalette.length);
         const legendData: LegendData[] = [];
@@ -72,68 +66,27 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             legendSmoothGradient: v
         }));
     };
+    const refreshMap = () => {
+        resetMap(map.mapData, map.defaultFillColor);
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            legendData: [],
+            mapData: []
+        }));
+    };
     return (
         <div>
-            <div className="flex justify-between container">
-                <div>
-                    <InputLabel text="Border Width" />
-                    <Input
-                        type="number"
-                        value={map.mapStrokeWidth}
-                        onChange={(e) => handleAttrChange(e.target.value, 'mapStrokeWidth')}
-                        placeholder="Border Width"
-                        min={0}
-                        step={0.1}
-                    />
-                    <Spacer y={0.5} />
-                    <ColorPickerInput
-                        placeHolder="Map Border Color"
-                        color={map.mapStrokeColor}
-                        setColor={handleAttrChange}
-                        type="mapStrokeColor"
-                    />
-                    <Spacer y={0.5} />
-                    <ColorPickerInput
-                        placeHolder="Fill Color"
-                        color={map.mapFillColor}
-                        setColor={handleAttrChange}
-                        type="mapFillColor"
-                    />
-                    <Spacer y={0.7} />
-                    <InputLabel text="Hide Legend" />
-                    <Toggle
-                        onChange={(e: any) => toggleHideLegend(e.target.checked)}
-                        size="large"
-                    />
-                    <Spacer y={0.7} />
-                    <InputLabel text="Smooth Gradient Legend" />
-                    <Toggle onChange={(e: any) => smoothGradient(e.target.checked)} size="large" />
-                    <Spacer y={0.7} />
-                    <InputLabel text="Fill Random Data" />
-                    <Button icon={<Layers />} onClick={() => randomiseData()}>
-                        Randomise
-                    </Button>
-                    <Spacer y={0.7} />
-                    <InputLabel text="Reset Map to Initial State" />
-                    <Button
-                        icon={<RefreshCcw />}
-                        onClick={() => {
-                            resetMap(map.mapData, map.defaultFillColor);
-                            // @ts-ignore
-                            setMap((st: MapStoreType) => ({
-                                ...st,
-                                legendData: [],
-                                mapData: []
-                            }));
-                        }}>
-                        Reset Map
-                    </Button>
-                    <Spacer y={0.7} />
-                    <PaletteBox data={map.mapData} setColor={handleAttrChange} />
-                    <Spacer y={0.7} />
-                    <LegendControls />
-                </div>
-                <div>
+            <div className="control-container">
+                <EditControls
+                    map={map}
+                    handleAttrChange={handleAttrChange}
+                    toggleHideLegend={toggleHideLegend}
+                    smoothGradient={smoothGradient}
+                    randomiseData={randomiseData}
+                    refreshMap={refreshMap}
+                />
+                <div className="box">
                     <Button
                         icon={<RefreshCcw />}
                         onClick={() => {
@@ -191,7 +144,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <Spacer y={0.7} />
                     <InputLabel text="Reset Map to Initial State" />
                 </div>
-                <div>
+                <div className="box">
                     <InputLabel text="Download Map in Png" />
                     <Button icon={<Download />} onClick={() => downloadMap(mapId)}>
                         Map
@@ -242,9 +195,6 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     width: 150px;
                     height: 100%;
                     opacity: 0;
-                }
-                .container {
-                    padding-top: 50px;
                 }
             `}</style>
         </div>

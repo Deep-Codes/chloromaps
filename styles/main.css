@@ -78,3 +78,12 @@ text .text {
     z-index: 100;
     font-size: 20px;
 }
+
+/* Controls */
+.control-container {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.control-box {
+}
