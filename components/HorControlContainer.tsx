@@ -81,24 +81,39 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     return (
         <div>
             <div className="control-container">
-                <EditControls
-                    map={map}
-                    handleAttrChange={handleAttrChange}
-                    toggleHideLegend={toggleHideLegend}
-                    smoothGradient={smoothGradient}
-                    randomiseData={randomiseData}
-                    refreshMap={refreshMap}
-                />
-                <EditControls
-                    map={map}
-                    handleAttrChange={handleAttrChange}
-                    toggleHideLegend={toggleHideLegend}
-                    smoothGradient={smoothGradient}
-                    randomiseData={randomiseData}
-                    refreshMap={refreshMap}
-                />
-                <ExportControls mapId={mapId} uploadDataConfig={uploadDataConfig} />
+                <div className="control-box">
+                    <EditControls
+                        map={map}
+                        handleAttrChange={handleAttrChange}
+                        toggleHideLegend={toggleHideLegend}
+                        smoothGradient={smoothGradient}
+                        randomiseData={randomiseData}
+                        refreshMap={refreshMap}
+                    />
+                </div>
+                <div className="control-box">
+                    <EditControls
+                        map={map}
+                        handleAttrChange={handleAttrChange}
+                        toggleHideLegend={toggleHideLegend}
+                        smoothGradient={smoothGradient}
+                        randomiseData={randomiseData}
+                        refreshMap={refreshMap}
+                    />
+                </div>
+                <div className="control-box">
+                    <ExportControls map={map} mapId={mapId} uploadDataConfig={uploadDataConfig} />
+                </div>
             </div>
+            <style jsx>{`
+                .control-container {
+                    padding-top: 50px;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .control-box {
+                }
+            `}</style>
         </div>
     );
 };

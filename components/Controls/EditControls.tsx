@@ -25,7 +25,7 @@ const EditControls: React.FC<Props> = ({
     randomiseData,
     refreshMap
 }) => (
-    <div className="control-box">
+    <>
         <InputLabel text="Border Width" />
         <Input
             type="number"
@@ -69,7 +69,7 @@ const EditControls: React.FC<Props> = ({
         <PaletteBox data={map.mapData} setColor={handleAttrChange} />
         <Spacer y={0.7} />
         <LegendControls />
-    </div>
+    </>
 );
 
 export default EditControls;
