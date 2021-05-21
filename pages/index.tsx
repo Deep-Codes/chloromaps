@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
-import { Card, Link, Row, Spacer } from '@geist-ui/react';
+import { Button, Card, Link, Row, Spacer, Text } from '@geist-ui/react';
 import LandingWorldMap from '@/components/LandingWorldMap';
 
 export const mapDt = [
@@ -39,8 +39,21 @@ export const mapDt = [
 const Home: React.FC = () => (
     <MainLayout>
         <div className="flex flex-col">
-            {/* <h1 className="hero-header">Chloromaps</h1> */}
-            <h1 className="hero-text">A Rapid Map Development and Editor</h1>
+            <Text h1 size="40px" className="hero-head mx-auto">
+                Chloromaps
+            </Text>
+            <Text p b size="20px" className="hero-text mx-auto">
+                Free Rapid Chloropeth Development and Editor
+            </Text>
+            <div className="hero-btn mx-auto">
+                <Button auto shadow type="secondary">
+                    <b>Get Started</b>
+                </Button>
+                <Spacer inline x={1} />
+                <Button auto shadow>
+                    <b>See Examples</b>
+                </Button>
+            </div>
             <LandingWorldMap />
             <Spacer y={1} />
             <Row style={{ flexWrap: 'wrap' }} justify="space-between">
@@ -58,16 +71,18 @@ const Home: React.FC = () => (
             </Row>
         </div>
         <style jsx>{`
-            .hero-header {
-                font-size: 70px;
-                line-height: 1;
-                margin: 0 auto;
+            .hero-head {
                 margin-top: 40px;
+                margin-bottom: 5px;
             }
             .hero-text {
                 margin: 0 auto;
-                margin-top: 50px;
-                margin-bottom: 50px;
+                margin-top: 40px;
+                margin-bottom: 5px;
+            }
+            .hero-btn {
+                margin-top: 20px;
+                margin-bottom: 20px;
             }
         `}</style>
     </MainLayout>

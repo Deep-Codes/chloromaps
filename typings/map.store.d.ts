@@ -23,3 +23,13 @@ export interface MapStoreType {
   hideStates: string[];
   hideLegend: boolean;
 }
+
+export interface LabelStoreType {
+  data: LabelType[]
+}
+
+export interface LabelType {
+  fill: string;
+  text: string;
+  hide: string;
+}
