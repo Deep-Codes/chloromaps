@@ -20,7 +20,7 @@ interface Props {
     stateCodes: { [key: string]: string };
 }
 
-const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
+const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -125,6 +125,21 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             Randomise
                         </Button>
                         <Spacer y={0.7} />
+                        <InputLabel text="Reset Map to Initial State" />
+                        <Button
+                            icon={<RefreshCcw />}
+                            onClick={() => {
+                                resetMap(map.mapData, map.defaultFillColor);
+                                // @ts-ignore
+                                setMap((st: MapStoreType) => ({
+                                    ...st,
+                                    legendData: [],
+                                    mapData: []
+                                }));
+                            }}>
+                            Reset Map
+                        </Button>
+                        <Spacer y={0.7} />
                         <PaletteBox data={map.mapData} setColor={handleAttrChange} />
                         <Spacer y={0.7} />
                         <LegendControls />
@@ -153,20 +168,6 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         <Spacer y={0.7} />
                         <Button icon={<Download />} onClick={() => downloadMap('legend')}>
                             Legend
-                        </Button>
-                        <Spacer y={0.7} />
-                        <Button
-                            icon={<RefreshCcw />}
-                            onClick={() => {
-                                resetMap(map.mapData, map.defaultFillColor);
-                                // @ts-ignore
-                                setMap((st: MapStoreType) => ({
-                                    ...st,
-                                    legendData: [],
-                                    mapData: []
-                                }));
-                            }}>
-                            Reset Map
                         </Button>
                         <Spacer y={0.7} />
                         <Button
@@ -221,4 +222,4 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     );
 };
 
-export default ControlContainer;
+export default HorControlContainer;
