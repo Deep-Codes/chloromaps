@@ -26,14 +26,12 @@ const Navbar = () => {
             />
             <style jsx>{`
                 nav {
-                    width: 100%;
+                    max-width: 1000px;
+                    margin: 0 auto;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    margin: 10px 0;
                     padding: 10px 0;
-                    position: sticky;
-                    top: 0;
                 }
             `}</style>
         </nav>
