@@ -7,6 +7,7 @@ import { useAtom } from 'jotai';
 import React from 'react';
 import { PlusSquare } from '@geist-ui/react-icons';
 import InputLabel from '../InputLabel';
+import LabelContainer from '../LabelContainer';
 
 const LabelControls = () => {
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
@@ -23,7 +24,7 @@ const LabelControls = () => {
             // @ts-ignore
             setLabel((st: LabelStoreType) => ({
                 ...st,
-                newArr
+                data: newArr
             }));
             setText('');
         }
@@ -43,6 +44,7 @@ const LabelControls = () => {
                     <PlusSquare size={30} className="pointer " onClick={() => addLabel()} />
                 </div>
             </div>
+            {label.data.length > 0 ? <LabelContainer /> : ''}
             <style jsx>{`
                 .icon-btn {
                     margin-left: 10px;

@@ -163,6 +163,7 @@ export const IndiaMap = () => {
             />
             {label.data.map((m) => (
                 <text
+                    opacity={m.hide ? 0 : 1}
                     key={m.text}
                     fontFamily="Arial"
                     className="draggable drag-label"
