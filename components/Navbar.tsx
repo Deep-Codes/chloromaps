@@ -32,6 +32,8 @@ const Navbar = () => {
                     align-items: center;
                     margin: 10px 0;
                     padding: 10px 0;
+                    position: sticky;
+                    top: 0;
                 }
             `}</style>
         </nav>

@@ -27,6 +27,9 @@ const ColorPicker: React.FC<Props> = ({ color, handleColor }) => (
                 </div>
             ))}
             <style jsx>{`
+                .mt-4 {
+                    margin-top: 1rem;
+                }
                 .palette-box {
                     width: 15px;
                     height: 15px;
