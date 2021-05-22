@@ -32,7 +32,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
     const svgRef = React.useRef<SVGElement>(null);
     useDrag(svgRef);
     React.useMemo(() => {
-        fillAllMap(map.mapData, map.defaultFillColor);
+        fillAllMap(map.mapData, map.defaultFillColor, stateCodes);
     }, [map]);
     // const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
     // const initVbox = [viewBox[2], viewBox[3]];
