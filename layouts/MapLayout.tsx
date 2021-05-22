@@ -35,7 +35,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
         fillAllMap(map.mapData, map.defaultFillColor, stateCodes);
     }, [map, stateCodes]);
     return (
-        <div className={`flex flex-col map-container ${center ? 'mx-auto' : ''}`}>
+        <div className={`flex flex-col map-container no-trans ${center ? 'mx-auto' : ''}`}>
             {hover !== '' && (
                 <ReactTooltip id={name}>
                     {/* @ts-ignore */}

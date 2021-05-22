@@ -39,6 +39,11 @@ path,
 text {
     transition: fill 1s ease-in-out;
 }
+/* NO Fill Transition for Map Editors  */
+.no-trans path,
+text {
+    transition: none !important;
+}
 
 /* Saves from Navbar being not Sticky */
 #__next {
