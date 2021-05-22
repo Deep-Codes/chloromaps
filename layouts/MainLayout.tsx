@@ -8,8 +8,11 @@ interface Props {
 
 const MainLayout = ({ children }: Props) => (
     <>
-        <div className="page">
+        <div className="navbar-ctx">
             <Navbar />
+        </div>
+
+        <div className="page">
             <main>{children}</main>
             <Footer />
         </div>
@@ -21,8 +24,18 @@ const MainLayout = ({ children }: Props) => (
                 max-width: 1000px;
                 margin: 0 auto;
             }
-            @media screen and (max-width: 760px) {
+            .navbar-ctx {
+                width: 100%;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                backdrop-filter: blur(10px);
+            }
+            @media screen and (max-width: 1000px) {
                 .page {
+                    padding: 0 10px;
+                }
+                .navbar-ctx {
                     padding: 0 10px;
                 }
             }

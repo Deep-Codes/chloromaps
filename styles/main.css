@@ -39,12 +39,18 @@ path,
 text {
     transition: fill 1s ease-in-out;
 }
+/* NO Fill Transition for Map Editors  */
+.no-trans path,
+text {
+    transition: none !important;
+}
 
-/* Margins and Paddings */
-.mt-4 {
-    margin-top: 1rem;
+/* Saves from Navbar being not Sticky */
+#__next {
+    overflow-x: unset !important;
 }
 .map-container {
+    overflow-x: hidden;
     margin-left: auto;
     margin-right: auto;
     overflow-x: scroll;

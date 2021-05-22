@@ -5,7 +5,7 @@ import uploadConfig from '@/lib/uploadConfig';
 import { mapAtom } from '@/store/map.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
 import { Tabs } from '@geist-ui/react';
-import { Edit, Upload, Type } from '@geist-ui/react-icons';
+import { Edit, Type, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import EditControls from './Controls/EditControls';
@@ -16,7 +16,7 @@ interface Props {
     stateCodes: { [key: string]: string };
 }
 
-const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
+const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -82,7 +82,32 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     };
     return (
         <div>
-            <div className="flex flex-col">
+            <div className="control-container">
+                <div className="control-box">
+                    <EditControls
+                        map={map}
+                        handleAttrChange={handleAttrChange}
+                        toggleHideLegend={toggleHideLegend}
+                        smoothGradient={smoothGradient}
+                        randomiseData={randomiseData}
+                        refreshMap={refreshMap}
+                    />
+                </div>
+                <div className="control-box">
+                    <EditControls
+                        map={map}
+                        handleAttrChange={handleAttrChange}
+                        toggleHideLegend={toggleHideLegend}
+                        smoothGradient={smoothGradient}
+                        randomiseData={randomiseData}
+                        refreshMap={refreshMap}
+                    />
+                </div>
+                <div className="control-box">
+                    <ExportControls map={map} mapId={mapId} uploadDataConfig={uploadDataConfig} />
+                </div>
+            </div>
+            <div className="control-container-tabs">
                 <Tabs initialValue="1" hideDivider>
                     <Tabs.Item
                         label={
@@ -91,16 +116,14 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="1">
-                        <div className="control-box">
-                            <EditControls
-                                map={map}
-                                handleAttrChange={handleAttrChange}
-                                toggleHideLegend={toggleHideLegend}
-                                smoothGradient={smoothGradient}
-                                randomiseData={randomiseData}
-                                refreshMap={refreshMap}
-                            />
-                        </div>
+                        <EditControls
+                            map={map}
+                            handleAttrChange={handleAttrChange}
+                            toggleHideLegend={toggleHideLegend}
+                            smoothGradient={smoothGradient}
+                            randomiseData={randomiseData}
+                            refreshMap={refreshMap}
+                        />
                     </Tabs.Item>
                     <Tabs.Item
                         label={
@@ -109,16 +132,14 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="2">
-                        <div className="control-box">
-                            <EditControls
-                                map={map}
-                                handleAttrChange={handleAttrChange}
-                                toggleHideLegend={toggleHideLegend}
-                                smoothGradient={smoothGradient}
-                                randomiseData={randomiseData}
-                                refreshMap={refreshMap}
-                            />
-                        </div>
+                        <EditControls
+                            map={map}
+                            handleAttrChange={handleAttrChange}
+                            toggleHideLegend={toggleHideLegend}
+                            smoothGradient={smoothGradient}
+                            randomiseData={randomiseData}
+                            refreshMap={refreshMap}
+                        />
                     </Tabs.Item>
                     <Tabs.Item
                         label={
@@ -138,24 +159,31 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                 </Tabs>
             </div>
             <style jsx>{`
-                .file-input {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 150px;
-                    height: 100%;
-                    opacity: 0;
+                .control-container {
+                    padding-top: 30px;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .control-container-tabs {
+                    display: none;
+                    width: 320px;
+                    margin-right: auto;
+                    margin-left: auto;
                 }
                 .control-box {
-                    width: 320px;
-                    height: 80vh;
-                    padding-bottom: 100px;
-                    overflow-y: scroll;
-                    position: relative;
+                }
+                @media screen and (max-width: 800px) {
+                    .control-container {
+                        display: none;
+                    }
+                    .control-container-tabs {
+                        padding-top: 30px;
+                        display: block;
+                    }
                 }
             `}</style>
         </div>
     );
 };
 
-export default HorControlContainer;
+export default ControlContainer;

@@ -32,33 +32,10 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
     const svgRef = React.useRef<SVGElement>(null);
     useDrag(svgRef);
     React.useMemo(() => {
-        fillAllMap(map.mapData, map.defaultFillColor);
-    }, [map]);
-    // const [position, setPosition, handleMouseDown, handleMouseUp] = useDragDrop();
-    // const initVbox = [viewBox[2], viewBox[3]];
-    // const [vBox, setVBox] = React.useState<number[]>(initVbox);
-    // const [isDrag, setIsDrag] = React.useState(false);
-    // const resetToolBox = () => {
-    //     // @ts-ignore
-    //     setPosition({ x: 0, y: 0, coords: { x: 0, y: 0 } });
-    //     setVBox(initVbox);
-    // };
-    // const zoomFactor = 1.1;
-    // const onZoomIn = () => {
-    //     setVBox([vBox[0] / zoomFactor, vBox[1] / zoomFactor]);
-    // };
-    // const onZoomOut = () => {
-    //     setVBox([vBox[0] * zoomFactor, vBox[1] * zoomFactor]);
-    // };
+        fillAllMap(map.mapData, map.defaultFillColor, stateCodes);
+    }, [map, stateCodes]);
     return (
-        <div className={`flex flex-col map-container ${center ? 'mx-auto' : ''}`}>
-            {/* <MapToolBox
-                reset={resetToolBox}
-                isDrag={isDrag}
-                setIsDrag={setIsDrag}
-                onZoomIn={onZoomIn}
-                onZoomOut={onZoomOut}
-            /> */}
+        <div className={`flex flex-col map-container no-trans ${center ? 'mx-auto' : ''}`}>
             {hover !== '' && (
                 <ReactTooltip id={name}>
                     {/* @ts-ignore */}
@@ -80,17 +57,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox={viewBox.join(' ')}
                 width={width}>
-                <svg
-                // @ts-ignore
-                // x={position.x}
-                // @ts-ignore
-                // y={position.y}
-                // @ts-ignore
-                // onMouseDown={handleMouseDown}
-                // @ts-ignore
-                // onMouseUp={handleMouseUp}
-                // className={isDrag ? 'cursor-move' : ''}
-                >
+                <svg>
                     <g
                         style={{ pointerEvents: 'visible' }}
                         onClick={(e: React.SyntheticEvent) => {
@@ -110,10 +77,6 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                                     map.legendData,
                                     mapDataCopy
                                 );
-                                // legendDataCopy.forEach((f, i) => {
-                                //     const temp = getCodesOfColor(mapDataCopy, f.fill);
-                                //     legendDataCopy[i].codesArr = temp;
-                                // });
                                 // @ts-ignore
                                 setMap((p) => ({
                                     ...p,

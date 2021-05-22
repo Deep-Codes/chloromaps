@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { colorPickerPalette } from '@/data/colors';
 import { WorldCountryCodes } from '@/data/World/WorldCountryCodes';
 import fillAllMap from '@/lib/fillAllMap';
