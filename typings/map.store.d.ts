@@ -31,5 +31,5 @@ export interface LabelStoreType {
 export interface LabelType {
   fill: string;
   text: string;
-  hide: string;
+  hide: boolean;
 }

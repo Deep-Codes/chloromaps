@@ -10,6 +10,7 @@ import { useAtom } from 'jotai';
 import React from 'react';
 import EditControls from './Controls/EditControls';
 import ExportControls from './Controls/ExportControls';
+import LabelControls from './Controls/LabelControls';
 
 interface Props {
     mapId: string;
@@ -110,14 +111,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         }
                         value="2">
                         <div className="control-box">
-                            <EditControls
-                                map={map}
-                                handleAttrChange={handleAttrChange}
-                                toggleHideLegend={toggleHideLegend}
-                                smoothGradient={smoothGradient}
-                                randomiseData={randomiseData}
-                                refreshMap={refreshMap}
-                            />
+                            <LabelControls />
                         </div>
                     </Tabs.Item>
                     <Tabs.Item
