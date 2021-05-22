@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { labelAtom } from '@/store/label.store';
 import { LabelStoreType, LabelType } from '@/typings/map.store';
-import { Button, Input } from '@geist-ui/react';
+import { Input } from '@geist-ui/react';
 import { useAtom } from 'jotai';
 import React from 'react';
 import { PlusSquare } from '@geist-ui/react-icons';
