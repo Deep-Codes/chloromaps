@@ -17,7 +17,7 @@ interface Props {
     stateCodes: { [key: string]: string };
 }
 
-const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
+const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -180,4 +180,4 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     );
 };
 
-export default ControlContainer;
+export default HorControlContainer;

@@ -1,25 +1,22 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { labelAtom } from '@/store/label.store';
 import { LabelStoreType } from '@/typings/map.store';
-import { AutoComplete, Input } from '@geist-ui/react';
+import { Input } from '@geist-ui/react';
 import { EyeOff, Eye, XCircle } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import InputLabel from './InputLabel';
 
-// interface Props {
-//     dt: LabelStoreType;
-// }
-
 const LabelContainer: React.FC = () => {
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
     const removeLabel = (i: number) => {
-        const newLabelArr = label.data.splice(i, 1);
+        label.data.splice(i, 1);
         // @ts-ignore
         setLabel((st: LabelStoreType) => ({
             ...st,
-            data: newLabelArr
+            data: label.data
         }));
     };
     const toggleHideLabel = (i: number) => {
@@ -32,10 +29,9 @@ const LabelContainer: React.FC = () => {
             data: copy
         }));
     };
-    const updateTextLabel = (i: number, text: string) => {
+    const updateTextLabel = (i: number, v: string) => {
         const copy = label.data;
-        const obj = copy[i];
-        obj.text = text;
+        copy[i].text = v;
         // @ts-ignore
         setLabel((st: LabelStoreType) => ({
             ...st,
@@ -46,7 +42,7 @@ const LabelContainer: React.FC = () => {
         <div className="ctx">
             <InputLabel text="Label Controls" />
             {label.data.map((d, i) => (
-                <div key={d.text} className="flex justify-between box">
+                <div key={d.id} className="flex justify-between box">
                     <div
                         className="icon-btn flex-center pointer"
                         onClick={() => toggleHideLabel(i)}>
@@ -63,7 +59,6 @@ const LabelContainer: React.FC = () => {
                     </div>
                 </div>
             ))}
-            <code>{JSON.stringify(label)}</code>
             <style jsx>{`
                 .ctx {
                     margin: 20px 0;
