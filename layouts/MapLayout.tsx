@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import ReactTooltip from 'react-tooltip';
-import { mapAtom } from '@/store/map.store';
+import { disableTooltip, mapAtom } from '@/store/map.store';
 import { useAtom } from 'jotai';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
@@ -15,7 +15,6 @@ interface Props {
     stateCodes: { [key: string]: string };
     width: number;
     center?: boolean;
-    isHover?: boolean;
 }
 
 const MapLayout: React.FC<PropsWithChildren<Props>> = ({
@@ -24,11 +23,11 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
     stateCodes,
     width,
     center,
-    isHover = true,
     children
 }) => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
+    const [tooltip] = useAtom(disableTooltip);
     const svgRef = React.useRef<SVGElement>(null);
     useDrag(svgRef);
     React.useMemo(() => {
@@ -86,12 +85,12 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                             }
                         }}
                         onMouseOver={(e) => {
-                            if (isHover) {
+                            if (!tooltip) {
                                 setHover((e.target as SVGGElement).id);
                             }
                         }}
                         onMouseLeave={() => {
-                            if (isHover) {
+                            if (!tooltip) {
                                 setHover('');
                             }
                         }}>

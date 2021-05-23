@@ -14,4 +14,6 @@ export const mapAtom = atom<MapStoreType>({
   legendSmoothGradient: false
 })
 
+export const disableTooltip = atom<boolean>(false)
+
 export const fillAtom = atom<String>('');
