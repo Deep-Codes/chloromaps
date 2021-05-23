@@ -34,6 +34,7 @@ const MainLayout = ({ children }: Props) => (
             }
             @media screen and (max-width: 1000px) {
                 .page {
+                    width: 100%;
                     padding: 0 10px;
                 }
                 .navbar-ctx {

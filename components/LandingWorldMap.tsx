@@ -38,6 +38,13 @@ const LandingWorldMap = () => {
     };
     const intervalRef = React.useRef<undefined | NodeJS.Timeout>();
     React.useEffect(() => {
+        // this makes map scroll to center on mobile
+        if (document.documentElement.clientWidth < 760) {
+            const temp = document.getElementById('scroll-map');
+            if (temp) {
+                temp.scrollLeft = 200;
+            }
+        }
         randomiseData();
         const id = setInterval(() => {
             randomiseData();
@@ -50,7 +57,7 @@ const LandingWorldMap = () => {
         };
     }, []);
     return (
-        <div className="flex flex-col map-container mx-auto">
+        <div className="flex flex-col map-container mx-auto" id="scroll-map">
             {hover !== '' && (
                 <ReactTooltip id="world">
                     {/* @ts-ignore */}
