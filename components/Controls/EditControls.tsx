@@ -5,7 +5,7 @@ import { Layers, RefreshCcw } from '@geist-ui/react-icons';
 import React from 'react';
 import ColorPickerInput from '../ColorPickerInput';
 import InputLabel from '../InputLabel';
-import LegendControls from '../LegendControls';
+import LegendControls from '../Legend/LegendControls';
 import PaletteBox from '../PaletteBox';
 
 interface Props {

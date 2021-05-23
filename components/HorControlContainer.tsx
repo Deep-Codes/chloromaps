@@ -10,13 +10,14 @@ import { useAtom } from 'jotai';
 import React from 'react';
 import EditControls from './Controls/EditControls';
 import ExportControls from './Controls/ExportControls';
+import LabelControls from './Controls/LabelControls';
 
 interface Props {
     mapId: string;
     stateCodes: { [key: string]: string };
 }
 
-const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
+const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -94,14 +95,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     />
                 </div>
                 <div className="control-box">
-                    <EditControls
-                        map={map}
-                        handleAttrChange={handleAttrChange}
-                        toggleHideLegend={toggleHideLegend}
-                        smoothGradient={smoothGradient}
-                        randomiseData={randomiseData}
-                        refreshMap={refreshMap}
-                    />
+                    <LabelControls />
                 </div>
                 <div className="control-box">
                     <ExportControls map={map} mapId={mapId} uploadDataConfig={uploadDataConfig} />
@@ -186,4 +180,4 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     );
 };
 
-export default ControlContainer;
+export default HorControlContainer;

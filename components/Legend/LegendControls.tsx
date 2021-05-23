@@ -9,8 +9,8 @@ import { Input } from '@geist-ui/react';
 import { Eye, XCircle, EyeOff, ChevronUp, ChevronDown } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
-import InputLabel from './InputLabel';
-import MiniColorPicker from './MiniColorPicker';
+import InputLabel from '../InputLabel';
+import MiniColorPicker from '../MiniColorPicker';
 
 const LegendControls = () => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);

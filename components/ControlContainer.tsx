@@ -10,13 +10,14 @@ import { useAtom } from 'jotai';
 import React from 'react';
 import EditControls from './Controls/EditControls';
 import ExportControls from './Controls/ExportControls';
+import LabelControls from './Controls/LabelControls';
 
 interface Props {
     mapId: string;
     stateCodes: { [key: string]: string };
 }
 
-const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
+const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -81,7 +82,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         );
     };
     return (
-        <div>
+        <div className="mt">
             <div className="flex flex-col">
                 <Tabs initialValue="1" hideDivider>
                     <Tabs.Item
@@ -110,14 +111,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         }
                         value="2">
                         <div className="control-box">
-                            <EditControls
-                                map={map}
-                                handleAttrChange={handleAttrChange}
-                                toggleHideLegend={toggleHideLegend}
-                                smoothGradient={smoothGradient}
-                                randomiseData={randomiseData}
-                                refreshMap={refreshMap}
-                            />
+                            <LabelControls />
                         </div>
                     </Tabs.Item>
                     <Tabs.Item
@@ -138,6 +132,9 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                 </Tabs>
             </div>
             <style jsx>{`
+                .mt {
+                    margin-top: 30px;
+                }
                 .file-input {
                     position: absolute;
                     top: 0;
@@ -149,6 +146,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                 .control-box {
                     width: 320px;
                     height: 80vh;
+                    padding-top: 20px;
                     padding-bottom: 100px;
                     overflow-y: scroll;
                     position: relative;
@@ -158,4 +156,4 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     );
 };
 
-export default HorControlContainer;
+export default ControlContainer;

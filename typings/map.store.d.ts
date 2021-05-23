@@ -29,7 +29,8 @@ export interface LabelStoreType {
 }
 
 export interface LabelType {
+  id: number;
   fill: string;
   text: string;
-  hide: string;
+  hide: boolean;
 }

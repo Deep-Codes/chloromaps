@@ -6,7 +6,7 @@ import { MapStoreType } from '@/typings/map.store';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
-import LegendContainer from '@/components/LegendContainer';
+import LegendContainer from '@/components/Legend/LegendContainer';
 import useDrag from 'hooks/use-drag';
 
 interface Props {
