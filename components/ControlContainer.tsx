@@ -2,8 +2,9 @@
 import { colorPickerPalette } from '@/data/colors';
 import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
+import { labelAtom } from '@/store/label.store';
 import { mapAtom } from '@/store/map.store';
-import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
+import { LabelStoreType, LegendData, MapData, MapStoreType } from '@/typings/map.store';
 import { Tabs } from '@geist-ui/react';
 import { Edit, Upload, Type } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
@@ -19,6 +20,7 @@ interface Props {
 
 const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
+    const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
         setMap((st: MapStoreType) => ({
@@ -77,6 +79,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             // @ts-ignore
             e.target.files[0],
             setMap,
+            setLabel,
             // @ts-ignore
             map.defaultFillColors
         );
@@ -124,6 +127,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         <div className="control-box">
                             <ExportControls
                                 map={map}
+                                label={label}
                                 mapId={mapId}
                                 uploadDataConfig={uploadDataConfig}
                             />

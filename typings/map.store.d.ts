@@ -34,3 +34,10 @@ export interface LabelType {
   text: string;
   hide: boolean;
 }
+
+export interface ExportLabelDataType {
+    text: string;
+    x: string;
+    y: string;
+    hide: boolean;
+}
