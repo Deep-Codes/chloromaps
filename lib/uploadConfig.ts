@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import fillAllMap from "./fillAllMap";
+import importLabelConfig from "./importLabelConfig";
 
 // @ts-ignore
 const uploadConfig = (file , setMap , def) => {
@@ -13,8 +14,10 @@ const uploadConfig = (file , setMap , def) => {
 
   const handleFileRead = () => {
     const content = fileReader.result;
-    setMap(JSON.parse(content).mapData)
-    fillAllMap(JSON.parse(content).mapData.mapData ,def )
+    const Data = JSON.parse(content)
+    setMap(Data.mapData)
+    fillAllMap(Data.mapData.mapData ,def )
+    importLabelConfig(Data.labelData)
   };
 
   handleConfigUpload(file)

@@ -1,14 +1,7 @@
-import { LabelStoreType } from "@/typings/map.store";
+import { ExportLabelDataType, LabelStoreType } from "@/typings/map.store";
 
-interface FinalData {
-  text: string;
-  x: string;
-  y: string;
-  hide: boolean;
-}
-
-const exportLabelData = (lb: LabelStoreType): FinalData[] => {
-  const finalData: FinalData[]  = []
+const exportLabelData = (lb: LabelStoreType): ExportLabelDataType[] => {
+  const finalData: ExportLabelDataType[]  = []
   lb.data.forEach((dt , i) => {
     const el = document.getElementById(`label-text-${i+1}`)
     if(el){
