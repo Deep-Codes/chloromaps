@@ -118,14 +118,16 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="1">
-                        <EditControls
-                            map={map}
-                            handleAttrChange={handleAttrChange}
-                            toggleHideLegend={toggleHideLegend}
-                            smoothGradient={smoothGradient}
-                            randomiseData={randomiseData}
-                            refreshMap={refreshMap}
-                        />
+                        <div className="control-box">
+                            <EditControls
+                                map={map}
+                                handleAttrChange={handleAttrChange}
+                                toggleHideLegend={toggleHideLegend}
+                                smoothGradient={smoothGradient}
+                                randomiseData={randomiseData}
+                                refreshMap={refreshMap}
+                            />
+                        </div>
                     </Tabs.Item>
                     <Tabs.Item
                         label={
@@ -134,14 +136,9 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             </>
                         }
                         value="2">
-                        <EditControls
-                            map={map}
-                            handleAttrChange={handleAttrChange}
-                            toggleHideLegend={toggleHideLegend}
-                            smoothGradient={smoothGradient}
-                            randomiseData={randomiseData}
-                            refreshMap={refreshMap}
-                        />
+                        <div className="control-box">
+                            <LabelControls />
+                        </div>
                     </Tabs.Item>
                     <Tabs.Item
                         label={
@@ -174,6 +171,8 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     margin-left: auto;
                 }
                 .control-box {
+                    padding-top: 20px;
+                    padding-bottom: 100px;
                 }
                 @media screen and (max-width: 800px) {
                     .control-container {
