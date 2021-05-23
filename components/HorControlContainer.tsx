@@ -2,8 +2,9 @@
 import { colorPickerPalette } from '@/data/colors';
 import resetMap from '@/lib/resetMap';
 import uploadConfig from '@/lib/uploadConfig';
+import { labelAtom } from '@/store/label.store';
 import { mapAtom } from '@/store/map.store';
-import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
+import { LabelStoreType, LegendData, MapData, MapStoreType } from '@/typings/map.store';
 import { Tabs } from '@geist-ui/react';
 import { Edit, Type, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
@@ -19,6 +20,7 @@ interface Props {
 
 const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
+    const [label] = useAtom<LabelStoreType>(labelAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
         setMap((st: MapStoreType) => ({
@@ -98,7 +100,12 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <LabelControls />
                 </div>
                 <div className="control-box">
-                    <ExportControls map={map} mapId={mapId} uploadDataConfig={uploadDataConfig} />
+                    <ExportControls
+                        map={map}
+                        label={label}
+                        mapId={mapId}
+                        uploadDataConfig={uploadDataConfig}
+                    />
                 </div>
             </div>
             <div className="control-container-tabs">
@@ -144,6 +151,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         value="3">
                         <div className="control-box">
                             <ExportControls
+                                label={label}
                                 map={map}
                                 mapId={mapId}
                                 uploadDataConfig={uploadDataConfig}
