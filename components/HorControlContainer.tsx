@@ -20,7 +20,7 @@ interface Props {
 
 const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
-    const [label] = useAtom<LabelStoreType>(labelAtom);
+    const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
         setMap((st: MapStoreType) => ({
@@ -79,6 +79,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             // @ts-ignore
             e.target.files[0],
             setMap,
+            setLabel,
             // @ts-ignore
             map.defaultFillColors
         );

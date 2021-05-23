@@ -5,7 +5,6 @@ import importLabelConfig from "./importLabelConfig";
 // @ts-ignore
 const uploadConfig = (file , setMap , setLabel , def) => {
   let fileReader: any;
-
   const handleConfigUpload = (f: any) => {
     fileReader = new FileReader();
     fileReader.onloadend = handleFileRead;
