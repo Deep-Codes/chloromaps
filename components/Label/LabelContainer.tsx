@@ -7,7 +7,7 @@ import { Input } from '@geist-ui/react';
 import { EyeOff, Eye, XCircle } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
-import InputLabel from './InputLabel';
+import InputLabel from '../InputLabel';
 
 const LabelContainer: React.FC = () => {
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);

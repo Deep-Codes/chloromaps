@@ -23,6 +23,7 @@ const MainLayout = ({ children }: Props) => (
                 min-height: 100vh;
                 max-width: 1000px;
                 margin: 0 auto;
+                overflow-x: hidden !important;
             }
             .navbar-ctx {
                 width: 100%;

@@ -7,7 +7,7 @@ import { useAtom } from 'jotai';
 import React from 'react';
 import { PlusSquare } from '@geist-ui/react-icons';
 import InputLabel from '../InputLabel';
-import LabelContainer from '../LabelContainer';
+import LabelContainer from '../Label/LabelContainer';
 
 const LabelControls = () => {
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
