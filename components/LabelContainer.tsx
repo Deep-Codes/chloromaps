@@ -28,6 +28,10 @@ const LabelContainer: React.FC = () => {
             ...st,
             data: copy
         }));
+        const textNode = document.getElementById(`label-text-${i + 1}`);
+        if (textNode) {
+            textNode.style.opacity = obj.hide ? '0' : '1';
+        }
     };
     const updateTextLabel = (i: number, v: string) => {
         const copy = label.data;
