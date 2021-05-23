@@ -43,6 +43,19 @@ const LabelControls = () => {
                 textElement.setAttribute('x', '280');
                 textElement.setAttribute('y', '580');
                 ctx.appendChild(textElement);
+                const labObj: LabelType = {
+                    id: count + 1,
+                    fill: 'white',
+                    text,
+                    hide: false
+                };
+                const newArr = label.data;
+                newArr.push(labObj);
+                // @ts-ignore
+                setLabel((st: LabelStoreType) => ({
+                    ...st,
+                    data: newArr
+                }));
                 setText('');
             }
         }

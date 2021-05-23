@@ -37,6 +37,10 @@ const LabelContainer: React.FC = () => {
             ...st,
             data: copy
         }));
+        const textNode = document.getElementById(`label-text-${i + 1}`);
+        if (textNode) {
+            textNode.innerHTML = v;
+        }
     };
     return (
         <div className="ctx">
