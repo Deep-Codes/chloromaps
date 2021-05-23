@@ -42,7 +42,7 @@ const LabelContainer: React.FC = () => {
         <div className="ctx">
             <InputLabel text="Label Controls" />
             {label.data.map((d, i) => (
-                <div key={d.id} className="flex justify-between box">
+                <div key={d.text} className="flex justify-between box">
                     <div
                         className="icon-btn flex-center pointer"
                         onClick={() => toggleHideLabel(i)}>
