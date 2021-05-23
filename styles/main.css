@@ -77,7 +77,7 @@ text {
 .draggable {
     cursor: move;
 }
-text .text {
+#legend-group text .text {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 5px;
 }

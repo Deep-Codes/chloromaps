@@ -18,6 +18,10 @@ const LabelContainer: React.FC = () => {
             ...st,
             data: label.data
         }));
+        const textNode = document.getElementById(`label-text-${i + 1}`);
+        if (textNode) {
+            textNode.remove();
+        }
     };
     const toggleHideLabel = (i: number) => {
         const copy = label.data;
@@ -28,6 +32,10 @@ const LabelContainer: React.FC = () => {
             ...st,
             data: copy
         }));
+        const textNode = document.getElementById(`label-text-${i + 1}`);
+        if (textNode) {
+            textNode.style.opacity = obj.hide ? '0' : '1';
+        }
     };
     const updateTextLabel = (i: number, v: string) => {
         const copy = label.data;
@@ -37,12 +45,16 @@ const LabelContainer: React.FC = () => {
             ...st,
             data: copy
         }));
+        const textNode = document.getElementById(`label-text-${i + 1}`);
+        if (textNode) {
+            textNode.innerHTML = v;
+        }
     };
     return (
         <div className="ctx">
             <InputLabel text="Label Controls" />
             {label.data.map((d, i) => (
-                <div key={d.text} className="flex justify-between box">
+                <div key={d.id} className="flex justify-between box">
                     <div
                         className="icon-btn flex-center pointer"
                         onClick={() => toggleHideLabel(i)}>

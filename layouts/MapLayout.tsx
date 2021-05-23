@@ -2,12 +2,12 @@ import React, { PropsWithChildren } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { mapAtom } from '@/store/map.store';
 import { useAtom } from 'jotai';
-import { MapStoreType } from '@/typings/map.store';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/Legend/LegendContainer';
 import useDrag from 'hooks/use-drag';
+import { MapStoreType } from '@/typings/map.store';
 
 interface Props {
     viewBox: number[];
@@ -98,6 +98,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                         {children}
                     </g>
                 </svg>
+                <g id="labels-container" />
             </svg>
             {!map.hideLegend && (
                 <LegendContainer

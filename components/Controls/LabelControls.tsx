@@ -14,20 +14,30 @@ const LabelControls = () => {
     const [text, setText] = React.useState('');
     const addLabel = () => {
         if (text !== '') {
-            const labObj: LabelType = {
-                id: Date.now(),
-                fill: 'white',
-                text,
-                hide: false
-            };
-            const newArr = label.data;
-            newArr.push(labObj);
-            // @ts-ignore
-            setLabel((st: LabelStoreType) => ({
-                ...st,
-                data: newArr
-            }));
-            setText('');
+            const ctx = document.getElementById('labels-container');
+            if (ctx) {
+                // const textElement = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                const count = ctx.childElementCount;
+                ctx.innerHTML += `
+                <text class="draggable drag-label" id="label-text-${
+                    count + 1
+                }" x="288" y="553" style="font-family: Arial; opacity: 1;">${text}</text>
+                `;
+                const labObj: LabelType = {
+                    id: count + 1,
+                    fill: 'white',
+                    text,
+                    hide: false
+                };
+                const newArr = label.data;
+                newArr.push(labObj);
+                // @ts-ignore
+                setLabel((st: LabelStoreType) => ({
+                    ...st,
+                    data: newArr
+                }));
+                setText('');
+            }
         }
     };
     return (
