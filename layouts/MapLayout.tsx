@@ -2,12 +2,13 @@ import React, { PropsWithChildren } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { mapAtom } from '@/store/map.store';
 import { useAtom } from 'jotai';
-import { MapStoreType } from '@/typings/map.store';
+import { LabelStoreType, MapStoreType } from '@/typings/map.store';
 import fillColorOnClick from '@/lib/fillColorOnClick';
 import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/Legend/LegendContainer';
 import useDrag from 'hooks/use-drag';
+import { labelAtom } from '@/store/label.store';
 
 interface Props {
     viewBox: number[];
@@ -27,6 +28,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
     isHover = true,
     children
 }) => {
+    const [label] = useAtom<LabelStoreType>(labelAtom);
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const svgRef = React.useRef<SVGElement>(null);
@@ -98,6 +100,17 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                         {children}
                     </g>
                 </svg>
+                {label.data.map((m) => (
+                    <text
+                        opacity={m.hide ? 0 : 1}
+                        key={m.text}
+                        fontFamily="Arial"
+                        className="draggable drag-label"
+                        x="280"
+                        y="553">
+                        {m.text}
+                    </text>
+                ))}
             </svg>
             {!map.hideLegend && (
                 <LegendContainer
