@@ -100,17 +100,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                         {children}
                     </g>
                 </svg>
-                {label.data.map((m) => (
-                    <text
-                        opacity={m.hide ? 0 : 1}
-                        key={m.text}
-                        fontFamily="Arial"
-                        className="draggable drag-label"
-                        x="280"
-                        y="553">
-                        {m.text}
-                    </text>
-                ))}
+                <g id="labels-container" />
             </svg>
             {!map.hideLegend && (
                 <LegendContainer

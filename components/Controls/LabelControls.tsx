@@ -12,22 +12,39 @@ import LabelContainer from '../LabelContainer';
 const LabelControls = () => {
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
     const [text, setText] = React.useState('');
+    // const addLabel = () => {
+    //     if (text !== '') {
+    //         const labObj: LabelType = {
+    //             id: Date.now(),
+    //             fill: 'white',
+    //             text,
+    //             hide: false
+    //         };
+    //         const newArr = label.data;
+    //         newArr.push(labObj);
+    //         // @ts-ignore
+    //         setLabel((st: LabelStoreType) => ({
+    //             ...st,
+    //             data: newArr
+    //         }));
+    //         setText('');
+    //     }
+    // };
     const addLabel = () => {
         if (text !== '') {
-            const labObj: LabelType = {
-                id: Date.now(),
-                fill: 'white',
-                text,
-                hide: false
-            };
-            const newArr = label.data;
-            newArr.push(labObj);
-            // @ts-ignore
-            setLabel((st: LabelStoreType) => ({
-                ...st,
-                data: newArr
-            }));
-            setText('');
+            const ctx = document.getElementById('labels-container');
+            if (ctx) {
+                const textElement = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                const count = ctx.childElementCount;
+                textElement.innerHTML = text;
+                textElement.classList.add('draggable', 'drag-label');
+                textElement.setAttribute('id', `label-text-${count + 1}`);
+                textElement.style.fontFamily = 'Arial';
+                textElement.setAttribute('x', '280');
+                textElement.setAttribute('y', '580');
+                ctx.appendChild(textElement);
+                setText('');
+            }
         }
     };
     return (
