@@ -1,11 +1,12 @@
 import { LabelStoreType, MapStoreType } from "@/typings/map.store";
 import exportLabelData from "./exportLabelData";
 
-const downloadConfig = (mapData: MapStoreType , labelData: LabelStoreType) => {
+const downloadConfig = (mapData: MapStoreType , labData: LabelStoreType) => {
   const element = document.createElement('a');
-  exportLabelData(labelData)
+  const labelData = exportLabelData(labData)
     const data = {
-      mapData
+      mapData,
+      labelData
     }
     const file = new Blob([JSON.stringify(data)], {
       type: 'text/plain;charset=utf-8',

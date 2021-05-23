@@ -7,7 +7,7 @@ interface FinalData {
   hide: boolean;
 }
 
-const exportLabelData = (lb: LabelStoreType) => {
+const exportLabelData = (lb: LabelStoreType): FinalData[] => {
   const finalData: FinalData[]  = []
   lb.data.forEach((dt , i) => {
     const el = document.getElementById(`label-text-${i+1}`)
@@ -23,7 +23,7 @@ const exportLabelData = (lb: LabelStoreType) => {
       })
     }
   })
-  console.log(finalData)
+  return finalData
 }
 
 export default exportLabelData
