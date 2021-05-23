@@ -1,5 +1,6 @@
 export const EuropeCountryCodes = {
     AL: 'Albania',
+    AM: 'Armenia',
     AT: 'Austria',
     BE: 'Belgium',
     BG: 'Bulgaria',
@@ -12,6 +13,7 @@ export const EuropeCountryCodes = {
     EE: 'Estonia',
     FI: 'Finland',
     GB: 'United Kingdom',
+    GE: 'Georgia',
     GR: 'Greece',
     HR: 'Croatia',
     HU: 'Hungary',
