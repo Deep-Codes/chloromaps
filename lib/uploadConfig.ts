@@ -13,8 +13,8 @@ const uploadConfig = (file , setMap , def) => {
 
   const handleFileRead = () => {
     const content = fileReader.result;
-    setMap(JSON.parse(content))
-    fillAllMap(JSON.parse(content).mapData ,def )
+    setMap(JSON.parse(content).mapData)
+    fillAllMap(JSON.parse(content).mapData.mapData ,def )
   };
 
   handleConfigUpload(file)
