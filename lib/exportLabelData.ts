@@ -1,6 +1,6 @@
-import { ExportLabelDataType, LabelStoreType } from "@/typings/map.store";
+import { ExportLabelDataType, ExportFinalLabelDataType, LabelStoreType } from "@/typings/map.store";
 
-const exportLabelData = (lb: LabelStoreType): ExportLabelDataType[] => {
+const exportLabelData = (lb: LabelStoreType): ExportFinalLabelDataType => {
   const finalData: ExportLabelDataType[]  = []
   lb.data.forEach((dt , i) => {
     const el = document.getElementById(`label-text-${i+1}`)
@@ -19,7 +19,10 @@ const exportLabelData = (lb: LabelStoreType): ExportLabelDataType[] => {
       })
     }
   })
-  return finalData
+  return {
+    data: finalData,
+    scalingFactor: lb.scalingFactor
+  }
 }
 
 export default exportLabelData

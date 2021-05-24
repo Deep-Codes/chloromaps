@@ -36,6 +36,7 @@ export interface LabelType {
   hide: boolean;
 }
 
+
 export interface ExportLabelDataType {
     text: string;
     x: string;
@@ -43,4 +44,9 @@ export interface ExportLabelDataType {
     hide: boolean;
     fontSize: string;
     fill: string;
+}
+
+export interface ExportFinalLabelDataType {
+  data: ExportLabelDataType[]
+  scalingFactor: number;
 }
