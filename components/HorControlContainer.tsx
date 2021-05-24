@@ -111,7 +111,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                 </div>
             </div>
             <div className="control-container-tabs">
-                <Tabs initialValue="1" hideDivider>
+                <Tabs initialValue="1">
                     <Tabs.Item
                         label={
                             <>
@@ -167,13 +167,11 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                 }
                 .control-container-tabs {
                     display: none;
-                    width: 320px;
                     margin-right: auto;
                     margin-left: auto;
                 }
                 .control-box {
-                    padding-top: 20px;
-                    padding-bottom: 100px;
+                    padding: 20px 5px 100px 5px;
                 }
                 @media screen and (max-width: 800px) {
                     .control-container {
@@ -182,6 +180,12 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     .control-container-tabs {
                         padding-top: 30px;
                         display: block;
+                    }
+                    .controls-box {
+                        width: 90%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }
             `}</style>
