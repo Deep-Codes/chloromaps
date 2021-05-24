@@ -5,8 +5,8 @@ const exportLabelData = (lb: LabelStoreType): ExportFinalLabelDataType => {
   lb.data.forEach((dt , i) => {
     const el = document.getElementById(`label-text-${i+1}`)
     if(el){
-      const x = el.getAttribute("x")!
-      const y = el.getAttribute("y")!
+      const x = parseInt(el.getAttribute("x")!,10).toFixed(0).toString()
+      const y = parseInt(el.getAttribute("y")!,10).toFixed(0).toString()
       const text = el.innerHTML
       const { fill, fontSize } = el.style;
       finalData.push({
@@ -15,7 +15,7 @@ const exportLabelData = (lb: LabelStoreType): ExportFinalLabelDataType => {
         y,
         hide: dt.hide,
         fill,
-        fontSize: (parseInt(fontSize , 10)/ lb.scalingFactor).toString()
+        fontSize: (parseInt(fontSize , 10)/ lb.scalingFactor).toFixed(0).toString()
       })
     }
   })
