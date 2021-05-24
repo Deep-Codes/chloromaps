@@ -25,7 +25,8 @@ export interface MapStoreType {
 }
 
 export interface LabelStoreType {
-  data: LabelType[]
+  data: LabelType[];
+  scalingFactor: number;
 }
 
 export interface LabelType {

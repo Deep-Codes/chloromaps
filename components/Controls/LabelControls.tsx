@@ -24,7 +24,9 @@ const LabelControls = () => {
                 ctx.innerHTML += `
                 <text class="draggable drag-label" id="label-text-${
                     count + 1
-                }" x="288" y="553" style="font-family: Arial; opacity: 1;">${text}</text>
+                }" x="288" y="553" style="font-family: Arial; opacity: 1; font-size: ${
+                    16 * label.scalingFactor
+                }">${text}</text>
                 `;
                 const labObj: LabelType = {
                     id: count + 1,

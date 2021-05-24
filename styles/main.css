@@ -85,5 +85,12 @@ text {
     stroke: white;
     fill: white;
     z-index: 100;
-    font-size: 20px;
+}
+/* remove arrow in input number */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
 }

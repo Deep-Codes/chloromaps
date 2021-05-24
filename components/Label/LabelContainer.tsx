@@ -58,6 +58,7 @@ const LabelContainer: React.FC = () => {
                 <tr>
                     <th>Hide</th>
                     <th>Input</th>
+                    <th>Size</th>
                     <th>Remove</th>
                 </tr>
                 {label.data.map((d, i) => (
@@ -76,6 +77,9 @@ const LabelContainer: React.FC = () => {
                                 value={d.text}
                                 onChange={(e) => updateTextLabel(i, e.target.value)}
                             />
+                        </td>
+                        <td>
+                            <Input type="number" width="40px" size="mini" />
                         </td>
                         <td>
                             <div
