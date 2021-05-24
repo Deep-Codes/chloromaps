@@ -55,41 +55,45 @@ const LabelContainer: React.FC = () => {
         <div className="ctx">
             <InputLabel text="Label Controls" />
             <table className="table">
-                <tr>
-                    <th>Hide</th>
-                    <th>Input</th>
-                    <th>Size</th>
-                    <th>Remove</th>
-                </tr>
-                {label.data.map((d, i) => (
-                    <tr key={d.id}>
-                        <td>
-                            <div
-                                className="icon-btn flex-center pointer"
-                                onClick={() => toggleHideLabel(i)}>
-                                {d.hide ? <EyeOff size={20} /> : <Eye size={20} />}
-                            </div>
-                        </td>
-                        <td>
-                            <Input
-                                size="mini"
-                                placeholder="Label Value"
-                                value={d.text}
-                                onChange={(e) => updateTextLabel(i, e.target.value)}
-                            />
-                        </td>
-                        <td>
-                            <Input type="number" width="40px" size="mini" />
-                        </td>
-                        <td>
-                            <div
-                                className="icon-btn flex-center pointer"
-                                onClick={() => removeLabel(i)}>
-                                <XCircle size={20} />
-                            </div>
-                        </td>
+                <thead>
+                    <tr>
+                        <th>Hide</th>
+                        <th>Input</th>
+                        <th>Size</th>
+                        <th>Remove</th>
                     </tr>
-                ))}
+                </thead>
+                <tbody>
+                    {label.data.map((d, i) => (
+                        <tr key={d.id}>
+                            <td>
+                                <div
+                                    className="icon-btn flex-center pointer"
+                                    onClick={() => toggleHideLabel(i)}>
+                                    {d.hide ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </div>
+                            </td>
+                            <td>
+                                <Input
+                                    size="mini"
+                                    placeholder="Label Value"
+                                    value={d.text}
+                                    onChange={(e) => updateTextLabel(i, e.target.value)}
+                                />
+                            </td>
+                            <td>
+                                <Input type="number" width="40px" size="mini" />
+                            </td>
+                            <td>
+                                <div
+                                    className="icon-btn flex-center pointer"
+                                    onClick={() => removeLabel(i)}>
+                                    <XCircle size={20} />
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
 
             <style jsx>{`
