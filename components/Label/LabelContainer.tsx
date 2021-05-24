@@ -8,6 +8,7 @@ import { EyeOff, Eye, XCircle } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
 import InputLabel from '../InputLabel';
+import MiniLabelColorPicker from './MiniLabelColorPicker';
 
 const LabelContainer: React.FC = () => {
     const theme = useTheme();
@@ -57,6 +58,12 @@ const LabelContainer: React.FC = () => {
             textNode.style.fontSize = (+v * label.scalingFactor).toString();
         }
     };
+    const changeColorLabel = (i: number, v: string) => {
+        const textNode = document.getElementById(`label-text-${i + 1}`);
+        if (textNode) {
+            textNode.style.fill = v;
+        }
+    };
     return (
         <div className="ctx">
             <InputLabel text="Label Controls" />
@@ -64,7 +71,8 @@ const LabelContainer: React.FC = () => {
                 <thead>
                     <tr>
                         <th>Hide</th>
-                        <th>Input</th>
+                        <th>Color</th>
+                        <th>Text</th>
                         <th>Size</th>
                         <th>Remove</th>
                     </tr>
@@ -78,6 +86,9 @@ const LabelContainer: React.FC = () => {
                                     onClick={() => toggleHideLabel(i)}>
                                     {d.hide ? <EyeOff size={20} /> : <Eye size={20} />}
                                 </div>
+                            </td>
+                            <td>
+                                <MiniLabelColorPicker index={i} handleColor={changeColorLabel} />
                             </td>
                             <td>
                                 <Input
@@ -173,10 +184,6 @@ const LabelContainer: React.FC = () => {
                 }
                 table tr:not(:last-of-type) td {
                     border-bottom: 1px solid ${theme.palette.accents_2};
-                }
-                .table-wrapper {
-                    margin: 30px 0;
-                    overflow-x: scroll;
                 }
             `}</style>
         </div>

@@ -82,7 +82,7 @@ text {
     font-size: 5px;
 }
 .drag-label {
-    stroke: white;
+    stroke: none;
     fill: white;
     z-index: 100;
 }
