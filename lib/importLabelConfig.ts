@@ -20,6 +20,7 @@ const importLabelConfig = (dt: ExportLabelDataType[]) : LabelStoreType => {
     }
     return {
       data,
+      scalingFactor: 1
     };
 };
 

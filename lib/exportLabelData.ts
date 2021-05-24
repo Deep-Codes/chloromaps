@@ -8,11 +8,14 @@ const exportLabelData = (lb: LabelStoreType): ExportLabelDataType[] => {
       const x = el.getAttribute("x")!
       const y = el.getAttribute("y")!
       const text = el.innerHTML
+      const { fill, fontSize } = el.style;
       finalData.push({
         text,
         x,
         y,
-        hide: dt.hide
+        hide: dt.hide,
+        fill,
+        fontSize: (parseInt(fontSize , 10)/ lb.scalingFactor).toString()
       })
     }
   })

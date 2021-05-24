@@ -41,4 +41,6 @@ export interface ExportLabelDataType {
     x: string;
     y: string;
     hide: boolean;
+    fontSize: string;
+    fill: string;
 }
