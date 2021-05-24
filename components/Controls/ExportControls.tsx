@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import version from '@/data/version';
 import downloadConfig from '@/lib/downloadConfig';
 import downloadMap from '@/lib/downloadMap';
 import { LabelStoreType } from '@/typings/label.store';
@@ -14,7 +15,6 @@ interface Props {
     mapId: string;
     uploadDataConfig: (e: any) => void;
 }
-
 const ExportControls: React.FC<Props> = ({ map, label, mapId, uploadDataConfig }) => (
     <>
         <InputLabel text="Download Map in Png" />
@@ -31,7 +31,7 @@ const ExportControls: React.FC<Props> = ({ map, label, mapId, uploadDataConfig }
         <Button
             icon={<Save />}
             onClick={() => {
-                downloadConfig(map, label);
+                downloadConfig(map, label, version, mapId);
             }}>
             Save Config
         </Button>

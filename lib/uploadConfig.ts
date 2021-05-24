@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ExportConfigType } from "@/typings/config";
 import fillAllMap from "./fillAllMap";
 import importLabelConfig from "./importLabelConfig";
 
@@ -13,7 +14,7 @@ const uploadConfig = (file , setMap , setLabel , def) => {
 
   const handleFileRead = () => {
     const content = fileReader.result;
-    const Data = JSON.parse(content)
+    const Data: ExportConfigType = JSON.parse(content)
     setMap(Data.mapData)
     fillAllMap(Data.mapData.mapData ,def )
     const labData = importLabelConfig(Data.labelData)
