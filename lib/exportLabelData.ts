@@ -1,4 +1,4 @@
-import { ExportLabelDataType, ExportFinalLabelDataType, LabelStoreType } from "@/typings/map.store";
+import { ExportLabelDataType, ExportFinalLabelDataType, LabelStoreType } from "@/typings/label.store";
 
 const exportLabelData = (lb: LabelStoreType): ExportFinalLabelDataType => {
   const finalData: ExportLabelDataType[]  = []

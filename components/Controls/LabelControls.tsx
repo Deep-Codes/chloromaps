@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { labelAtom } from '@/store/label.store';
-import { LabelStoreType, LabelType } from '@/typings/map.store';
+import { LabelStoreType, LabelType } from '@/typings/label.store';
 import { Input, Spacer, Toggle } from '@geist-ui/react';
 import { useAtom } from 'jotai';
 import React from 'react';

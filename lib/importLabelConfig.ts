@@ -1,4 +1,4 @@
-import { ExportFinalLabelDataType, LabelStoreType, LabelType } from '@/typings/map.store';
+import { ExportFinalLabelDataType, LabelStoreType, LabelType } from '@/typings/label.store';
 
 const importLabelConfig = (dt: ExportFinalLabelDataType) : LabelStoreType => {
     const ctx = document.getElementById('labels-container');

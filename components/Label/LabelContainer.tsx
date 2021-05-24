@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { labelAtom } from '@/store/label.store';
-import { LabelStoreType } from '@/typings/map.store';
+import { LabelStoreType } from '@/typings/label.store';
 import { Input, useTheme } from '@geist-ui/react';
 import { EyeOff, Eye, XCircle } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';

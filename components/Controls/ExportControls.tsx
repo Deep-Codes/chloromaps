@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import downloadConfig from '@/lib/downloadConfig';
 import downloadMap from '@/lib/downloadMap';
-import { LabelStoreType, MapStoreType } from '@/typings/map.store';
+import { LabelStoreType } from '@/typings/label.store';
+import { MapStoreType } from '@/typings/map.store';
 import { Button, Spacer } from '@geist-ui/react';
 import { Download, Save, Upload } from '@geist-ui/react-icons';
 import React from 'react';

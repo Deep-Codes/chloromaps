@@ -7,8 +7,9 @@ import fillAllMap from '@/lib/fillAllMap';
 import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/Legend/LegendContainer';
 import useDrag from 'hooks/use-drag';
-import { LabelStoreType, MapStoreType } from '@/typings/map.store';
+import { MapStoreType } from '@/typings/map.store';
 import { labelAtom } from '@/store/label.store';
+import { LabelStoreType } from '@/typings/label.store';
 
 interface Props {
     viewBox: number[];

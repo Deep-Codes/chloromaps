@@ -1,4 +1,4 @@
-import { LabelStoreType } from '@/typings/map.store';
+import { LabelStoreType } from '@/typings/label.store';
 import { atom } from 'jotai'
 
 export const labelAtom = atom<LabelStoreType>({
