@@ -101,7 +101,7 @@ const LabelContainer: React.FC = () => {
                             <td>
                                 <Input
                                     type="number"
-                                    initialValue="16"
+                                    initialValue={d.fontSize}
                                     onChange={(e) => changeFontSizeLabel(i, e.target.value)}
                                     width="40px"
                                     size="mini"

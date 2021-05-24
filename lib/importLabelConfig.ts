@@ -15,7 +15,8 @@ const importLabelConfig = (dt: ExportFinalLabelDataType) : LabelStoreType => {
               id: i,
               text: el.text,
               hide: el.hide,
-              fill: el.fill
+              fill: el.fill,
+              fontSize: el.fontSize
             })
         });
     }

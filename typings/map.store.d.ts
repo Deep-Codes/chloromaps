@@ -34,6 +34,7 @@ export interface LabelType {
   fill: string;
   text: string;
   hide: boolean;
+  fontSize?: string;
 }
 
 
