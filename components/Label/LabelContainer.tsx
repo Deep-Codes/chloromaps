@@ -51,6 +51,12 @@ const LabelContainer: React.FC = () => {
             textNode.innerHTML = v;
         }
     };
+    const changeFontSizeLabel = (i: number, v: string) => {
+        const textNode = document.getElementById(`label-text-${i + 1}`);
+        if (textNode) {
+            textNode.style.fontSize = (+v * label.scalingFactor).toString();
+        }
+    };
     return (
         <div className="ctx">
             <InputLabel text="Label Controls" />
@@ -82,7 +88,13 @@ const LabelContainer: React.FC = () => {
                                 />
                             </td>
                             <td>
-                                <Input type="number" width="40px" size="mini" />
+                                <Input
+                                    type="number"
+                                    initialValue="16"
+                                    onChange={(e) => changeFontSizeLabel(i, e.target.value)}
+                                    width="40px"
+                                    size="mini"
+                                />
                             </td>
                             <td>
                                 <div
