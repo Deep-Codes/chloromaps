@@ -8,6 +8,8 @@ import resolveLegendData from '@/lib/resolveLegendData';
 import LegendContainer from '@/components/Legend/LegendContainer';
 import useDrag from 'hooks/use-drag';
 import { MapStoreType } from '@/typings/map.store';
+import { labelAtom } from '@/store/label.store';
+import { LabelStoreType } from '@/typings/label.store';
 
 interface Props {
     viewBox: number[];
@@ -27,8 +29,19 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
 }) => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
+    const [, setLabel] = useAtom<LabelStoreType>(labelAtom);
     const [tooltip] = useAtom(disableTooltip);
     const svgRef = React.useRef<SVGElement>(null);
+    // ? This helps to have consistent font-size
+    const scalingFactor = viewBox[2] / width;
+    React.useEffect(() => {
+        // @ts-ignore
+        setLabel((st: LabelStoreType) => ({
+            ...st,
+            scalingFactor
+        }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [scalingFactor]);
     useDrag(svgRef);
     React.useMemo(() => {
         fillAllMap(map.mapData, map.defaultFillColor, stateCodes);

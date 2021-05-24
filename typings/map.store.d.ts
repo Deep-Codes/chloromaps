@@ -24,20 +24,3 @@ export interface MapStoreType {
   hideLegend: boolean;
 }
 
-export interface LabelStoreType {
-  data: LabelType[]
-}
-
-export interface LabelType {
-  id: number;
-  fill: string;
-  text: string;
-  hide: boolean;
-}
-
-export interface ExportLabelDataType {
-    text: string;
-    x: string;
-    y: string;
-    hide: boolean;
-}

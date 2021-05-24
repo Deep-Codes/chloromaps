@@ -1,10 +1,14 @@
-import { LabelStoreType, MapStoreType } from "@/typings/map.store";
+import { ExportConfigType } from "@/typings/config";
+import { LabelStoreType } from "@/typings/label.store";
+import {  MapStoreType } from "@/typings/map.store";
 import exportLabelData from "./exportLabelData";
 
-const downloadConfig = (mapData: MapStoreType , labData: LabelStoreType) => {
+const downloadConfig = (mapData: MapStoreType , labData: LabelStoreType , version: string , mapId: string) => {
   const element = document.createElement('a');
   const labelData = exportLabelData(labData)
-    const data = {
+    const data: ExportConfigType = {
+      version,
+      mapId,
       mapData,
       labelData
     }

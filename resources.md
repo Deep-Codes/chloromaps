@@ -19,3 +19,9 @@ https://svg-stripe-generator.web.app/
 https://css-tricks.com/snippets/svg/svg-patterns/
 
 https://gist.github.com/popovichN/d2e993b5ea9c1fa14c42229ba46e1d65
+
+For Text Size relative to Svg Dimensions:
+
+http://xahlee.info/js/svg_font_size.html#:~:text=When%20you%20use%20font%20size,the%20unit%20is%20user%20coordinate.&text=Both%20SVG%20have%20font%2Dsize%20100.
+
+http://xahlee.info/js/svg_user_coord_unit_length.html
