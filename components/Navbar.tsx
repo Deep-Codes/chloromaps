@@ -3,12 +3,13 @@
 import React from 'react';
 import { themeAtom } from '@/store/theme.store';
 import { useAtom } from 'jotai';
-import { Button } from '@geist-ui/react';
+import { Button, useTheme } from '@geist-ui/react';
 import { Sun, Menu, X } from '@geist-ui/react-icons';
 import Logo from '@/assets/logo/Logo';
 
 const Navbar = () => {
     const [theme, setTheme] = useAtom(themeAtom);
+    const th = useTheme();
     const [navOpen, setNavOpen] = React.useState(false);
     return (
         <nav>
@@ -96,7 +97,7 @@ const Navbar = () => {
                         z-index: 1000000;
                         top: 60px;
                         position: absolute;
-                        background: black;
+                        background: ${th.palette.background};
                         width: 100%;
                         height: 100vh;
                     }
