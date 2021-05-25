@@ -50,6 +50,10 @@ const LandingWorldMap = () => {
                 temp.scrollLeft = 200;
             }
         }
+        const mapWorld = document.getElementById('world-map');
+        if (mapWorld) {
+            mapWorld.style.opacity = '1';
+        }
         randomiseData();
         const id = setInterval(() => {
             randomiseData();
@@ -98,6 +102,8 @@ const LandingWorldMap = () => {
                     version="1.2"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="50, 0, 1412, 707"
+                    opacity="0"
+                    style={{ transition: 'opacity 5s ease;' }}
                     width="1000">
                     <g
                         style={{ pointerEvents: 'visible' }}
