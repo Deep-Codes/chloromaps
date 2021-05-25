@@ -959,6 +959,19 @@ const LandingWorldMap = () => {
                     transition: color 1s ease-in-out;
                     line-height: 1.2;
                 }
+                @media screen and (max-width: 640px) {
+                    #grad-text {
+                        font-size: 40px;
+                    }
+                    .head {
+                        width: 100%;
+                    }
+                }
+                @media screen and (max-width: 450px) {
+                    #grad-text {
+                        font-size: 32px;
+                    }
+                }
             `}</style>
         </>
     );
