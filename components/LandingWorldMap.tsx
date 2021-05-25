@@ -72,7 +72,9 @@ const LandingWorldMap = () => {
     return (
         <>
             <div className="head">
-                <h1 id="grad-text">Free Rapid Chloropeth Development and Editor</h1>
+                <h1 style={{ opacity: 0, color: 'transparent' }} id="grad-text">
+                    Free Rapid Chloropeth Development and Editor
+                </h1>
             </div>
             <div className="flex flex-col map-container mx-auto" id="scroll-map">
                 {hover !== '' && (
@@ -955,7 +957,6 @@ const LandingWorldMap = () => {
                     margin: 80px auto 50px auto;
                 }
                 #grad-text {
-                    opacity: 0;
                     transition: color 1s ease-in-out;
                     line-height: 1.2;
                 }
