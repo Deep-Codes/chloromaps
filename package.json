@@ -63,6 +63,7 @@
     "dependencies": {
         "@geist-ui/react": "^2.1.5",
         "@geist-ui/react-icons": "^1.0.1",
+        "inter-ui": "^3.18.1",
         "jotai": "^0.16.0",
         "next-images": "^1.7.0",
         "next-seo": "^4.23.0",

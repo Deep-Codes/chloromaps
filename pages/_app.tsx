@@ -8,6 +8,7 @@ import { useAtom } from 'jotai';
 import { themeAtom } from '@/store/theme.store';
 import SEO from '../next-seo.config';
 import '../styles/main.css';
+import 'inter-ui/inter.css';
 
 const Application: NextPage<AppProps<{}>> = ({ Component, pageProps }) => {
     const [theme, setTheme] = useAtom(themeAtom);

@@ -2127,6 +2127,11 @@ inquirer@^6.2.2:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
+inter-ui@^3.18.1:
+  version "3.18.1"
+  resolved "https://registry.yarnpkg.com/inter-ui/-/inter-ui-3.18.1.tgz#32d2676e4b03db08adc597e5c4bd89012f4e2351"
+  integrity sha512-W3LnAirp6a1ixpAHZwr9gH52KlOQOAp0oqbmIoGi2dAIlcIB7auJgLr9XFHUzYy2FoZ0Nf7aPe/nHMZB4/Zvdg==
+
 internal-slot@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/internal-slot/-/internal-slot-1.0.3.tgz#7347e307deeea2faac2ac6205d4bc7d34967f59c"
