@@ -9,6 +9,7 @@ export const mapAtom = atom<MapStoreType>({
   mapFillColor: '#ff677d',
   mapData: [],
   legendData: [],
+  legendTextColor: "white",
   hideStates: [],
   hideLegend: false,
   legendSmoothGradient: false

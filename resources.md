@@ -25,3 +25,6 @@ For Text Size relative to Svg Dimensions:
 http://xahlee.info/js/svg_font_size.html#:~:text=When%20you%20use%20font%20size,the%20unit%20is%20user%20coordinate.&text=Both%20SVG%20have%20font%2Dsize%20100.
 
 http://xahlee.info/js/svg_user_coord_unit_length.html
+
+For Blank Maps:
+https://en.wikipedia.org/wiki/Wikipedia:Blank_maps

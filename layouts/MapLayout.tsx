@@ -115,6 +115,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
             {!map.hideLegend && (
                 <LegendContainer
                     data={map.legendData}
+                    legendTextColor={map.legendTextColor}
                     legendSmoothGradient={map.legendSmoothGradient}
                 />
             )}
