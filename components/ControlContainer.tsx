@@ -73,6 +73,15 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             legendData: [],
             mapData: []
         }));
+        // @ts-ignore
+        setLabel({
+            data: [],
+            scalingFactor: 1
+        });
+        const el = document.getElementById('labels-container');
+        if (el) {
+            el.innerHTML = '';
+        }
     };
     const uploadDataConfig = (e: any) => {
         // @ts-ignore
