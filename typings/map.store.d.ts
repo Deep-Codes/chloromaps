@@ -19,6 +19,7 @@ export interface MapStoreType {
   mapFillColor: string;
   mapData: MapData[];
   legendData: LegendData[];
+  legendTextColor: string;
   legendSmoothGradient: boolean;
   hideStates: string[];
   hideLegend: boolean;

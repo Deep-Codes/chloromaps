@@ -5,6 +5,7 @@ import LegendGradient from './LegendGradient';
 interface Props {
     data: LegendData[];
     legendSmoothGradient: boolean;
+    legendTextColor: string;
 }
 
 /*
@@ -18,12 +19,12 @@ if height = 30 then viewBox="0 0 364 30"
 
 */
 
-const LegendContainer = ({ data, legendSmoothGradient }: Props) => {
+const LegendContainer = ({ data, legendSmoothGradient, legendTextColor }: Props) => {
     const calcH = data.length * 40;
     return (
         <>
             {legendSmoothGradient ? (
-                <LegendGradient gradArr={data} />
+                <LegendGradient legendTextColor={legendTextColor} gradArr={data} />
             ) : (
                 <svg
                     id="legend"
@@ -36,7 +37,7 @@ const LegendContainer = ({ data, legendSmoothGradient }: Props) => {
                         {data.map((dt: LegendData, i: number) => (
                             <svg key={dt.fill} height={30} y={`${30 * i + 5}`}>
                                 <rect x="55" y="5" width="20" height="20" fill={dt.fill} />
-                                <text fontFamily="Arial" fill="white" x="85" y="20">
+                                <text fontFamily="Arial" fill={legendTextColor} x="85" y="20">
                                     {dt.text}
                                 </text>
                             </svg>

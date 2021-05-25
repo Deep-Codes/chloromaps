@@ -7,6 +7,7 @@ interface Props {
     svgH?: number;
     gradW?: number;
     gradH?: number;
+    legendTextColor: string;
 }
 
 const LegendGradient: React.FC<Props> = ({
@@ -14,7 +15,8 @@ const LegendGradient: React.FC<Props> = ({
     svgW = 660,
     svgH = 60,
     gradW = 600,
-    gradH = 30
+    gradH = 30,
+    legendTextColor
 }) => {
     const len = gradArr.length;
     return (
@@ -33,7 +35,7 @@ const LegendGradient: React.FC<Props> = ({
                     key={g.fill}
                     x={gradW / (len * 2) + (i * gradW) / len}
                     y={20}
-                    fill="white">
+                    fill={legendTextColor}>
                     {g.text}
                 </text>
             ))}
