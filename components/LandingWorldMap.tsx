@@ -19,7 +19,7 @@ const LandingWorldMap = () => {
         const colorIdx = Math.floor(Math.random() * colorPickerPalette.length);
         const grad = document.getElementById('grad-text');
         if (grad) {
-            grad.style.fill = colorPickerPalette[colorIdx][5];
+            grad.style.color = colorPickerPalette[colorIdx][5];
         }
         const legendData: LegendData[] = [];
         colorPickerPalette[colorIdx].forEach((t, i) =>
@@ -54,6 +54,10 @@ const LandingWorldMap = () => {
         if (mapWorld) {
             mapWorld.style.opacity = '1';
         }
+        const grad = document.getElementById('grad-text');
+        if (grad) {
+            grad.style.opacity = '1';
+        }
         randomiseData();
         const id = setInterval(() => {
             randomiseData();
@@ -68,20 +72,7 @@ const LandingWorldMap = () => {
     return (
         <>
             <div className="head">
-                <svg
-                    id="grad-text"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 584 111"
-                    width={600}>
-                    <text fontFamily="Inter" fontSize="50" fontWeight="bold" letterSpacing="0em">
-                        <tspan x="18.2705" y="38.6818">
-                            Free Rapid Chloropeth{' '}
-                        </tspan>
-                        <tspan x="-2.50586" y="99.6818">
-                            Development and Editor
-                        </tspan>
-                    </text>
-                </svg>
+                <h1 id="grad-text">Free Rapid Chloropeth Development and Editor</h1>
             </div>
             <div className="flex flex-col map-container mx-auto" id="scroll-map">
                 {hover !== '' && (
@@ -103,7 +94,7 @@ const LandingWorldMap = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="50, 0, 1412, 707"
                     opacity="0"
-                    style={{ transition: 'opacity 5s ease;' }}
+                    style={{ transition: 'opacity 5s ease' }}
                     width="1000">
                     <g
                         style={{ pointerEvents: 'visible' }}
@@ -960,8 +951,13 @@ const LandingWorldMap = () => {
             <style jsx>{`
                 .head {
                     text-align: center;
-                    width: 800px;
+                    width: 600px;
                     margin: 80px auto 50px auto;
+                }
+                #grad-text {
+                    opacity: 0;
+                    transition: color 1s ease-in-out;
+                    line-height: 1.2;
                 }
             `}</style>
         </>
