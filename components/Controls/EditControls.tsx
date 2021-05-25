@@ -56,6 +56,13 @@ const EditControls: React.FC<Props> = ({
             setColor={handleAttrChange}
             type="defaultFillColor"
         />
+        <Spacer y={0.5} />
+        <ColorPickerInput
+            placeHolder="Legend Text Color"
+            color={map.legendTextColor}
+            setColor={handleAttrChange}
+            type="legendTextColor"
+        />
         <Spacer y={0.7} />
         <InputLabel text="Hide Legend" />
         <Toggle onChange={(e: any) => toggleHideLegend(e.target.checked)} size="large" />
