@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
-import { Button, Card, Link, Row, Spacer, Text } from '@geist-ui/react';
+import { Card, Link, Row, Spacer } from '@geist-ui/react';
 import LandingWorldMap from '@/components/LandingWorldMap';
 
 export const mapDt = [
