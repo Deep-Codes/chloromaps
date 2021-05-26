@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
-import { Spacer } from '@geist-ui/react';
+import { Card, Link, Row, Spacer } from '@geist-ui/react';
 import LandingWorldMap from '@/components/Landing/LandingWorldMap';
 import FeatureContainer from '@/components/Landing/FeatureContainer';
 
@@ -41,9 +41,14 @@ const Home: React.FC = () => (
     <MainLayout>
         <div className="flex flex-col">
             <LandingWorldMap />
-            <Spacer y={1} />
+            <Spacer y={5} />
+            <h1 className="mx-auto">Features</h1>
+            <Spacer y={2} />
             <FeatureContainer />
-            {/* <Row style={{ flexWrap: 'wrap' }} justify="space-between">
+            <Spacer y={5} />
+            <h1 className="mx-auto">Try out These Maps!</h1>
+            <Spacer y={2} />
+            <Row style={{ flexWrap: 'wrap' }} justify="space-between">
                 {mapDt.map((el) => (
                     <Card key={el.name} width="320px" style={{ marginBottom: '20px' }}>
                         <h2>{el.name.toUpperCase()}</h2>
@@ -55,7 +60,7 @@ const Home: React.FC = () => (
                         </Card.Footer>
                     </Card>
                 ))}
-            </Row> */}
+            </Row>
         </div>
     </MainLayout>
 );

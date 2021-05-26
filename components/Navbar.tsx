@@ -31,7 +31,7 @@ const Navbar = () => {
 
             <div className="flex items-center">
                 <Button
-                    style={{ minWidth: `50px`, marginRight: `30px` }}
+                    style={{ minWidth: `50px` }}
                     size="small"
                     icon={<Sun />}
                     ghost
@@ -75,6 +75,7 @@ const Navbar = () => {
                 }
                 .nav-mobile-icon {
                     margin-top: 5px;
+                    margin-left: 10px;
                     opacity: 0.7;
                 }
                 .nav-center {
