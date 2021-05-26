@@ -118,7 +118,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <Tabs.Item
                         label={
                             <>
-                                <Type /> Legend{' '}
+                                <Type /> Controls
                             </>
                         }
                         value="2">
@@ -129,6 +129,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                 toggleHideLegend={toggleHideLegend}
                                 smoothGradient={smoothGradient}
                             />
+                            <LabelControls />
                         </div>
                     </Tabs.Item>
                     <Tabs.Item

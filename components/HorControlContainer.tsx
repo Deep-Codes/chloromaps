@@ -113,6 +113,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         toggleHideLegend={toggleHideLegend}
                         smoothGradient={smoothGradient}
                     />
+                    <LabelControls />
                 </div>
                 <div className="control-box">
                     <ExportControls
@@ -144,7 +145,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <Tabs.Item
                         label={
                             <>
-                                <Type /> Legends
+                                <Type /> Controls
                             </>
                         }
                         value="2">
@@ -155,6 +156,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                 toggleHideLegend={toggleHideLegend}
                                 smoothGradient={smoothGradient}
                             />
+                            <LabelControls />
                         </div>
                     </Tabs.Item>
                     <Tabs.Item
