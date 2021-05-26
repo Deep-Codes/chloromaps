@@ -30,7 +30,7 @@ const MainLayout = ({ children }: Props) => (
                 position: sticky;
                 top: 0;
                 z-index: 1000;
-                backdrop-filter: blur(10px);
+                backdrop-filter: blur(20px);
             }
             @media screen and (max-width: 1000px) {
                 .page {
