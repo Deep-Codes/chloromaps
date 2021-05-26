@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { colorPickerPalette } from '@/data/colors';
-import resetMap from '@/lib/resetMap';
+import resetFullMap from '@/lib/resetFullMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { labelAtom } from '@/store/label.store';
 import { mapAtom } from '@/store/map.store';
@@ -67,12 +67,17 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         }));
     };
     const refreshMap = () => {
-        resetMap(map.mapData, map.defaultFillColor);
         // @ts-ignore
         setMap((st: MapStoreType) => ({
             ...st,
+            mapStrokeWidth: '1',
+            mapStrokeColor: 'white',
+            defaultFillColor: 'black',
             legendData: [],
-            mapData: []
+            mapData: [],
+            legendTextColor: 'white',
+            hideLegend: false,
+            legendSmoothGradient: false
         }));
         // @ts-ignore
         setLabel({
@@ -83,6 +88,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         if (el) {
             el.innerHTML = '';
         }
+        resetFullMap(stateCodes);
     };
     const uploadDataConfig = (e: any) => {
         // @ts-ignore
