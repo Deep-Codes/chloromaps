@@ -1,7 +1,8 @@
 import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
-import { Card, Link, Row, Spacer } from '@geist-ui/react';
-import LandingWorldMap from '@/components/LandingWorldMap';
+import { Spacer } from '@geist-ui/react';
+import LandingWorldMap from '@/components/Landing/LandingWorldMap';
+import FeatureCard from '@/components/Landing/FeatureCard';
 
 export const mapDt = [
     {
@@ -41,7 +42,16 @@ const Home: React.FC = () => (
         <div className="flex flex-col">
             <LandingWorldMap />
             <Spacer y={1} />
-            <Row style={{ flexWrap: 'wrap' }} justify="space-between">
+            <div className="cards-container">
+                <FeatureCard />
+                <FeatureCard />
+                <FeatureCard />
+                <FeatureCard />
+                <FeatureCard />
+                <FeatureCard />
+            </div>
+
+            {/* <Row style={{ flexWrap: 'wrap' }} justify="space-between">
                 {mapDt.map((el) => (
                     <Card key={el.name} width="320px" style={{ marginBottom: '20px' }}>
                         <h2>{el.name.toUpperCase()}</h2>
@@ -53,8 +63,24 @@ const Home: React.FC = () => (
                         </Card.Footer>
                     </Card>
                 ))}
-            </Row>
+            </Row> */}
         </div>
+        <style jsx>{`
+            .cards-container {
+                display: grid;
+                grid-gap: 16pt;
+                gap: 16pt;
+            }
+            @media screen and (min-width: 960px) {
+                .cards-container {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                }
+            }
+            @media screen and (max-width: 960px) and (min-width: 640px) {
+                .cards-container {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));  
+            }
+        `}</style>
     </MainLayout>
 );
 export default Home;
