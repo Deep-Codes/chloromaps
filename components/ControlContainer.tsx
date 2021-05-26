@@ -13,6 +13,7 @@ import React from 'react';
 import EditControls from './Controls/EditControls';
 import ExportControls from './Controls/ExportControls';
 import LabelControls from './Controls/LabelControls';
+import LegendAllControls from './Controls/LegendAllControls';
 
 interface Props {
     mapId: string;
@@ -109,8 +110,6 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             <EditControls
                                 map={map}
                                 handleAttrChange={handleAttrChange}
-                                toggleHideLegend={toggleHideLegend}
-                                smoothGradient={smoothGradient}
                                 randomiseData={randomiseData}
                                 refreshMap={refreshMap}
                             />
@@ -119,12 +118,17 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <Tabs.Item
                         label={
                             <>
-                                <Type /> Label{' '}
+                                <Type /> Legend{' '}
                             </>
                         }
                         value="2">
                         <div className="control-box">
-                            <LabelControls />
+                            <LegendAllControls
+                                map={map}
+                                handleAttrChange={handleAttrChange}
+                                toggleHideLegend={toggleHideLegend}
+                                smoothGradient={smoothGradient}
+                            />
                         </div>
                     </Tabs.Item>
                     <Tabs.Item
