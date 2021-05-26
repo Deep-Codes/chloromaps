@@ -1,30 +1,42 @@
 import React from 'react';
+import LabelsIcon from '@/assets/icons/LabelsIcon';
+import MapIcon from '@/assets/icons/MapIcon';
+import ConfigIcon from '@/assets/icons/ConfigIcon';
+import LegendIcon from '@/assets/icons/LegendIcon';
+import FreeIcon from '@/assets/icons/FreeIcon';
+import ImageIcon from '@/assets/icons/ImageIcon';
 import FeatureCard, { FeatureType } from './FeatureCard';
 
 const featList: FeatureType[] = [
     {
         heading: '50+ Maps',
-        text: 'Maps of Countries and Regions Around the World in different Projections'
+        text: 'Maps of Countries and Regions Around the World in different Projections',
+        icon: <MapIcon />
     },
     {
         heading: 'Free',
-        text: 'All Feature of Chloromaps would always be Free and Without Watermark.'
+        text: 'All Feature of Chloromaps would always be Free and Without Watermark.',
+        icon: <FreeIcon />
     },
     {
-        heading: 'Support',
-        text: 'Export Maps and Legends in .png .jpg in High Quality'
+        heading: 'Export',
+        text: 'Export Maps and Legends in .png .jpg in High Quality',
+        icon: <ImageIcon />
     },
     {
         heading: 'Labels',
-        text: 'Add and Control Labels on your Maps with Ease'
+        text: 'Add and Control Labels on your Maps with Ease',
+        icon: <LabelsIcon />
     },
     {
         heading: 'Config',
-        text: 'Save your Map Config and Edit and Reuse it anytime'
+        text: 'Save your Map Config and Edit and Reuse it anytime',
+        icon: <ConfigIcon />
     },
     {
         heading: 'Legends',
-        text: 'Develop Maps and Convert into Beautiful Legend Gradient'
+        text: 'Develop Maps and Convert into Beautiful Legend Gradient',
+        icon: <LegendIcon />
     }
 ];
 

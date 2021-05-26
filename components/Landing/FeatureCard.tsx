@@ -4,6 +4,7 @@ import React from 'react';
 export interface FeatureType {
     heading: string;
     text: string;
+    icon: JSX.Element;
 }
 
 interface Props {
@@ -14,7 +15,11 @@ const FeatureCard: React.FC<Props> = ({ data }) => {
     const { palette } = useTheme();
     return (
         <div className="card">
-            <h2>{data.heading}</h2>
+            <div className="card-head">
+                {data.icon}
+                <h2>{data.heading}</h2>
+            </div>
+
             <p>{data.text}</p>
             <style jsx>{`
                 .card {
@@ -22,11 +27,20 @@ const FeatureCard: React.FC<Props> = ({ data }) => {
                     padding: 16pt;
                     border-radius: 5px;
                     text-align: left;
+
                     display: flex;
                     flex-direction: column;
                 }
+                .card-head {
+                    display: flex;
+                    align-items: center;
+                }
                 .card h2 {
+                    margin: 0;
+                    margin-left: 10px;
                     font-size: 25px;
+                    font-weight: 600;
+                    display: inline-block;
                 }
                 .card p {
                     opacity: 0.6;
