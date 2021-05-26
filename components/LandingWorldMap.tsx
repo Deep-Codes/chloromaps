@@ -957,7 +957,7 @@ const LandingWorldMap = () => {
                     margin: 80px auto 50px auto;
                 }
                 #grad-text {
-                    transition: color 1s ease-in-out;
+                    transition: color 0.5s ease-in-out;
                     line-height: 1.2;
                 }
                 @media screen and (max-width: 640px) {

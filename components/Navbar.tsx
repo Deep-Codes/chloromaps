@@ -24,8 +24,8 @@ const Navbar = () => {
             <div className="nav-center">
                 <span>Features</span>
                 <span>Examples</span>
+                <span>Maps</span>
                 <span>Tutorial</span>
-                <span>Changelog</span>
                 <span>Instagram</span>
             </div>
 
@@ -51,8 +51,8 @@ const Navbar = () => {
                 <div className="nav-mobile">
                     <p>Features</p>
                     <p>Examples</p>
+                    <p>Maps</p>
                     <p>Tutorial</p>
-                    <p>Changelog</p>
                     <p>Instagram</p>
                 </div>
             ) : (
