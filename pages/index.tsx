@@ -6,7 +6,7 @@ import FeatureContainer from '@/components/Landing/FeatureContainer';
 import MapShowContainer from '@/components/Landing/MapShowContainer';
 
 const Home: React.FC = () => (
-    <MainLayout>
+    <MainLayout showNav={true}>
         <div className="flex flex-col">
             <LandingWorldMap />
             <Spacer y={5} />

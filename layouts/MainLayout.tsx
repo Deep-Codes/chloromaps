@@ -1,15 +1,17 @@
+/* eslint-disable react/require-default-props */
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import React from 'react';
 
 interface Props {
     children: React.ReactNode;
+    showNav?: boolean;
 }
 
-const MainLayout = ({ children }: Props) => (
+const MainLayout = ({ children, showNav = false }: Props) => (
     <>
         <div className="navbar-ctx">
-            <Navbar />
+            <Navbar showNav={showNav} />
         </div>
 
         <div className="page">

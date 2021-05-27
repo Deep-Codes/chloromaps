@@ -7,7 +7,11 @@ import { Button, useTheme } from '@geist-ui/react';
 import { Sun, Menu, X } from '@geist-ui/react-icons';
 import Logo from '@/assets/logo/Logo';
 
-const Navbar = () => {
+interface Props {
+    showNav: boolean;
+}
+
+const Navbar = ({ showNav }: Props) => {
     const [theme, setTheme] = useAtom(themeAtom);
     const th = useTheme();
     const [navOpen, setNavOpen] = React.useState(false);
@@ -21,13 +25,17 @@ const Navbar = () => {
                 </a>
             </div>
 
-            <div className="nav-center">
-                <span>Features</span>
-                <span>Examples</span>
-                <span>Maps</span>
-                <span>Tutorial</span>
-                <span>Instagram</span>
-            </div>
+            {showNav ? (
+                <div className="nav-center">
+                    <span>Features</span>
+                    <span>Examples</span>
+                    <span>Maps</span>
+                    <span>Tutorial</span>
+                    <span>Instagram</span>
+                </div>
+            ) : (
+                ''
+            )}
 
             <div className="flex items-center">
                 <Button
