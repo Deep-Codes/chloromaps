@@ -28,6 +28,21 @@ export const mapDt = [
         link: '/russia'
     },
     {
+        name: 'UK',
+        text: 'Administrative Regions of UK, Based on Mercator Projection.',
+        link: '/uk'
+    },
+    {
+        name: 'Germany',
+        text: 'Germany, Based on Mercator Projection.',
+        link: '/germany'
+    },
+    {
+        name: 'Australia',
+        text: 'Australia, Based on Mercator Projection.',
+        link: '/australia'
+    },
+    {
         name: 'Sweden',
         text: 'All States included , Based on Mercator Projection.',
         link: '/sweden'
