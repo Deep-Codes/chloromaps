@@ -1,7 +1,17 @@
 import React from 'react';
 import MapShowCard from './MapShowCard';
 
-export const mapDt = [
+export interface MapShowcaseType {
+    name: string;
+    text: string;
+    link: string;
+}
+
+interface Props {
+    query?: string;
+}
+
+export const mapDt: MapShowcaseType[] = [
     {
         name: 'World',
         text: '180+ Countries Based on Robinson Projection.',
@@ -49,14 +59,18 @@ export const mapDt = [
     }
 ];
 
-const MapShowContainer = () => (
-    <>
-        <div className="cards-container">
-            {mapDt.map((d) => (
-                <MapShowCard key={d.text} data={d} />
-            ))}
-        </div>
-        <style jsx>{`
+const MapShowContainer: React.FC<Props> = ({ query }) => {
+    const search = (q: string) =>
+        mapDt.filter((el) => el.name.toLowerCase().search(q.toLowerCase()) > -1);
+    const mapData = query ? search(query) : mapDt;
+    return (
+        <>
+            <div className="cards-container">
+                {mapData.map((d) => (
+                    <MapShowCard key={d.text} data={d} />
+                ))}
+            </div>
+            <style jsx>{`
             .cards-container {
                 display: grid;
                 grid-gap: 16pt;
@@ -72,7 +86,8 @@ const MapShowContainer = () => (
                     grid-template-columns: repeat(2, minmax(0, 1fr));  
             }
         `}</style>
-    </>
-);
+        </>
+    );
+};
 
 export default MapShowContainer;
