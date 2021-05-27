@@ -1,5 +1,5 @@
 export default {
-    title: 'Chloromaps',
+    title: 'Chloromaps | Develop and Ship Chloropeth Maps Faster',
     description: 'A Rapid Map Development and Editor , Ship maps Faster and without Pain.',
     author: 'Deepankar Bhade',
     openGraph: {
@@ -12,7 +12,7 @@ export default {
                 url: `https://chloromaps.vercel.app/static/images/global/banner.png`,
                 width: 1920,
                 height: 1080,
-                alt: 'Deepankar Bhade'
+                alt: 'Chloromaps'
             }
         ]
     },

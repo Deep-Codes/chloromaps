@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { colorPickerPalette } from '@/data/colors';
-import resetMap from '@/lib/resetMap';
+import resetFullMap from '@/lib/resetFullMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { labelAtom } from '@/store/label.store';
 import { mapAtom } from '@/store/map.store';
@@ -13,6 +13,7 @@ import React from 'react';
 import EditControls from './Controls/EditControls';
 import ExportControls from './Controls/ExportControls';
 import LabelControls from './Controls/LabelControls';
+import LegendAllControls from './Controls/LegendAllControls';
 
 interface Props {
     mapId: string;
@@ -66,12 +67,17 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         }));
     };
     const refreshMap = () => {
-        resetMap(map.mapData, map.defaultFillColor);
         // @ts-ignore
         setMap((st: MapStoreType) => ({
             ...st,
+            mapStrokeWidth: '1',
+            mapStrokeColor: 'white',
+            defaultFillColor: 'black',
             legendData: [],
-            mapData: []
+            mapData: [],
+            legendTextColor: 'white',
+            hideLegend: false,
+            legendSmoothGradient: false
         }));
         // @ts-ignore
         setLabel({
@@ -82,6 +88,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         if (el) {
             el.innerHTML = '';
         }
+        resetFullMap(stateCodes);
     };
     const uploadDataConfig = (e: any) => {
         // @ts-ignore
@@ -101,13 +108,17 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <EditControls
                         map={map}
                         handleAttrChange={handleAttrChange}
-                        toggleHideLegend={toggleHideLegend}
-                        smoothGradient={smoothGradient}
                         randomiseData={randomiseData}
                         refreshMap={refreshMap}
                     />
                 </div>
                 <div className="control-box">
+                    <LegendAllControls
+                        map={map}
+                        handleAttrChange={handleAttrChange}
+                        toggleHideLegend={toggleHideLegend}
+                        smoothGradient={smoothGradient}
+                    />
                     <LabelControls />
                 </div>
                 <div className="control-box">
@@ -132,8 +143,6 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             <EditControls
                                 map={map}
                                 handleAttrChange={handleAttrChange}
-                                toggleHideLegend={toggleHideLegend}
-                                smoothGradient={smoothGradient}
                                 randomiseData={randomiseData}
                                 refreshMap={refreshMap}
                             />
@@ -142,11 +151,17 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <Tabs.Item
                         label={
                             <>
-                                <Type /> Label{' '}
+                                <Type /> Controls
                             </>
                         }
                         value="2">
                         <div className="control-box">
+                            <LegendAllControls
+                                map={map}
+                                handleAttrChange={handleAttrChange}
+                                toggleHideLegend={toggleHideLegend}
+                                smoothGradient={smoothGradient}
+                            />
                             <LabelControls />
                         </div>
                     </Tabs.Item>

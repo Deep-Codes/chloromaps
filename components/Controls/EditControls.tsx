@@ -1,30 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MapStoreType } from '@/typings/map.store';
-import { Input, Spacer, Toggle, Button } from '@geist-ui/react';
+import { Input, Spacer, Button } from '@geist-ui/react';
 import { Layers, RefreshCcw } from '@geist-ui/react-icons';
 import React from 'react';
 import ColorPickerInput from '../ColorPickerInput';
 import InputLabel from '../InputLabel';
-import LegendControls from '../Legend/LegendControls';
 import PaletteBox from '../PaletteBox';
 
 interface Props {
     map: MapStoreType;
     handleAttrChange: (v: string, a: string) => void;
-    toggleHideLegend: (b: any) => void;
-    smoothGradient: (b: any) => void;
     randomiseData: () => void;
     refreshMap: () => void;
 }
 
-const EditControls: React.FC<Props> = ({
-    map,
-    handleAttrChange,
-    toggleHideLegend,
-    smoothGradient,
-    randomiseData,
-    refreshMap
-}) => (
+const EditControls: React.FC<Props> = ({ map, handleAttrChange, randomiseData, refreshMap }) => (
     <>
         <InputLabel text="Border Width" />
         <Input
@@ -56,19 +46,8 @@ const EditControls: React.FC<Props> = ({
             setColor={handleAttrChange}
             type="defaultFillColor"
         />
-        <Spacer y={0.5} />
-        <ColorPickerInput
-            placeHolder="Legend Text Color"
-            color={map.legendTextColor}
-            setColor={handleAttrChange}
-            type="legendTextColor"
-        />
         <Spacer y={0.7} />
-        <InputLabel text="Hide Legend" />
-        <Toggle onChange={(e: any) => toggleHideLegend(e.target.checked)} size="large" />
-        <Spacer y={0.7} />
-        <InputLabel text="Smooth Gradient Legend" />
-        <Toggle onChange={(e: any) => smoothGradient(e.target.checked)} size="large" />
+        <PaletteBox data={map.mapData} setColor={handleAttrChange} />
         <Spacer y={0.7} />
         <InputLabel text="Fill Random Data" />
         <Button icon={<Layers />} onClick={() => randomiseData()}>
@@ -79,10 +58,6 @@ const EditControls: React.FC<Props> = ({
         <Button icon={<RefreshCcw />} onClick={() => refreshMap()}>
             Reset Map
         </Button>
-        <Spacer y={0.7} />
-        <PaletteBox data={map.mapData} setColor={handleAttrChange} />
-        <Spacer y={0.7} />
-        <LegendControls />
     </>
 );
 

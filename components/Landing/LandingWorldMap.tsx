@@ -73,7 +73,7 @@ const LandingWorldMap = () => {
         <>
             <div className="head">
                 <h1 style={{ opacity: 0, color: 'transparent' }} id="grad-text">
-                    Free Rapid Chloropeth Development and Editor
+                    Develop and Ship Chloropeth Maps Faster
                 </h1>
             </div>
             <div className="flex flex-col map-container mx-auto" id="scroll-map">

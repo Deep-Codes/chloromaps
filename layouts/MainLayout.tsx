@@ -1,15 +1,17 @@
+/* eslint-disable react/require-default-props */
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import React from 'react';
 
 interface Props {
     children: React.ReactNode;
+    showNav?: boolean;
 }
 
-const MainLayout = ({ children }: Props) => (
+const MainLayout = ({ children, showNav = false }: Props) => (
     <>
         <div className="navbar-ctx">
-            <Navbar />
+            <Navbar showNav={showNav} />
         </div>
 
         <div className="page">
@@ -29,8 +31,12 @@ const MainLayout = ({ children }: Props) => (
                 width: 100%;
                 position: sticky;
                 top: 0;
+                right: 0;
+                left: 0;
                 z-index: 1000;
-                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(141, 147, 171, 0.3);
+                border-bottom: 1px solid rgba(141, 147, 171, 0.3);
+                backdrop-filter: blur(20px);
             }
             @media screen and (max-width: 1000px) {
                 .page {
