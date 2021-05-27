@@ -31,7 +31,11 @@ const MainLayout = ({ children, showNav = false }: Props) => (
                 width: 100%;
                 position: sticky;
                 top: 0;
+                right: 0;
+                left: 0;
                 z-index: 1000;
+                border-top: 1px solid rgba(141, 147, 171, 0.3);
+                border-bottom: 1px solid rgba(141, 147, 171, 0.3);
                 backdrop-filter: blur(20px);
             }
             @media screen and (max-width: 1000px) {
