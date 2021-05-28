@@ -18,9 +18,10 @@ const MainLayout = ({ children, showNav = false }: Props) => (
             <main>{children}</main>
         </div>
 
-        <div className="footer-ctx">
+        <footer className="footer-ctx">
             <Footer />
-        </div>
+        </footer>
+
         <style jsx>{`
             .page {
                 display: flex;

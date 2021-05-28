@@ -17,38 +17,41 @@ const Footer = () => {
         }
     };
     return (
-        <footer>
-            {data.map((dt, j) => (
-                <div key={dt[0]} className="footer-box">
-                    {dt.map((el, i) =>
-                        i === 0 ? (
-                            <div className="footer-head" key={el}>
-                                {el}{' '}
-                                <button
-                                    type="button"
-                                    onClick={() => handleClick(j)}
-                                    className="plus">
-                                    {j === open ? '-' : '+'}
-                                </button>
-                            </div>
-                        ) : (
-                            <>
-                                <div className="footer-content" key={el}>
-                                    {el}
+        <>
+            <div className="footer">
+                {data.map((dt, j) => (
+                    <div key={dt[0]} className="footer-box">
+                        {dt.map((el, i) =>
+                            i === 0 ? (
+                                <div className="footer-head" key={el}>
+                                    {el}{' '}
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClick(j)}
+                                        className="plus">
+                                        {j === open ? '-' : '+'}
+                                    </button>
                                 </div>
-                                <div
-                                    className="footer-content-mob"
-                                    style={{ display: `${j === open ? 'block' : 'none'}` }}
-                                    key={el}>
-                                    {el}
-                                </div>
-                            </>
-                        )
-                    )}
-                </div>
-            ))}
+                            ) : (
+                                <>
+                                    <div className="footer-content" key={el}>
+                                        {el}
+                                    </div>
+                                    <div
+                                        className="footer-content-mob"
+                                        style={{ display: `${j === open ? 'block' : 'none'}` }}
+                                        key={el}>
+                                        {el}
+                                    </div>
+                                </>
+                            )
+                        )}
+                    </div>
+                ))}
+            </div>
+            <div className="author">Designed and Developed by Deepankar Bhade</div>
             <style jsx>{`
-                footer {
+                .footer {
                     position: relative;
                     max-width: 1000px;
                     margin: 0 auto;
@@ -56,6 +59,11 @@ const Footer = () => {
                     flex-wrap: nowrap;
                     justify-content: space-between;
                     padding: 30px 0;
+                }
+                .author {
+                    max-width: 1000px;
+                    margin: 0px auto 40px auto;
+                    font-size: 14px;
                 }
                 .footer-box {
                     display: flex;
@@ -78,7 +86,7 @@ const Footer = () => {
                     display: none;
                 }
                 @media screen and (max-width: 640px) {
-                    footer {
+                    .footer {
                         flex-direction: column;
                     }
                     .footer-head {
@@ -99,7 +107,7 @@ const Footer = () => {
                     }
                 }
             `}</style>
-        </footer>
+        </>
     );
 };
 
