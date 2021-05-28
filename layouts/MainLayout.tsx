@@ -16,6 +16,9 @@ const MainLayout = ({ children, showNav = false }: Props) => (
 
         <div className="page">
             <main>{children}</main>
+        </div>
+
+        <div className="footer-ctx">
             <Footer />
         </div>
         <style jsx>{`
@@ -38,12 +41,19 @@ const MainLayout = ({ children, showNav = false }: Props) => (
                 border-bottom: 1px solid rgba(141, 147, 171, 0.3);
                 backdrop-filter: blur(20px);
             }
+            .footer-ctx {
+                width: 100%;
+                border-top: 1px solid rgba(141, 147, 171, 0.3);
+                border-bottom: 1px solid rgba(141, 147, 171, 0.3);
+                backdrop-filter: blur(20px);
+            }
             @media screen and (max-width: 1000px) {
                 .page {
                     width: 100%;
                     padding: 0 10px;
                 }
-                .navbar-ctx {
+                .navbar-ctx,
+                .footer-ctx {
                     padding: 0 10px;
                 }
             }
