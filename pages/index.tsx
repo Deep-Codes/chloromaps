@@ -22,7 +22,7 @@ const Home: React.FC = () => (
             <Spacer y={2} />
             <div className="mx-auto">
                 <Link href="/maps">
-                    <Button auto type="secondary" icon={<Globe />}>
+                    <Button auto icon={<Globe />}>
                         View All Maps
                     </Button>
                 </Link>

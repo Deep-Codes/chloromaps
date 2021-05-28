@@ -24,6 +24,9 @@
 .items-center {
     align-items: center;
 }
+.text-center {
+    text-align: center;
+}
 .pointer {
     cursor: pointer;
 }

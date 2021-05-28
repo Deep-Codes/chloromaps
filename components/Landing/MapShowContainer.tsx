@@ -53,6 +53,11 @@ export const mapDt: MapShowcaseType[] = [
         link: '/australia'
     },
     {
+        name: 'Africa',
+        text: 'Africa , Based on Robinson Projection.',
+        link: '/africa'
+    },
+    {
         name: 'Sweden',
         text: 'All States included , Based on Mercator Projection.',
         link: '/sweden'
@@ -62,14 +67,27 @@ export const mapDt: MapShowcaseType[] = [
 const MapShowContainer: React.FC<Props> = ({ query }) => {
     const search = (q: string) =>
         mapDt.filter((el) => el.name.toLowerCase().search(q.toLowerCase()) > -1);
-    const mapData = query ? search(query) : mapDt;
+    const mapData = query !== undefined ? search(query) : mapDt.slice(0, 6);
     return (
         <>
             <div className="cards-container">
-                {mapData.map((d) => (
-                    <MapShowCard key={d.text} data={d} />
-                ))}
+                {mapData.length > 0 ? (
+                    <>
+                        {mapData.map((d) => (
+                            <MapShowCard key={d.text} data={d} />
+                        ))}
+                    </>
+                ) : null}
             </div>
+            {mapData.length === 0 ? (
+                <div className="main-description">
+                    <h2 className="mx">No Map Found for "{query}"</h2>
+                    <p style={{ fontSize: '18px' }}>
+                        If you want this Map to be Available
+                        <a href="https://twitter.com/DeepankarBhade"> Contact the Developer. </a>
+                    </p>
+                </div>
+            ) : null}
             <style jsx>{`
             .cards-container {
                 display: grid;
