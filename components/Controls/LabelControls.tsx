@@ -3,17 +3,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { labelAtom } from '@/store/label.store';
 import { LabelStoreType, LabelType } from '@/typings/label.store';
-import { Input, Spacer, Toggle } from '@geist-ui/react';
+import { Input, Spacer } from '@geist-ui/react';
 import { useAtom } from 'jotai';
 import React from 'react';
 import { PlusSquare } from '@geist-ui/react-icons';
-import { disableTooltip } from '@/store/map.store';
+
 import InputLabel from '../InputLabel';
 import LabelContainer from '../Label/LabelContainer';
 
 const LabelControls = () => {
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
-    const [, setTooltip] = useAtom(disableTooltip);
     const [text, setText] = React.useState('');
     const addLabel = () => {
         if (text !== '') {
@@ -47,8 +46,6 @@ const LabelControls = () => {
     };
     return (
         <div>
-            <InputLabel text="Disable Tooltip" />
-            <Toggle onChange={(e: any) => setTooltip(e.target.checked)} size="large" />
             <Spacer y={0.7} />
             <InputLabel text="Add Labels to Map" />
             <div className="flex items-center">

@@ -3,10 +3,10 @@ import { colorPickerPalette } from '@/data/colors';
 import resetFullMap from '@/lib/resetFullMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { labelAtom } from '@/store/label.store';
-import { mapAtom } from '@/store/map.store';
+import { disableTooltip, mapAtom } from '@/store/map.store';
 import { LabelStoreType } from '@/typings/label.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
-import { Tabs } from '@geist-ui/react';
+import { Spacer, Tabs, Toggle } from '@geist-ui/react';
 import { Edit, Type, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
@@ -14,6 +14,7 @@ import EditControls from './Controls/EditControls';
 import ExportControls from './Controls/ExportControls';
 import LabelControls from './Controls/LabelControls';
 import LegendAllControls from './Controls/LegendAllControls';
+import InputLabel from './InputLabel';
 
 interface Props {
     mapId: string;
@@ -23,6 +24,7 @@ interface Props {
 const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
+    const [, setTooltip] = useAtom(disableTooltip);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
         setMap((st: MapStoreType) => ({
@@ -113,13 +115,22 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     />
                 </div>
                 <div className="control-box">
-                    <LegendAllControls
-                        map={map}
-                        handleAttrChange={handleAttrChange}
-                        toggleHideLegend={toggleHideLegend}
-                        smoothGradient={smoothGradient}
-                    />
-                    <LabelControls />
+                    <InputLabel text="Disable Tooltip" />
+                    <Toggle onChange={(e: any) => setTooltip(e.target.checked)} size="large" />
+                    <Spacer y={0.7} />
+                    <Tabs hideDivider initialValue="1">
+                        <Tabs.Item label="Legend" value="1">
+                            <LegendAllControls
+                                map={map}
+                                handleAttrChange={handleAttrChange}
+                                toggleHideLegend={toggleHideLegend}
+                                smoothGradient={smoothGradient}
+                            />
+                        </Tabs.Item>
+                        <Tabs.Item label="Labels" value="2">
+                            <LabelControls />
+                        </Tabs.Item>
+                    </Tabs>
                 </div>
                 <div className="control-box">
                     <ExportControls
@@ -151,18 +162,31 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <Tabs.Item
                         label={
                             <>
-                                <Type /> Controls
+                                <Type /> Legend
                             </>
                         }
                         value="2">
                         <div className="control-box">
-                            <LegendAllControls
-                                map={map}
-                                handleAttrChange={handleAttrChange}
-                                toggleHideLegend={toggleHideLegend}
-                                smoothGradient={smoothGradient}
+                            <Spacer y={0.7} />
+                            <InputLabel text="Disable Tooltip" />
+                            <Toggle
+                                onChange={(e: any) => setTooltip(e.target.checked)}
+                                size="large"
                             />
-                            <LabelControls />
+                            <Spacer y={0.7} />
+                            <Tabs hideDivider initialValue="1">
+                                <Tabs.Item label="Legend" value="1">
+                                    <LegendAllControls
+                                        map={map}
+                                        handleAttrChange={handleAttrChange}
+                                        toggleHideLegend={toggleHideLegend}
+                                        smoothGradient={smoothGradient}
+                                    />
+                                </Tabs.Item>
+                                <Tabs.Item label="Labels" value="2">
+                                    <LabelControls />
+                                </Tabs.Item>
+                            </Tabs>
                         </div>
                     </Tabs.Item>
                     <Tabs.Item
@@ -195,6 +219,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     margin-left: auto;
                 }
                 .control-box {
+                    min-width: 360px;
                     padding: 20px 5px 100px 5px;
                 }
                 @media screen and (max-width: 800px) {
