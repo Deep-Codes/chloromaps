@@ -61,11 +61,15 @@ const Footer = () => {
                             ) : (
                                 <div key={uuidv4()}>
                                     <div className="footer-content mob pointer">
-                                        <a href={el.link}>{el.text}</a>
+                                        <a href={el.link} aria-label={el.text}>
+                                            {el.text}
+                                        </a>
                                     </div>
                                     {j === open ? (
                                         <div className="footer-content-mob mob">
-                                            <a href={el.link}>{el.text}</a>
+                                            <a href={el.link} aria-label={el.text}>
+                                                {el.text}
+                                            </a>
                                         </div>
                                     ) : (
                                         ''
