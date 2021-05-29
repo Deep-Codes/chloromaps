@@ -10,9 +10,9 @@ interface Props {
 
 const MainLayout = ({ children, showNav = false }: Props) => (
     <>
-        <div className="navbar-ctx">
+        <nav className="navbar-ctx">
             <Navbar showNav={showNav} />
-        </div>
+        </nav>
 
         <div className="page">
             <main>{children}</main>

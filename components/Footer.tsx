@@ -1,4 +1,5 @@
 /* eslint-disable react/no-array-index-key */
+import version from '@/data/version';
 import React from 'react';
 
 const data = [
@@ -52,7 +53,7 @@ const Footer = () => {
             </div>
             <div className="author flex justify-between">
                 <span>Developed by Deepankar Bhade</span>
-                <span>Chloromaps v0.0.0-alpha</span>
+                <span>Chloromaps {version}</span>
             </div>
             <style jsx>{`
                 .footer {
@@ -80,14 +81,21 @@ const Footer = () => {
                 }
                 .footer-box div {
                     opacity: 0.6;
+                    cursor: pointer;
                     font-size: 14px;
                     margin-bottom: 10px;
+                }
+                .footer-box div:hover {
+                    opacity: 1;
                 }
                 .footer-box .footer-head {
                     opacity: 1;
                 }
                 .footer-content-mob {
                     display: none;
+                }
+                .text {
+                    cursor: pointer;
                 }
                 @media screen and (max-width: 640px) {
                     .footer {
