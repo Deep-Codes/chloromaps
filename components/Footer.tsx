@@ -7,16 +7,16 @@ const data = [
         { text: 'Home', link: '/' },
         { text: 'About', link: '/about' },
         { text: 'Inspiration', link: '/inspiration' },
-        { text: 'Changelog', link: 'changelog' },
-        { text: 'Contact', link: 'contact' }
+        { text: 'Changelog', link: '/changelog' },
+        { text: 'Contact', link: '/contact' }
     ],
     [
         { text: 'Resources', link: '/' },
-        { text: 'Documentation', link: 'documentation' },
-        { text: 'Acknowledgement', link: 'acknowledgement' },
-        { text: 'Blogs', link: 'blogs' },
-        { text: 'Open Source', link: 'open-source' },
-        { text: 'Maps', link: 'maps' }
+        { text: 'Acknowledgement', link: '/acknowledgement' },
+        { text: 'Blogs', link: '/blogs' },
+        { text: 'Open Source', link: '/open-source' },
+        { text: 'Quiz', link: 'https://quiz-affinity.vercel.app/' },
+        { text: 'Maps', link: '/maps' }
     ],
     [
         { text: 'Socials', link: '/' },
@@ -76,17 +76,6 @@ const Footer = () => {
                     </div>
                 ))}
             </div>
-            {/* <div className="author flex justify-between">
-                <span>Developed by Deepankar Bhade</span>
-                <span>Chloromaps {version}</span>
-            </div> */}
-            {/* 
-            .author {
-                    max-width: 1000px;
-                    margin: 0px auto 40px auto;
-                    font-size: 14px;
-                }
-            */}
             <style jsx>{`
                 .footer {
                     position: relative;

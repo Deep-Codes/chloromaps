@@ -26,7 +26,6 @@ const MainLayout = ({ children, showNav = false }: Props) => (
             .page {
                 display: flex;
                 flex-direction: column;
-                min-height: 100vh;
                 max-width: 1000px;
                 margin: 0 auto;
                 overflow-x: hidden !important;
