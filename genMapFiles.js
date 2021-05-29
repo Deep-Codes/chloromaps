@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const country = process.argv[2];
 const viewBoxW = process.argv[3];
-const viewBoxH = process.argv[3];
+const viewBoxH = process.argv[4];
 
 const capFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -11,14 +11,14 @@ const capName = capFirst(country);
 
 const dir = `./data/${capName}`;
 
-const svgData = fs.readFileSync(`./temp/${country}.svg`, 'utf8', (err, data) => {
+const svgData = fs.readFileSync(`./temp/map.svg`, 'utf8', (err, data) => {
     if (err) {
         console.error(err);
         return;
     }
     return data;
 });
-const stateData = fs.readFileSync(`./temp/${country}.data`, 'utf8', (err, data) => {
+const stateData = fs.readFileSync(`./temp/map.data`, 'utf8', (err, data) => {
     if (err) {
         console.error(err);
         return;
@@ -74,7 +74,7 @@ const genTemplate = (country) => {
         });
         // Generate Pages file
         fs.writeFile(
-            `./pages/${country}.tsx`,
+            `./pages/map/${country}.tsx`,
             `import ControlContainer from '@/components/ControlContainer';
 import ${capName}Map from '@/data/${capName}/${capName}.map';
 import { ${capName}StateCodes } from '@/data/${capName}/${capName}StateCodes';

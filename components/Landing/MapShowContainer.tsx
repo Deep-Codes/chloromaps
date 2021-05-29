@@ -63,6 +63,21 @@ export const mapDt: MapShowcaseType[] = [
         link: '/australia'
     },
     {
+        name: 'Pacific-World',
+        text: 'Pacific-centerd World Map based on Robinson Projection',
+        link: '/world-pacific'
+    },
+    {
+        name: 'Canada',
+        text: 'All Administrative Regions of Canada in Mercator Projection',
+        link: '/canada'
+    },
+    {
+        name: 'Turkey',
+        text: 'All Administrative Regions of Turkey in Mercator Projection',
+        link: '/turkey'
+    },
+    {
         name: 'Africa',
         text: 'Africa , Based on Robinson Projection.',
         link: '/africa'
