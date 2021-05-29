@@ -17,7 +17,7 @@ const Navbar = ({ showNav }: Props) => {
     return (
         <>
             <div className="nav">
-                <a href="/">
+                <a href="/" aria-label="Go to Home Page">
                     <>
                         <Logo className="pointer" fill={theme ? 'white' : 'black'} />
                     </>
@@ -37,6 +37,7 @@ const Navbar = ({ showNav }: Props) => {
 
                 <div className="flex items-center">
                     <Button
+                        aria-label="Toggle Theme Button"
                         style={{ minWidth: `50px` }}
                         size="small"
                         icon={<Sun />}
