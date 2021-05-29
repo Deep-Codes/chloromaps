@@ -10,19 +10,22 @@ interface Props {
 
 const MainLayout = ({ children, showNav = false }: Props) => (
     <>
-        <div className="navbar-ctx">
+        <nav className="navbar-ctx">
             <Navbar showNav={showNav} />
-        </div>
+        </nav>
 
         <div className="page">
             <main>{children}</main>
-            <Footer />
         </div>
+
+        <footer className="footer-ctx">
+            <Footer />
+        </footer>
+
         <style jsx>{`
             .page {
                 display: flex;
                 flex-direction: column;
-                min-height: 100vh;
                 max-width: 1000px;
                 margin: 0 auto;
                 overflow-x: hidden !important;
@@ -38,12 +41,19 @@ const MainLayout = ({ children, showNav = false }: Props) => (
                 border-bottom: 1px solid rgba(141, 147, 171, 0.3);
                 backdrop-filter: blur(20px);
             }
+            .footer-ctx {
+                width: 100%;
+                border-top: 1px solid rgba(141, 147, 171, 0.3);
+                border-bottom: 1px solid rgba(141, 147, 171, 0.3);
+                backdrop-filter: blur(20px);
+            }
             @media screen and (max-width: 1000px) {
                 .page {
                     width: 100%;
                     padding: 0 10px;
                 }
-                .navbar-ctx {
+                .navbar-ctx,
+                .footer-ctx {
                     padding: 0 10px;
                 }
             }

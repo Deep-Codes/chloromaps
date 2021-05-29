@@ -1,7 +1,17 @@
 import React from 'react';
 import MapShowCard from './MapShowCard';
 
-export const mapDt = [
+export interface MapShowcaseType {
+    name: string;
+    text: string;
+    link: string;
+}
+
+interface Props {
+    query?: string;
+}
+
+export const mapDt: MapShowcaseType[] = [
     {
         name: 'World',
         text: '180+ Countries Based on Robinson Projection.',
@@ -38,9 +48,24 @@ export const mapDt = [
         link: '/germany'
     },
     {
+        name: 'France',
+        text: 'France, Based on Mercator Projection.',
+        link: '/france'
+    },
+    {
+        name: 'Brazil',
+        text: 'Brazil, Based on Mercator Projection.',
+        link: '/brazil'
+    },
+    {
         name: 'Australia',
         text: 'Australia, Based on Mercator Projection.',
         link: '/australia'
+    },
+    {
+        name: 'Africa',
+        text: 'Africa , Based on Robinson Projection.',
+        link: '/africa'
     },
     {
         name: 'Sweden',
@@ -49,14 +74,31 @@ export const mapDt = [
     }
 ];
 
-const MapShowContainer = () => (
-    <>
-        <div className="cards-container">
-            {mapDt.map((d) => (
-                <MapShowCard key={d.text} data={d} />
-            ))}
-        </div>
-        <style jsx>{`
+const MapShowContainer: React.FC<Props> = ({ query }) => {
+    const search = (q: string) =>
+        mapDt.filter((el) => el.name.toLowerCase().search(q.toLowerCase()) > -1);
+    const mapData = query !== undefined ? search(query) : mapDt.slice(0, 6);
+    return (
+        <>
+            <div className="cards-container">
+                {mapData.length > 0 ? (
+                    <>
+                        {mapData.map((d) => (
+                            <MapShowCard key={d.text} data={d} />
+                        ))}
+                    </>
+                ) : null}
+            </div>
+            {mapData.length === 0 ? (
+                <div className="main-description">
+                    <h2 className="mx">No Map Found for "{query}"</h2>
+                    <p style={{ fontSize: '18px' }}>
+                        If you want this Map to be Available
+                        <a href="https://twitter.com/DeepankarBhade"> Contact the Developer. </a>
+                    </p>
+                </div>
+            ) : null}
+            <style jsx>{`
             .cards-container {
                 display: grid;
                 grid-gap: 16pt;
@@ -72,7 +114,8 @@ const MapShowContainer = () => (
                     grid-template-columns: repeat(2, minmax(0, 1fr));  
             }
         `}</style>
-    </>
-);
+        </>
+    );
+};
 
 export default MapShowContainer;

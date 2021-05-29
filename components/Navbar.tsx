@@ -3,7 +3,7 @@
 import React from 'react';
 import { themeAtom } from '@/store/theme.store';
 import { useAtom } from 'jotai';
-import { Button, useTheme } from '@geist-ui/react';
+import { Button } from '@geist-ui/react';
 import { Sun, Menu, X } from '@geist-ui/react-icons';
 import Logo from '@/assets/logo/Logo';
 
@@ -13,62 +13,57 @@ interface Props {
 
 const Navbar = ({ showNav }: Props) => {
     const [theme, setTheme] = useAtom(themeAtom);
-    const th = useTheme();
     const [navOpen, setNavOpen] = React.useState(false);
     return (
-        <nav>
-            <div className="flex">
+        <>
+            <div className="nav">
                 <a href="/">
                     <>
                         <Logo className="pointer" fill={theme ? 'white' : 'black'} />
                     </>
                 </a>
+
+                {showNav ? (
+                    <div className="nav-content">
+                        <span>Features</span>
+                        <span>Examples</span>
+                        <span>Maps</span>
+                        <span>Tutorial</span>
+                        <span>Instagram</span>
+                    </div>
+                ) : (
+                    ''
+                )}
+
+                <div className="flex items-center">
+                    <Button
+                        style={{ minWidth: `50px` }}
+                        size="small"
+                        icon={<Sun />}
+                        ghost
+                        onClick={() => setTheme(!theme)}
+                    />
+                    <div
+                        className="nav-mobile-icon flex-col flex-center"
+                        onClick={() => setNavOpen(!navOpen)}>
+                        {navOpen ? (
+                            <X size={35} className="nav-mobile-icon" />
+                        ) : (
+                            <Menu size={35} className="nav-mobile-icon" />
+                        )}
+                    </div>
+                </div>
             </div>
 
-            {showNav ? (
-                <div className="nav-center">
-                    <span>Features</span>
-                    <span>Examples</span>
-                    <span>Maps</span>
-                    <span>Tutorial</span>
-                    <span>Instagram</span>
-                </div>
-            ) : (
-                ''
-            )}
-
-            <div className="flex items-center">
-                <Button
-                    style={{ minWidth: `50px` }}
-                    size="small"
-                    icon={<Sun />}
-                    ghost
-                    onClick={() => setTheme(!theme)}
-                />
-                <div
-                    className="nav-mobile-icon flex-col flex-center"
-                    onClick={() => setNavOpen(!navOpen)}>
-                    {navOpen ? (
-                        <X size={35} className="nav-mobile-icon" />
-                    ) : (
-                        <Menu size={35} className="nav-mobile-icon" />
-                    )}
-                </div>
+            <div className="nav-content-mobile">
+                <span>Features</span>
+                <span>Examples</span>
+                <span>Maps</span>
+                <span>Tutorial</span>
+                <span>Instagram</span>
             </div>
-            {navOpen ? (
-                <div className="nav-mobile">
-                    <p>Features</p>
-                    <p>Examples</p>
-                    <p>Maps</p>
-                    <p>Tutorial</p>
-                    <p>Instagram</p>
-                </div>
-            ) : (
-                ''
-            )}
-
             <style jsx>{`
-                nav {
+                .nav {
                     position: relative;
                     max-width: 1000px;
                     margin: 0 auto;
@@ -77,55 +72,48 @@ const Navbar = ({ showNav }: Props) => {
                     align-items: center;
                     padding: 10px 0;
                 }
-                .nav-mobile-icon,
-                .nav-mobile {
-                    display: none;
-                }
-                .nav-mobile-icon {
-                    margin-top: 5px;
-                    margin-left: 10px;
-                    opacity: 0.7;
-                }
-                .nav-center {
-                    width: 60%;
-                    display: flex;
-                    justify-content: space-between;
-                }
-                @media screen and (max-width: 640px) {
-                    .nav-center {
-                        display: none;
-                    }
-                    .nav-mobile-icon,
-                    .nav-mobile {
-                        display: block;
-                    }
-                    .nav-mobile {
-                        padding: 30px 0;
-                        display: flex;
-                        flex-direction: column;
-                        z-index: 1000000;
-                        top: 60px;
-                        position: absolute;
-                        background: ${th.palette.background};
-                        width: 100%;
-                        height: 100vh;
-                    }
-                    .nav-mobile p {
-                        font-size: 20px;
-                        font-weight: 500;
-                    }
-                }
-                .nav-center span {
+                span {
                     cursor: pointer;
                     opacity: 0.7;
                     font-size: 15px;
                     font-weight: 400;
                 }
-                .nav-center span:hover {
+                span:hover {
                     opacity: 1;
                 }
+                .nav-content {
+                    width: 60%;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .nav-content-mobile,
+                .nav-mobile-icon {
+                    display: none;
+                    max-width: 1000px;
+                    margin: 0 auto;
+                }
+                .nav-content-mobile span {
+                    margin: 20px 0;
+                    display: block;
+                }
+                @media screen and (max-width: 640px) {
+                    .nav-content {
+                        display: none;
+                    }
+                    .nav-mobile-icon {
+                        margin-top: 5px;
+                        margin-left: 10px;
+                        opacity: 0.7;
+                    }
+                    .nav-mobile-icon {
+                        display: block;
+                    }
+                    .nav-content-mobile {
+                        display: ${navOpen ? 'block' : 'none'};
+                    }
+                }
             `}</style>
-        </nav>
+        </>
     );
 };
 

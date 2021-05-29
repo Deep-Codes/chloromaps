@@ -4,3 +4,4 @@ next.config.js
 blog
 snippets
 next-seo.config.js
+genMapFiles.js
