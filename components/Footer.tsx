@@ -1,12 +1,37 @@
-/* eslint-disable react/no-array-index-key */
 import version from '@/data/version';
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const data = [
-    ['Company', 'Home', 'About', 'Changelog', 'Contact'],
-    ['Resources', 'Documentation', 'Acknowledgement', 'Open Source', 'Maps'],
-    ['Socials', 'Instagram', 'Twitter', 'Github', 'Buy a Coffee'],
-    ['Legal', 'Privacy Policy', 'Terms of Service', 'Trademark Policy', 'Inactivity Policy']
+    [
+        { text: 'Company', link: '/company' },
+        { text: 'Home', link: '/' },
+        { text: 'About', link: '/about' },
+        { text: 'Inspiration', link: '/inspiration' },
+        { text: 'Changelog', link: 'changelog' },
+        { text: 'Contact', link: 'contact' }
+    ],
+    [
+        { text: 'Resources', link: '/' },
+        { text: 'Documentation', link: 'documentation' },
+        { text: 'Acknowledgement', link: 'acknowledgement' },
+        { text: 'Blogs', link: 'blogs' },
+        { text: 'Open Source', link: 'open-source' },
+        { text: 'Maps', link: 'maps' }
+    ],
+    [
+        { text: 'Socials', link: '/' },
+        { text: 'Instagram', link: 'https://www.instagram.com/maps_affinity/' },
+        { text: 'Twitter', link: 'https://twitter.com/DeepankarBhade' },
+        { text: 'Github', link: 'https://github.com/Deep-Codes' },
+        { text: 'Feedback', link: '/feedback' }
+    ],
+    [
+        { text: 'Policies', link: '/' },
+        { text: 'Terms', link: 'terms' },
+        { text: 'Privacy', link: 'privacy' },
+        { text: 'License', link: 'license' }
+    ]
 ];
 
 const Footer = () => {
@@ -22,11 +47,11 @@ const Footer = () => {
         <>
             <div className="footer">
                 {data.map((dt, j) => (
-                    <div key={dt[j]} className="footer-box">
+                    <div key={uuidv4()} className="footer-box">
                         {dt.map((el, i) =>
                             i === 0 ? (
-                                <div className="footer-head" key={`${el}-${i}`}>
-                                    {el}{' '}
+                                <div className="footer-head" key={uuidv4()}>
+                                    {el.text}{' '}
                                     <button
                                         type="button"
                                         onClick={() => handleClick(j)}
@@ -35,26 +60,34 @@ const Footer = () => {
                                     </button>
                                 </div>
                             ) : (
-                                <>
-                                    <div className="footer-content" key={`${el}-${i}`}>
-                                        {el}
+                                <div key={uuidv4()}>
+                                    <div className="footer-content mob pointer">
+                                        <a href={el.link}>{el.text}</a>
                                     </div>
-                                    <div
-                                        className="footer-content-mob"
-                                        style={{ display: `${j === open ? 'block' : 'none'}` }}
-                                        key={el}>
-                                        {el}
-                                    </div>
-                                </>
+                                    {j === open ? (
+                                        <div className="footer-content-mob mob">
+                                            <a href={el.link}>{el.text}</a>
+                                        </div>
+                                    ) : (
+                                        ''
+                                    )}
+                                </div>
                             )
                         )}
                     </div>
                 ))}
             </div>
-            <div className="author flex justify-between">
+            {/* <div className="author flex justify-between">
                 <span>Developed by Deepankar Bhade</span>
                 <span>Chloromaps {version}</span>
-            </div>
+            </div> */}
+            {/* 
+            .author {
+                    max-width: 1000px;
+                    margin: 0px auto 40px auto;
+                    font-size: 14px;
+                }
+            */}
             <style jsx>{`
                 .footer {
                     position: relative;
@@ -65,11 +98,7 @@ const Footer = () => {
                     justify-content: space-between;
                     padding: 30px 0;
                 }
-                .author {
-                    max-width: 1000px;
-                    margin: 0px auto 40px auto;
-                    font-size: 14px;
-                }
+
                 .footer-box {
                     display: flex;
                     flex-direction: column;
@@ -79,34 +108,39 @@ const Footer = () => {
                     background: none;
                     border: none;
                 }
-                .footer-box div {
+                .footer-box .mob {
                     opacity: 0.6;
-                    cursor: pointer;
                     font-size: 14px;
                     margin-bottom: 10px;
                 }
-                .footer-box div:hover {
+                .footer-box .mob:hover {
                     opacity: 1;
                 }
                 .footer-box .footer-head {
                     opacity: 1;
                 }
+                .footer-head {
+                    margin-bottom: 10px;
+                }
                 .footer-content-mob {
                     display: none;
                 }
-                .text {
-                    cursor: pointer;
+                a {
+                    color: inherit;
                 }
                 @media screen and (max-width: 640px) {
                     .footer {
                         flex-direction: column;
+                    }
+                    .footer-box {
+                        border-bottom: 1px solid rgba(141, 147, 171, 0.3);
                     }
                     .footer-head {
                         width: 100%;
                         display: flex;
                         justify-content: space-between;
                         padding: 10px 0px;
-                        border-bottom: 1px solid rgba(141, 147, 171, 0.3);
+                        margin-bottom: 0px;
                     }
                     .footer-content {
                         display: none;
