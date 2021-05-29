@@ -8,7 +8,7 @@ const AllMaps = () => {
     const [query, setQuery] = React.useState('');
     return (
         <MainLayout showNav={true}>
-            <div className="flex flex-col">
+            <div className="flex flex-col mb-20">
                 <h1 className="main-heading">All Maps</h1>
                 <div className="main-description">
                     Create Beautiful Chloropeth Visualisation from over 50+ Collections of Countries
@@ -27,6 +27,9 @@ const AllMaps = () => {
                 <MapShowContainer query={query} />
             </div>
             <style jsx>{`
+                .mb-20 {
+                    margin-bottom: 5rem;
+                }
                 .search-ctx {
                     width: 500px;
                     margin: 40px auto;

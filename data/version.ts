@@ -1,3 +1,3 @@
-const version = `pre-alpha-0.0.0`;
+const version =`0.0.0-pre-alpha`;
 
 export default version;

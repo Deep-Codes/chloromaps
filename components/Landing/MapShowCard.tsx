@@ -21,7 +21,7 @@ const MapShowCard: React.FC<Props> = ({ data }) => {
             </div>
 
             <p className="text">{data.text}</p>
-            <Link href={data.link}>
+            <Link href={`/map${data.link}`}>
                 <p className="link flex items-center">
                     <span>Create</span> <ExternalLink size={20} />
                 </p>

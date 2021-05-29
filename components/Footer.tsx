@@ -1,8 +1,9 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 
 const data = [
-    ['Company', 'Home', 'About', 'Changlog', 'Contact Us'],
-    ['Resources', 'Documentation', 'Acknowledgments', 'Open Source', 'Maps'],
+    ['Company', 'Home', 'About', 'Changelog', 'Contact'],
+    ['Resources', 'Documentation', 'Acknowledgement', 'Open Source', 'Maps'],
     ['Socials', 'Instagram', 'Twitter', 'Github', 'Buy a Coffee'],
     ['Legal', 'Privacy Policy', 'Terms of Service', 'Trademark Policy', 'Inactivity Policy']
 ];
@@ -20,10 +21,10 @@ const Footer = () => {
         <>
             <div className="footer">
                 {data.map((dt, j) => (
-                    <div key={dt[0]} className="footer-box">
+                    <div key={dt[j]} className="footer-box">
                         {dt.map((el, i) =>
                             i === 0 ? (
-                                <div className="footer-head" key={el}>
+                                <div className="footer-head" key={`${el}-${i}`}>
                                     {el}{' '}
                                     <button
                                         type="button"
@@ -34,7 +35,7 @@ const Footer = () => {
                                 </div>
                             ) : (
                                 <>
-                                    <div className="footer-content" key={el}>
+                                    <div className="footer-content" key={`${el}-${i}`}>
                                         {el}
                                     </div>
                                     <div
@@ -49,7 +50,10 @@ const Footer = () => {
                     </div>
                 ))}
             </div>
-            <div className="author">Designed and Developed by Deepankar Bhade</div>
+            <div className="author flex justify-between">
+                <span>Developed by Deepankar Bhade</span>
+                <span>Chloromaps v0.0.0-alpha</span>
+            </div>
             <style jsx>{`
                 .footer {
                     position: relative;
