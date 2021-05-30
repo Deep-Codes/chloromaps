@@ -9,14 +9,14 @@ const expData = [
         json: `india_population`
     },
     {
-        title: `Germany's Population by State`,
-        link: `/germany`,
-        json: `india_population`
+        title: `Usa's Population by State`,
+        link: `/usa`,
+        json: `usa_population`
     },
     {
         title: `Sweden's Population by State`,
         link: `/sweden`,
-        json: `india_population`
+        json: `sweden_population`
     }
 ];
 
@@ -30,7 +30,7 @@ const Example = () => (
                         <p>{d.title}</p>
                         <Link
                             href={{
-                                pathname: `/map/india`,
+                                pathname: `/map${d.link}`,
                                 query: { data: d.json }
                             }}>
                             Edit this Map

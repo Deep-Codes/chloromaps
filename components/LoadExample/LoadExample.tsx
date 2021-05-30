@@ -13,11 +13,13 @@ import { useAtom } from 'jotai';
 import { useToasts } from '@geist-ui/react';
 
 const exampleData = {
-    india_population: require('@/configs/india.json')
+    india_population: require('@/configs/india.json'),
+    usa_population: require('@/configs/usa.json'),
+    sweden_population: require('@/configs/sweden.json')
 };
 
 const LoadExample = () => {
-    const { query } = useRouter();
+    const router = useRouter();
     const [, setMap] = useAtom<MapStoreType>(mapAtom);
     const [, setLabel] = useAtom<LabelStoreType>(labelAtom);
     const [, setToast] = useToasts();
@@ -29,25 +31,27 @@ const LoadExample = () => {
         });
     const errorToast = () =>
         setToast({
-            text: 'Error while Loaded Map Configuration.',
+            text: 'No Data & Map Configuration Found.',
             type: 'error',
             delay: 5000
         });
     React.useEffect(() => {
-        if (query.data) {
+        if (router.query.data) {
             // @ts-ignore
-            const data: ExportConfigType = exampleData[query.data];
-            // @ts-ignore
-            setMap(data.mapData);
-            fillAllMap(data.mapData.mapData, data.mapData.defaultFillColor);
-            const labData = importLabelConfig(data.labelData);
-            // @ts-ignore
-            setLabel(labData);
-            successToast();
-        } else {
-            errorToast();
+            const data: ExportConfigType = exampleData[router.query.data];
+            if (data) {
+                // @ts-ignore
+                setMap(data.mapData);
+                fillAllMap(data.mapData.mapData, data.mapData.defaultFillColor);
+                const labData = importLabelConfig(data.labelData);
+                // @ts-ignore
+                setLabel(labData);
+                successToast();
+            } else {
+                errorToast();
+            }
         }
-    }, []);
+    }, [router.query]);
     return <></>;
 };
 
