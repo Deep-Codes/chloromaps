@@ -78,7 +78,7 @@ const LegendControls = () => {
         <div className="ctx">
             {map.legendData.length > 0 && <InputLabel text="Legend Settings" />}{' '}
             {map.legendData.map((dt, i) => (
-                <div key={dt.fill} className="flex-center justify-between m-1">
+                <div key={dt.fill} className="wrapper">
                     <div
                         className="icon-btn flex-center pointer"
                         onClick={() => toggleHideLegend(i, dt.fill)}>
@@ -111,7 +111,7 @@ const LegendControls = () => {
                     opacity: 1;
                 }
                 .ctx {
-                    width: 280px;
+                    width: 320px;
                 }
                 .box {
                     width: 20px;
@@ -125,7 +125,10 @@ const LegendControls = () => {
                 .icon-btn:hover {
                     opacity: 1;
                 }
-                .m-1 {
+                .wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                     margin-top: 0.5rem;
                     margin-bottom: 0.5rem;
                 }
