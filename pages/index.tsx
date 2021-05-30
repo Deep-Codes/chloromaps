@@ -12,11 +12,13 @@ const Home: React.FC = () => (
         <div className="flex flex-col">
             <LandingWorldMap />
             <Spacer y={5} />
-            <h1 className="mx-auto">Features</h1>
+            <h1 id="feature" className="mx-auto">
+                Features
+            </h1>
             <Spacer y={2} />
             <FeatureContainer />
             <Spacer y={5} />
-            <h1 className="mx-auto">Try out These Maps!</h1>
+            <h1 className="mx-auto">Our Maps !</h1>
             <Spacer y={2} />
             <MapShowContainer />
             <Spacer y={2} />

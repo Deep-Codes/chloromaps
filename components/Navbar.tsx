@@ -11,6 +11,14 @@ interface Props {
     showNav: boolean;
 }
 
+const navArr = [
+    { text: 'Features', link: '#feature' },
+    { text: 'Examples', link: '/examples' },
+    { text: 'Maps', link: '/maps' },
+    { text: 'Tutorial', link: '/tutorial' },
+    { text: 'Instagram', link: 'https://www.instagram.com/maps_affinity/' }
+];
+
 const Navbar = ({ showNav }: Props) => {
     const [theme, setTheme] = useAtom(themeAtom);
     const [navOpen, setNavOpen] = React.useState(false);
@@ -18,18 +26,19 @@ const Navbar = ({ showNav }: Props) => {
         <>
             <div className="nav">
                 <a href="/" aria-label="Go to Home Page">
-                    <>
-                        <Logo className="pointer" fill={theme ? 'white' : 'black'} />
-                    </>
+                    <Logo className="pointer" fill={theme ? 'white' : 'black'} />
                 </a>
-
                 {showNav ? (
                     <div className="nav-content">
-                        <span>Features</span>
-                        <span>Examples</span>
-                        <span>Maps</span>
-                        <span>Tutorial</span>
-                        <span>Instagram</span>
+                        {navArr.map((el) => (
+                            <a
+                                className="nav-link"
+                                key={el.text}
+                                aria-label={`Link to ${el.text}`}
+                                href={el.link}>
+                                {el.text}
+                            </a>
+                        ))}
                     </div>
                 ) : (
                     ''
@@ -37,7 +46,6 @@ const Navbar = ({ showNav }: Props) => {
 
                 <div className="flex items-center">
                     <Button
-                        aria-label="Toggle Theme Button"
                         style={{ minWidth: `50px` }}
                         size="small"
                         icon={<Sun />}
@@ -57,13 +65,20 @@ const Navbar = ({ showNav }: Props) => {
             </div>
 
             <div className="nav-content-mobile">
-                <span>Features</span>
-                <span>Examples</span>
-                <span>Maps</span>
-                <span>Tutorial</span>
-                <span>Instagram</span>
+                {navArr.map((el) => (
+                    <a
+                        className="nav-link"
+                        key={el.text}
+                        aria-label={`Link to ${el.text}`}
+                        href={el.link}>
+                        {el.text}
+                    </a>
+                ))}
             </div>
             <style jsx>{`
+                .nav-link {
+                    color: inherit;
+                }
                 .nav {
                     position: relative;
                     max-width: 1000px;
@@ -73,13 +88,12 @@ const Navbar = ({ showNav }: Props) => {
                     align-items: center;
                     padding: 10px 0;
                 }
-                span {
-                    cursor: pointer;
+                .nav-link {
                     opacity: 0.7;
                     font-size: 15px;
                     font-weight: 400;
                 }
-                span:hover {
+                .nav-link :hover {
                     opacity: 1;
                 }
                 .nav-content {
@@ -93,7 +107,7 @@ const Navbar = ({ showNav }: Props) => {
                     max-width: 1000px;
                     margin: 0 auto;
                 }
-                .nav-content-mobile span {
+                .nav-content-mobile .nav-link {
                     margin: 20px 0;
                     display: block;
                 }

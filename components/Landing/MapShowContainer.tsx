@@ -33,6 +33,11 @@ export const mapDt: MapShowcaseType[] = [
         link: '/europe'
     },
     {
+        name: 'China',
+        text: 'All Administrative Regions of China in Mercator Projection',
+        link: '/china'
+    },
+    {
         name: 'Russia',
         text: 'Russian Federation, Based on Mercator Projection.',
         link: '/russia'
@@ -71,6 +76,16 @@ export const mapDt: MapShowcaseType[] = [
         name: 'Canada',
         text: 'All Administrative Regions of Canada in Mercator Projection',
         link: '/canada'
+    },
+    {
+        name: 'Poland',
+        text: 'All Administrative Regions of Poland in Mercator Projection',
+        link: '/poland'
+    },
+    {
+        name: 'Spain',
+        text: 'All Administrative Regions of Spain in Mercator Projection',
+        link: '/spain'
     },
     {
         name: 'Turkey',
