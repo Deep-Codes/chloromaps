@@ -6,7 +6,7 @@ export default {
         type: 'website',
         locale: 'en_IN',
         url: 'https://chloromaps.vercel.app/',
-        site_name: 'Chloromaps | Develop Chloropeth Maps Faster',
+        site_name: 'Chloromaps',
         images: [
             {
                 url: `https://chloromaps.vercel.app/static/images/global/banner.png`,

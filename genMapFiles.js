@@ -76,6 +76,7 @@ const genTemplate = (country) => {
         fs.writeFile(
             `./pages/map/${country}.tsx`,
             `import ControlContainer from '@/components/ControlContainer';
+import MapSEO from '@/components/Seo/MapSEO';
 import ${capName}Map from '@/data/${capName}/${capName}.map';
 import { ${capName}StateCodes } from '@/data/${capName}/${capName}StateCodes';
 import MainLayout from '@/layouts/MainLayout';
@@ -83,6 +84,7 @@ import React from 'react';
 
 const ${capName} = () => (
     <MainLayout>
+        <MapSEO name="${capName}"  />
         <div className="flex justify-between container">
             <ControlContainer stateCodes={${capName}StateCodes} mapId="${country}-map" />
             <${capName}Map />

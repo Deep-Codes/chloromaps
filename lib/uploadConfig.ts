@@ -4,7 +4,7 @@ import fillAllMap from "./fillAllMap";
 import importLabelConfig from "./importLabelConfig";
 
 // @ts-ignore
-const uploadConfig = (file , setMap , setLabel , def) => {
+const uploadConfig = (file , setMap , setLabel , def, mapId , suc , err) => {
   let fileReader: any;
   const handleConfigUpload = (f: any) => {
     fileReader = new FileReader();
@@ -15,14 +15,18 @@ const uploadConfig = (file , setMap , setLabel , def) => {
   const handleFileRead = () => {
     const content = fileReader.result;
     const Data: ExportConfigType = JSON.parse(content)
-    setMap(Data.mapData)
-    fillAllMap(Data.mapData.mapData ,def )
-    const labData = importLabelConfig(Data.labelData)
-    setLabel(labData)
+    if(Data.mapId === mapId){
+      setMap(Data.mapData)
+      fillAllMap(Data.mapData.mapData ,def )
+      const labData = importLabelConfig(Data.labelData)
+      setLabel(labData)
+      suc();
+    }else{
+      err()
+    }
   };
 
   handleConfigUpload(file)
-
 }
 
 export default uploadConfig;

@@ -21,7 +21,7 @@ const exportLabelData = (lb: LabelStoreType): ExportFinalLabelDataType => {
   })
   return {
     data: finalData,
-    scalingFactor: lb.scalingFactor
+    scalingFactor: +lb.scalingFactor.toFixed(2)
   }
 }
 
