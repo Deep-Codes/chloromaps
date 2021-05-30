@@ -6,7 +6,7 @@ import { labelAtom } from '@/store/label.store';
 import { disableTooltip, mapAtom } from '@/store/map.store';
 import { LabelStoreType } from '@/typings/label.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
-import { Spacer, Tabs, Toggle } from '@geist-ui/react';
+import { Spacer, Tabs, Toggle, useToasts } from '@geist-ui/react';
 import { Edit, Type, Upload } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
 import React from 'react';
@@ -24,6 +24,7 @@ interface Props {
 const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
+    const [, setToast] = useToasts();
     const [, setTooltip] = useAtom(disableTooltip);
     const handleAttrChange = (v: string, a: string) => {
         // @ts-ignore
@@ -93,6 +94,16 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         resetFullMap(stateCodes);
     };
     const uploadDataConfig = (e: any) => {
+        const successToast = () =>
+            setToast({
+                text: 'Succesfullly Loaded Map Configuration.',
+                type: 'success'
+            });
+        const errorToast = () =>
+            setToast({
+                text: 'Error while Loaded Map Configuration.',
+                type: 'error'
+            });
         // @ts-ignore
         uploadConfig(
             // @ts-ignore
@@ -100,7 +111,10 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             setMap,
             setLabel,
             // @ts-ignore
-            map.defaultFillColors
+            map.defaultFillColors,
+            mapId,
+            successToast,
+            errorToast
         );
     };
     return (
