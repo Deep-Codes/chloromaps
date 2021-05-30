@@ -4,7 +4,7 @@ import MainLayout from './MainLayout';
 
 interface Props {
     title: string;
-    description: string;
+    description?: string;
 }
 
 const PageLayout: React.FC<PropsWithChildren<Props>> = ({ children, title, description }) => (

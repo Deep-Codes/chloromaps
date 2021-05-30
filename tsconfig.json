@@ -9,6 +9,7 @@
       "@/assets/*": ["assets/*"],
       "@/data/*": ["data/*"],
       "@/store/*": ["store/*"],
+      "@/configs/*": ["configs/*"],
     },
     "strictNullChecks": true,
     "moduleResolution": "node",
