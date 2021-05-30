@@ -97,12 +97,14 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
         const successToast = () =>
             setToast({
                 text: 'Succesfullly Loaded Map Configuration.',
-                type: 'success'
+                type: 'success',
+                delay: 5000
             });
         const errorToast = () =>
             setToast({
                 text: 'Error while Loaded Map Configuration.',
-                type: 'error'
+                type: 'error',
+                delay: 5000
             });
         // @ts-ignore
         uploadConfig(

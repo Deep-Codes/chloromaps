@@ -1,46 +1,46 @@
 import MainLayout from '@/layouts/MainLayout';
 import Link from 'next/link';
 import React from 'react';
-import india from '@/configs/india.json';
 
 const expData = [
     {
         title: `India's Population by State`,
-        link: `/india`
+        link: `/india`,
+        json: `india_population`
     },
     {
         title: `Germany's Population by State`,
-        link: `/germany`
+        link: `/germany`,
+        json: `india_population`
     },
     {
         title: `Sweden's Population by State`,
-        link: `/sweden`
+        link: `/sweden`,
+        json: `india_population`
     }
 ];
 
-const Example = () => {
-    const temp = 'test/';
-    return (
-        <MainLayout>
-            <div className="flex flex-col mb-20">
-                <h1 className="main-heading">Examples</h1>
-                <div className="cards-container">
-                    {expData.map((d) => (
-                        <div className="card" key={d.title}>
-                            <p>{d.title}</p>
-                            <Link
-                                href={{
-                                    pathname: `/map/india`,
-                                    query: { slug: JSON.stringify(india) }
-                                }}>
-                                Edit this Map
-                            </Link>
-                        </div>
-                    ))}
-                </div>
+const Example = () => (
+    <MainLayout>
+        <div className="flex flex-col mb-20">
+            <h1 className="main-heading">Examples</h1>
+            <div className="cards-container">
+                {expData.map((d) => (
+                    <div className="card" key={d.title}>
+                        <p>{d.title}</p>
+                        <Link
+                            href={{
+                                pathname: `/map/india`,
+                                query: { data: d.json }
+                            }}>
+                            Edit this Map
+                        </Link>
+                    </div>
+                ))}
             </div>
+        </div>
 
-            <style jsx>{`
+        <style jsx>{`
             .cards-container {
                 display: grid;
                 grid-gap: 16pt;
@@ -50,7 +50,7 @@ const Example = () => {
                 margin-bottom: 5rem;
             }
             .card {
-                    border: 1px solid grey;
+                    border: 1px solid rgba(141, 147, 171, 0.3);
                     padding: 16pt;
                     border-radius: 5px;
                     text-align: left;
@@ -91,8 +91,7 @@ const Example = () => {
                     grid-template-columns: repeat(2, minmax(0, 1fr));  
             }
         `}</style>
-        </MainLayout>
-    );
-};
+    </MainLayout>
+);
 
 export default Example;
