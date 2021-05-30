@@ -1,12 +1,15 @@
+import MainSEO from '@/components/Seo/MainSEO';
 import React, { PropsWithChildren } from 'react';
 import MainLayout from './MainLayout';
 
 interface Props {
     title: string;
+    description: string;
 }
 
-const PageLayout: React.FC<PropsWithChildren<Props>> = ({ children, title }) => (
+const PageLayout: React.FC<PropsWithChildren<Props>> = ({ children, title, description }) => (
     <MainLayout showNav>
+        <MainSEO title={title} description={description} />
         <div className="flex flex-col mb-20">
             <h1 className="main-heading">{title}</h1>
             <div className="main-text">{children}</div>
