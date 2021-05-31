@@ -19,6 +19,7 @@ const PageLayout: React.FC<PropsWithChildren<Props>> = ({ children, title, descr
                 max-width: 760px;
                 margin: 0 auto;
             }
+
             h1 {
                 font-size: 2.5rem;
             }

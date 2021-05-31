@@ -75,7 +75,6 @@
         "react-svgmt": "^1.1.11",
         "react-tooltip": "^4.2.17",
         "save-svg-as-png": "^1.4.17",
-        "styled-jsx": "3.3.0",
-        "validate-color": "^2.1.1"
+        "styled-jsx": "3.3.0"
     }
 }

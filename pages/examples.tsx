@@ -21,9 +21,13 @@ const expData = [
 ];
 
 const Example = () => (
-    <MainLayout>
+    <MainLayout showNav>
         <div className="flex flex-col mb-20">
             <h1 className="main-heading">Examples</h1>
+            <p className="main-text">
+                Here are some Map Examples curated to get you an idea , you can Edit and Export
+                these Map according to your Need.
+            </p>
             <div className="cards-container">
                 {expData.map((d) => (
                     <div className="card" key={d.title}>
@@ -41,7 +45,14 @@ const Example = () => (
         </div>
 
         <style jsx>{`
+            .main-text{
+                max-width: 600px;
+                margin: 0 auto;
+                margin-bottom: 2rem ;
+                text-align: center;
+            }
             .cards-container {
+                margin-top: 1rem;
                 display: grid;
                 grid-gap: 16pt;
                 gap: 16pt;
@@ -58,29 +69,10 @@ const Example = () => (
                     display: flex;
                     flex-direction: column;
                 }
-                .card-head {
-                    display: flex;
-                    align-items: center;
-                }
-                .card h2 {
-                    margin: 0;
-                    font-size: 25px;
-                    font-weight: 600;
-                    display: inline-block;
-                }
-                .card p {
+            .card p {
                     margin-top: 5px;
                     margin-bottom: 5px;
-                }
-                .card .link:hover {
-                    opacity: 0.8;
-                }
-                .link span {
-                    margin-right: 5px;
-                }
-                .card .text {
-                    opacity: 0.6;
-                }
+            }
             @media screen and (min-width: 960px) {
                 .cards-container {
                     grid-template-columns: repeat(3, minmax(0, 1fr));

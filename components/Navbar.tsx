@@ -12,7 +12,7 @@ interface Props {
 }
 
 const navArr = [
-    { text: 'Features', link: '#feature' },
+    { text: 'Features', link: '/#feature' },
     { text: 'Examples', link: '/examples' },
     { text: 'Maps', link: '/maps' },
     { text: 'Tutorial', link: '/tutorial' },
