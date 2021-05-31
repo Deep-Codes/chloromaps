@@ -6,6 +6,7 @@ import { useAtom } from 'jotai';
 import { Button, useToasts } from '@geist-ui/react';
 import { Sun, Menu, X } from '@geist-ui/react-icons';
 import Logo from '@/assets/logo/Logo';
+import { useRouter } from 'next/dist/client/router';
 
 interface Props {
     showNav: boolean;
@@ -22,14 +23,18 @@ const navArr = [
 const Navbar = ({ showNav }: Props) => {
     const [theme, setTheme] = useAtom(themeAtom);
     const [, setToast] = useToasts();
+    const router = useRouter();
     const toggleTheme = () => {
-        setToast({
-            text: `Swtiched Theme to ${
-                theme ? 'Light' : 'Dark'
-            } Mode , Change Map / Text Colors Accordingly for Visiblity.`,
-            type: 'success',
-            delay: 5000
-        });
+        const bool = router.pathname.includes('map');
+        if (bool) {
+            setToast({
+                text: `Swtiched Theme to ${
+                    theme ? 'Light' : 'Dark'
+                } Mode , Change Map / Text Colors Accordingly for Visiblity.`,
+                type: 'success',
+                delay: 5000
+            });
+        }
         setTheme(!theme);
     };
     const [navOpen, setNavOpen] = React.useState(false);
