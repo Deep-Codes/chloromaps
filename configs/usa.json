@@ -1,1 +1,96 @@
-{"defaultFillColor":"black","mapStrokeColor":"white","mapBackgroundColor":"black","mapStrokeWidth":"1","mapFillColor":"#C0CA33","mapData":[{"fill":"#FB8C00","code":"MA","hide":false},{"fill":"#E65100","code":"MN","hide":false},{"fill":"#E65100","code":"MT","hide":false},{"fill":"#F57C00","code":"ND","hide":false},{"fill":"#FF9800","code":"HI","hide":false},{"fill":"#FFE0B2","code":"ID","hide":false},{"fill":"#F57C00","code":"WA","hide":false},{"fill":"#FF9800","code":"AZ","hide":false},{"fill":"#FFB74D","code":"CA","hide":false},{"fill":"#FFA726","code":"CO","hide":false},{"fill":"#FFA726","code":"NV","hide":false},{"fill":"#FFF3E0","code":"NM","hide":false},{"fill":"#FFB74D","code":"OR","hide":false},{"fill":"#F57C00","code":"UT","hide":false},{"fill":"#FFE0B2","code":"WY","hide":false},{"fill":"#EF6C00","code":"AR","hide":false},{"fill":"#F57C00","code":"IA","hide":false},{"fill":"#F57C00","code":"KS","hide":false},{"fill":"#FFE0B2","code":"MO","hide":false},{"fill":"#FFCC80","code":"NE","hide":false},{"fill":"#E65100","code":"OK","hide":false},{"fill":"#FF9800","code":"SD","hide":false},{"fill":"#FB8C00","code":"LA","hide":false},{"fill":"#FFF3E0","code":"TX","hide":false},{"fill":"#FFE0B2","code":"CT","hide":false},{"fill":"#FFB74D","code":"NH","hide":false},{"fill":"#F57C00","code":"RI","hide":false},{"fill":"#EF6C00","code":"VT","hide":false},{"fill":"#FFB74D","code":"AL","hide":false},{"fill":"#FFF3E0","code":"FL","hide":false},{"fill":"#F57C00","code":"GA","hide":false},{"fill":"#FFE0B2","code":"MS","hide":false},{"fill":"#FB8C00","code":"SC","hide":false},{"fill":"#FFA726","code":"IL","hide":false},{"fill":"#EF6C00","code":"IN","hide":false},{"fill":"#FFB74D","code":"KY","hide":false},{"fill":"#EF6C00","code":"NC","hide":false},{"fill":"#F57C00","code":"OH","hide":false},{"fill":"#FB8C00","code":"TN","hide":false},{"fill":"#FFE0B2","code":"VA","hide":false},{"fill":"#FFCC80","code":"WI","hide":false},{"fill":"#FFE0B2","code":"WV","hide":false},{"fill":"#FFA726","code":"DE","hide":false},{"fill":"#E65100","code":"DC","hide":false},{"fill":"#FFF3E0","code":"MD","hide":false},{"fill":"#FFE0B2","code":"NJ","hide":false},{"fill":"#FFE0B2","code":"NY","hide":false},{"fill":"#EF6C00","code":"PA","hide":false},{"fill":"#FF9800","code":"ME","hide":false},{"fill":"#E65100","code":"MI","hide":false},{"fill":"#FFB74D","code":"AK","hide":false}],"legendData":[{"fill":"#FFF3E0","text":"0","hide":false},{"fill":"#FFE0B2","text":"10","hide":false},{"fill":"#FFCC80","text":"20","hide":false},{"fill":"#FFB74D","text":"30","hide":false},{"fill":"#FFA726","text":"40","hide":false},{"fill":"#FF9800","text":"50","hide":false},{"fill":"#FB8C00","text":"60","hide":false},{"fill":"#F57C00","text":"70","hide":false},{"fill":"#EF6C00","text":"80","hide":false},{"fill":"#E65100","text":"90","hide":false}],"hideStates":[]}
+{
+    "version": "0.0.0-alpha",
+    "mapId": "usa-map",
+    "mapData": {
+        "defaultFillColor": "black",
+        "mapStrokeColor": "white",
+        "mapBackgroundColor": "black",
+        "mapStrokeWidth": "1",
+        "legendTextColor": "white",
+        "legendSmoothGradient": false,
+        "mapFillColor": "#C0CA33",
+        "mapData": [
+            { "fill": "#FFF3E0", "code": "PW", "hide": false },
+            { "fill": "#FFF3E0", "code": "MP", "hide": false },
+            { "fill": "#FFF3E0", "code": "AS", "hide": false },
+            { "fill": "#FFF3E0", "code": "MH", "hide": false },
+            { "fill": "#FFF3E0", "code": "VI", "hide": false },
+            { "fill": "#FFF3E0", "code": "FM", "hide": false },
+            { "fill": "#FFF3E0", "code": "GU", "hide": false },
+            { "fill": "#FFF3E0", "code": "WY", "hide": false },
+            { "fill": "#FFF3E0", "code": "VT", "hide": false },
+            { "fill": "#FFF3E0", "code": "DC", "hide": false },
+            { "fill": "#FFF3E0", "code": "AK", "hide": false },
+            { "fill": "#FFF3E0", "code": "ND", "hide": false },
+            { "fill": "#FFF3E0", "code": "SD", "hide": false },
+            { "fill": "#FFF3E0", "code": "DE", "hide": false },
+            { "fill": "#FFF3E0", "code": "RI", "hide": false },
+            { "fill": "#FFF3E0", "code": "MT", "hide": false },
+
+            { "fill": "#FFE0B2", "code": "ME", "hide": false },
+            { "fill": "#FFE0B2", "code": "NH", "hide": false },
+            { "fill": "#FFE0B2", "code": "HI", "hide": false },
+            { "fill": "#FFE0B2", "code": "ID", "hide": false },
+            { "fill": "#FFE0B2", "code": "WV", "hide": false },
+            { "fill": "#FFE0B2", "code": "NE", "hide": false },
+            { "fill": "#FFE0B2", "code": "NM", "hide": false },
+
+            { "fill": "#FFCC80", "code": "KS", "hide": false },
+            { "fill": "#FFCC80", "code": "MS", "hide": false },
+            { "fill": "#FFCC80", "code": "AR", "hide": false },
+            { "fill": "#FFCC80", "code": "NV", "hide": false },
+            { "fill": "#FFCC80", "code": "IA", "hide": false },
+            { "fill": "#FFCC80", "code": "PR", "hide": false },
+            { "fill": "#FFCC80", "code": "UT", "hide": false },
+            { "fill": "#FFCC80", "code": "CT", "hide": false },
+            { "fill": "#FFCC80", "code": "OK", "hide": false },
+            { "fill": "#FFCC80", "code": "OR", "hide": false },
+            { "fill": "#FFCC80", "code": "KY", "hide": false },
+            { "fill": "#FFCC80", "code": "LA", "hide": false },
+            { "fill": "#FFCC80", "code": "AL", "hide": false },
+
+            { "fill": "#FFB74D", "code": "SC", "hide": false },
+            { "fill": "#FFB74D", "code": "MN", "hide": false },
+            { "fill": "#FFB74D", "code": "CO", "hide": false },
+            { "fill": "#FFB74D", "code": "WI", "hide": false },
+            { "fill": "#FFB74D", "code": "MD", "hide": false },
+
+            { "fill": "#FFA726", "code": "MO", "hide": false },
+            { "fill": "#FFA726", "code": "IN", "hide": false },
+            { "fill": "#FFA726", "code": "TN", "hide": false },
+            { "fill": "#FFA726", "code": "MA", "hide": false },
+
+            { "fill": "#FF9800", "code": "AZ", "hide": false },
+            { "fill": "#FF9800", "code": "WA", "hide": false },
+
+            { "fill": "#FB8C00", "code": "VA", "hide": false },
+            { "fill": "#FB8C00", "code": "NJ", "hide": false },
+            { "fill": "#FB8C00", "code": "MI", "hide": false },
+
+            { "fill": "#F57C00", "code": "NC", "hide": false },
+            { "fill": "#F57C00", "code": "GA", "hide": false },
+            { "fill": "#F57C00", "code": "OH", "hide": false },
+            { "fill": "#F57C00", "code": "IL", "hide": false },
+            { "fill": "#F57C00", "code": "PA", "hide": false },
+
+            { "fill": "#EF6C00", "code": "NY", "hide": false },
+            { "fill": "#EF6C00", "code": "FL", "hide": false },
+
+            { "fill": "#EF6C00", "code": "CA", "hide": false },
+            { "fill": "#EF6C00", "code": "TX", "hide": false }
+        ],
+        "legendData": [
+            { "fill": "#FFF3E0", "text": "<1mil", "hide": false },
+            { "fill": "#FFE0B2", "text": "1-2", "hide": false },
+            { "fill": "#FFCC80", "text": "2-5", "hide": false },
+            { "fill": "#FFB74D", "text": "5-6", "hide": false },
+            { "fill": "#FFA726", "text": "6-7", "hide": false },
+            { "fill": "#FF9800", "text": "7-8", "hide": false },
+            { "fill": "#FB8C00", "text": "8-10", "hide": false },
+            { "fill": "#F57C00", "text": "10-15", "hide": false },
+            { "fill": "#EF6C00", "text": "18-22", "hide": false },
+            { "fill": "#E65100", "text": "25+", "hide": false }
+        ]
+    },
+    "labelData": { "data": [], "scalingFactor": 1.67 }
+}

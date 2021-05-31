@@ -1,7 +1,15 @@
 import PageLayout from '@/layouts/PageLayout';
+import Changelog from '@/components/Changelog/Changelog';
+
+A Comprehensive lists of the new features, enhancements, bugs, and other changes in reverse chronological order for each version of a project.
+
+<Changelog />
 
 export default ({ children }) => (
-    <PageLayout title="Changelog" showNav>
+    <PageLayout
+        title="Changelog"
+        description="A Comprehensive lists of the new features, enhancements, bugs, and other changes in reverse chronological order for each version of a project."
+        showNav>
         {children}
     </PageLayout>
 );

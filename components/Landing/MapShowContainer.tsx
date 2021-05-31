@@ -107,7 +107,7 @@ export const mapDt: MapShowcaseType[] = [
 const MapShowContainer: React.FC<Props> = ({ query }) => {
     const search = (q: string) =>
         mapDt.filter((el) => el.name.toLowerCase().search(q.toLowerCase()) > -1);
-    const mapData = query !== undefined ? search(query) : mapDt.slice(0, 6);
+    const mapData = query !== undefined ? search(query) : mapDt.slice(0, 9);
     return (
         <>
             <div className="cards-container">

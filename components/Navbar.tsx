@@ -3,16 +3,17 @@
 import React from 'react';
 import { themeAtom } from '@/store/theme.store';
 import { useAtom } from 'jotai';
-import { Button } from '@geist-ui/react';
+import { Button, useToasts } from '@geist-ui/react';
 import { Sun, Menu, X } from '@geist-ui/react-icons';
 import Logo from '@/assets/logo/Logo';
+import { useRouter } from 'next/dist/client/router';
 
 interface Props {
     showNav: boolean;
 }
 
 const navArr = [
-    { text: 'Features', link: '#feature' },
+    { text: 'Features', link: '/#feature' },
     { text: 'Examples', link: '/examples' },
     { text: 'Maps', link: '/maps' },
     { text: 'Tutorial', link: '/tutorial' },
@@ -21,6 +22,21 @@ const navArr = [
 
 const Navbar = ({ showNav }: Props) => {
     const [theme, setTheme] = useAtom(themeAtom);
+    const [, setToast] = useToasts();
+    const router = useRouter();
+    const toggleTheme = () => {
+        const bool = router.pathname.includes('map');
+        if (bool) {
+            setToast({
+                text: `Swtiched Theme to ${
+                    theme ? 'Light' : 'Dark'
+                } Mode , Change Map / Text Colors Accordingly for Visiblity.`,
+                type: 'success',
+                delay: 5000
+            });
+        }
+        setTheme(!theme);
+    };
     const [navOpen, setNavOpen] = React.useState(false);
     return (
         <>
@@ -46,11 +62,12 @@ const Navbar = ({ showNav }: Props) => {
 
                 <div className="flex items-center">
                     <Button
+                        aria-label="Toggle Theme Button"
                         style={{ minWidth: `50px` }}
                         size="small"
                         icon={<Sun />}
                         ghost
-                        onClick={() => setTheme(!theme)}
+                        onClick={() => toggleTheme()}
                     />
                     <div
                         className="nav-mobile-icon flex-col flex-center"
