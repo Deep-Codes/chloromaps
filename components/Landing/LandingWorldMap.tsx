@@ -6,10 +6,13 @@ import fillAllMap from '@/lib/fillAllMap';
 import { mapAtom } from '@/store/map.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
 import { useAtom } from 'jotai';
+import { useRouter } from 'next/router';
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
+import { mapDt } from './MapShowContainer';
 
 const LandingWorldMap = () => {
+    const router = useRouter();
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     React.useMemo(() => {
@@ -69,6 +72,25 @@ const LandingWorldMap = () => {
             }
         };
     }, []);
+    const parseHover = (id: string): JSX.Element => {
+        const idx = mapDt.findIndex((e) => e.id === id);
+        // Map available
+        if (idx > -1) {
+            return (
+                // @ts-ignore
+                <span>{WorldCountryCodes[id]} , Click to Edit.</span>
+            );
+        }
+        // @ts-ignore
+        return <span>{WorldCountryCodes[id]}</span>;
+    };
+    const routerToMap = (id: string) => {
+        const idx = mapDt.findIndex((e) => e.id === id);
+        // Map available
+        if (idx > -1) {
+            router.push(`/map${mapDt[idx].link}`);
+        }
+    };
     return (
         <>
             <div className="head">
@@ -80,7 +102,7 @@ const LandingWorldMap = () => {
                 {hover !== '' && (
                     <ReactTooltip id="world">
                         {/* @ts-ignore */}
-                        <span style={{ fontWeight: 'bold' }}>{WorldCountryCodes[hover]}</span>
+                        <span style={{ fontWeight: 'bold' }}>{parseHover(hover)}</span>
                     </ReactTooltip>
                 )}
                 <svg
@@ -101,7 +123,8 @@ const LandingWorldMap = () => {
                     <g
                         style={{ pointerEvents: 'visible' }}
                         onMouseOver={(e) => setHover((e.target as SVGGElement).id)}
-                        onMouseLeave={() => setHover('')}>
+                        onMouseLeave={() => setHover('')}
+                        onClick={(e) => routerToMap((e.target as SVGGElement).id)}>
                         <path
                             id="AF"
                             d="M967.149 235.761H963.337L960.654 235.408L958.889 237.456L957.407 237.95L956.348 238.869L954.512 237.385L953.806 233.571L952.676 233.359V231.947L950.417 230.887L949.217 232.512L949.358 234.348L948.935 234.984L946.675 234.913L946.04 237.032L944.557 236.114L942.228 237.597L940.957 237.032L937.921 236.043H935.874L934.744 235.902L932.697 234.701L932.485 236.326L929.59 237.173L929.661 240.846L927.896 242.259L925.072 242.894L924.789 245.013L922.036 245.578L917.871 243.883L917.518 249.534L917.165 252.853L918.93 253.489L917.8 255.961L919.706 259.563L920.483 262.388L923.519 263.165L924.295 265.99L921.542 270.087L928.319 272.347L932.061 271.711L934.391 272.276L935.026 271.287L937.709 271.641L942.369 269.804L941.804 265.99L943.428 263.448H946.252L946.393 262.247L949.217 261.611L950.7 262.035L951.9 260.764L951.123 258.08L952.182 255.396L954.3 254.266L952.182 251.299L955.783 251.441L956.418 249.816L955.853 248.05L957.265 246.143L956.277 243.883L954.936 241.906L956.63 239.928L960.372 239.01L964.467 238.445L966.161 237.597L968.138 237.103L967.149 235.761V235.761Z"

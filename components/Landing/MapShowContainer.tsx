@@ -4,6 +4,7 @@ import MapShowCard from './MapShowCard';
 export interface MapShowcaseType {
     name: string;
     text: string;
+    id?: string;
     link: string;
 }
 
@@ -20,12 +21,14 @@ export const mapDt: MapShowcaseType[] = [
     {
         name: 'India',
         text: 'All Indian States Based on Mercator Projection.',
-        link: '/india'
+        link: '/india',
+        id: 'IN'
     },
     {
         name: 'Usa',
         text: 'All 50 States Based on Lambert Azimuthal Equal-area projection.',
-        link: '/usa'
+        link: '/usa',
+        id: 'US'
     },
     {
         name: 'Europe',
@@ -35,37 +38,44 @@ export const mapDt: MapShowcaseType[] = [
     {
         name: 'China',
         text: 'All Administrative Regions of China in Mercator Projection',
-        link: '/china'
+        link: '/china',
+        id: 'CN'
     },
     {
         name: 'Russia',
         text: 'Russian Federation, Based on Mercator Projection.',
-        link: '/russia'
+        link: '/russia',
+        id: 'RU'
     },
     {
         name: 'UK',
         text: 'Administrative Regions of UK, Based on Mercator Projection.',
-        link: '/uk'
+        link: '/uk',
+        id: 'GB'
     },
     {
         name: 'Germany',
         text: 'Germany, Based on Mercator Projection.',
-        link: '/germany'
+        link: '/germany',
+        id: 'DE'
     },
     {
         name: 'France',
         text: 'France, Based on Mercator Projection.',
-        link: '/france'
+        link: '/france',
+        id: 'FR'
     },
     {
         name: 'Brazil',
         text: 'Brazil, Based on Mercator Projection.',
-        link: '/brazil'
+        link: '/brazil',
+        id: 'BR'
     },
     {
         name: 'Australia',
         text: 'Australia, Based on Mercator Projection.',
-        link: '/australia'
+        link: '/australia',
+        id: 'AU'
     },
     {
         name: 'Pacific-World',
@@ -75,22 +85,26 @@ export const mapDt: MapShowcaseType[] = [
     {
         name: 'Canada',
         text: 'All Administrative Regions of Canada in Mercator Projection',
-        link: '/canada'
+        link: '/canada',
+        id: 'CA'
     },
     {
         name: 'Poland',
         text: 'All Administrative Regions of Poland in Mercator Projection',
-        link: '/poland'
+        link: '/poland',
+        id: 'PL'
     },
     {
         name: 'Spain',
         text: 'All Administrative Regions of Spain in Mercator Projection',
-        link: '/spain'
+        link: '/spain',
+        id: 'ES'
     },
     {
         name: 'Turkey',
         text: 'All Administrative Regions of Turkey in Mercator Projection',
-        link: '/turkey'
+        link: '/turkey',
+        id: 'TR'
     },
     {
         name: 'Africa',
@@ -100,7 +114,8 @@ export const mapDt: MapShowcaseType[] = [
     {
         name: 'Sweden',
         text: 'All States included , Based on Mercator Projection.',
-        link: '/sweden'
+        link: '/sweden',
+        id: 'SE'
     }
 ];
 
