@@ -6,15 +6,27 @@ import { DefaultSeo } from 'next-seo';
 import { GeistProvider, CssBaseline } from '@geist-ui/react';
 import { useAtom } from 'jotai';
 import { themeAtom } from '@/store/theme.store';
-import SEO from '../next-seo.config';
 import '../styles/main.css';
 import 'inter-ui/inter.css';
+import { useRouter } from 'next/router';
+import SEO from '../next-seo.config';
+import * as gtag from '../lib/gtag';
 
 const Application: NextPage<AppProps<{}>> = ({ Component, pageProps }) => {
     const [theme, setTheme] = useAtom(themeAtom);
     const switchThemes = () => {
         setTheme(!theme);
     };
+    const router = useRouter();
+    React.useEffect(() => {
+        const handleRouteChange = (url: string) => {
+            gtag.pageview(url);
+        };
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, [router.events]);
     return (
         <>
             <DefaultSeo {...SEO} />
