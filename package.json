@@ -69,12 +69,14 @@
         "@next/mdx": "^10.2.3",
         "inter-ui": "^3.18.1",
         "jotai": "^0.16.0",
+        "jspdf": "^2.3.1",
         "next-seo": "^4.23.0",
         "react": "^17.0.1",
         "react-colorful": "^5.1.4",
         "react-svgmt": "^1.1.11",
         "react-tooltip": "^4.2.17",
         "save-svg-as-png": "^1.4.17",
-        "styled-jsx": "3.3.0"
+        "styled-jsx": "3.3.0",
+        "svg2pdf.js": "^2.1.0"
     }
 }

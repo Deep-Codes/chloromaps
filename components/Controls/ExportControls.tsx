@@ -9,7 +9,7 @@ import { Download, Save } from '@geist-ui/react-icons';
 import React from 'react';
 import InputLabel from '../InputLabel';
 
-type ExportType = 'png' | 'svg';
+type ExportType = 'png' | 'svg' | 'pdf';
 
 interface Props {
     map: MapStoreType;
@@ -26,7 +26,12 @@ const ExportControls: React.FC<Props> = ({ map, label, mapId }) => {
                 value={downOp}
                 onChange={(v: ExportType) => setDownOp(v)}>
                 <Select.Option value="png">PNG</Select.Option>
-                <Select.Option value="svg">SVG</Select.Option>
+                <Select.Option value="svg">
+                    SVG <span className="beta-tag">Beta</span>
+                </Select.Option>
+                <Select.Option value="pdf">
+                    PDF <span className="beta-tag">Beta</span>
+                </Select.Option>
             </Select>
             <Spacer y={0.7} />
             <InputLabel text="Download Map" />
@@ -47,6 +52,15 @@ const ExportControls: React.FC<Props> = ({ map, label, mapId }) => {
                 }}>
                 Save Config
             </Button>
+            <style jsx>{`
+                .beta-tag {
+                    font-size: 12px;
+                    padding: 2px 5px;
+                    border-radius: 5px;
+                    border: 1px solid rgba(141, 147, 171, 0.3);
+                    margin-left: 10px;
+                }
+            `}</style>
         </>
     );
 };
