@@ -11,22 +11,27 @@ const changeLogData : ChangeLogType[] =  [
     date: '1st June 2021',
     data: [{
       type: 'feat',
-      text: 'Releasing Pre-Alpha Version for Limited Users'
+      text: 'Releasing Alpha Version for Limited Users'
+    }],
+    version: `0.0.0-alpha`
+  },
+  {
+    date: '1st June 2021',
+    data: [{
+      type: 'feat',
+      text: 'Export Maps in SVG Format'
     },
     {
       type: 'docs',
-      text: 'Updating Changelog Page'
+      text: 'Adding Contributions Page'
     },
     {
-      type: 'fix',
-      text: 'Fix Safari Flexbox Bug'
+      type: 'feat',
+      text: 'Clicking on Landing Page World Map would route to Country\'s Map to Edit it'
     },
-    {
-      type: 'map',
-      text: 'New Zealand , Norway , Kenya Added'
-    }],
-    version: `0.0.0-pre-alpha`
-  }
+    ],
+    version: `0.1.0-alpha`
+  },
   
 ]
 
