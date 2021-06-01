@@ -69,47 +69,42 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox={viewBox.join(' ')}
                 width={width}>
-                <svg>
-                    <g
-                        style={{ pointerEvents: 'visible' }}
-                        onClick={(e: React.SyntheticEvent) => {
+                <g
+                    style={{ pointerEvents: 'visible' }}
+                    onClick={(e: React.SyntheticEvent) => {
+                        // @ts-ignore
+                        if (e.target.id) {
+                            const mapDataCopy = fillColorOnClick(
+                                map.mapData,
+                                {
+                                    // @ts-ignore
+                                    code: e.target.id,
+                                    fill: map.mapFillColor,
+                                    hide: false
+                                },
+                                map.defaultFillColor
+                            );
+                            const legendDataCopy = resolveLegendData(map.legendData, mapDataCopy);
                             // @ts-ignore
-                            if (e.target.id) {
-                                const mapDataCopy = fillColorOnClick(
-                                    map.mapData,
-                                    {
-                                        // @ts-ignore
-                                        code: e.target.id,
-                                        fill: map.mapFillColor,
-                                        hide: false
-                                    },
-                                    map.defaultFillColor
-                                );
-                                const legendDataCopy = resolveLegendData(
-                                    map.legendData,
-                                    mapDataCopy
-                                );
-                                // @ts-ignore
-                                setMap((p) => ({
-                                    ...p,
-                                    mapData: mapDataCopy,
-                                    legendData: legendDataCopy
-                                }));
-                            }
-                        }}
-                        onMouseOver={(e) => {
-                            if (!tooltip) {
-                                setHover((e.target as SVGGElement).id);
-                            }
-                        }}
-                        onMouseLeave={() => {
-                            if (!tooltip) {
-                                setHover('');
-                            }
-                        }}>
-                        {children}
-                    </g>
-                </svg>
+                            setMap((p) => ({
+                                ...p,
+                                mapData: mapDataCopy,
+                                legendData: legendDataCopy
+                            }));
+                        }
+                    }}
+                    onMouseOver={(e) => {
+                        if (!tooltip) {
+                            setHover((e.target as SVGGElement).id);
+                        }
+                    }}
+                    onMouseLeave={() => {
+                        if (!tooltip) {
+                            setHover('');
+                        }
+                    }}>
+                    {children}
+                </g>
                 <g id="labels-container" />
             </svg>
             {!map.hideLegend && (

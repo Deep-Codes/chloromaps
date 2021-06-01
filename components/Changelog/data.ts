@@ -19,7 +19,7 @@ const changeLogData : ChangeLogType[] =  [
     date: '1st June 2021',
     data: [{
       type: 'feat',
-      text: 'Export Maps in SVG Format'
+      text: 'Export Maps in SVG & PDF Format'
     },
     {
       type: 'docs',
@@ -28,6 +28,14 @@ const changeLogData : ChangeLogType[] =  [
     {
       type: 'feat',
       text: 'Clicking on Landing Page World Map would route to Country\'s Map to Edit it'
+    },
+    {
+      type: 'fix',
+      text: 'Remove Redundant SVG tag'
+    },
+    {
+      type: 'fix',
+      text: 'Labels SVG Fill / Stroke Issue'
     },
     ],
     version: `0.1.0-alpha`
