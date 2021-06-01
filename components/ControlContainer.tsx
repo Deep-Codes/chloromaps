@@ -136,6 +136,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                 handleAttrChange={handleAttrChange}
                                 randomiseData={randomiseData}
                                 refreshMap={refreshMap}
+                                uploadDataConfig={uploadDataConfig}
                             />
                         </div>
                     </Tabs.Item>
@@ -177,12 +178,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         }
                         value="3">
                         <div className="control-box">
-                            <ExportControls
-                                map={map}
-                                label={label}
-                                mapId={mapId}
-                                uploadDataConfig={uploadDataConfig}
-                            />
+                            <ExportControls map={map} label={label} mapId={mapId} />
                         </div>
                     </Tabs.Item>
                 </Tabs>
