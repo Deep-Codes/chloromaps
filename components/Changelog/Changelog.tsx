@@ -12,7 +12,7 @@ import data from './data';
 const Changelog = () => (
     <>
         <div className="ctx">
-            {data.map((el) => (
+            {data.reverse().map((el) => (
                 <div className="card" key={el.version}>
                     <div className="header">
                         <span>
@@ -44,6 +44,7 @@ const Changelog = () => (
                         padding: 10px 15px;
                         border: 1px solid rgba(141, 147, 171, 0.3);
                         border-radius: 5px;
+                        margin: 20px 0;
                     }
                     .header {
                         display: flex;

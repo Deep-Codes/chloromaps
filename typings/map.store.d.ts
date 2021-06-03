@@ -23,5 +23,7 @@ export interface MapStoreType {
   legendSmoothGradient: boolean;
   hideStates: string[];
   hideLegend: boolean;
+  hideSource: boolean;
+  sourceText: string;
 }
 

@@ -1,12 +1,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { themeAtom } from '@/store/theme.store';
-import { useAtom } from 'jotai';
-import { Button, useToasts } from '@geist-ui/react';
-import { Sun, Menu, X } from '@geist-ui/react-icons';
+import { Menu, X } from '@geist-ui/react-icons';
 import Logo from '@/assets/logo/Logo';
-import { useRouter } from 'next/dist/client/router';
+import version from '@/data/version';
 
 interface Props {
     showNav: boolean;
@@ -21,28 +18,28 @@ const navArr = [
 ];
 
 const Navbar = ({ showNav }: Props) => {
-    const [theme, setTheme] = useAtom(themeAtom);
-    const [, setToast] = useToasts();
-    const router = useRouter();
-    const toggleTheme = () => {
-        const bool = router.pathname.includes('map');
-        if (bool) {
-            setToast({
-                text: `Swtiched Theme to ${
-                    theme ? 'Light' : 'Dark'
-                } Mode , Change Map / Text Colors Accordingly for Visiblity.`,
-                type: 'success',
-                delay: 5000
-            });
-        }
-        setTheme(!theme);
-    };
+    // const [theme, setTheme] = useAtom(themeAtom);
+    // const [, setToast] = useToasts();
+    // const router = useRouter();
+    // const toggleTheme = () => {
+    //     const bool = router.pathname.includes('map');
+    //     if (bool) {
+    //         setToast({
+    //             text: `Swtiched Theme to ${
+    //                 theme ? 'Light' : 'Dark'
+    //             } Mode , Change Map / Text Colors Accordingly for Visiblity.`,
+    //             type: 'success',
+    //             delay: 5000
+    //         });
+    //     }
+    //     setTheme(!theme);
+    // };
     const [navOpen, setNavOpen] = React.useState(false);
     return (
         <>
             <div className="nav">
                 <a href="/" aria-label="Go to Home Page">
-                    <Logo className="pointer" fill={theme ? 'white' : 'black'} />
+                    <Logo className="pointer" />
                 </a>
                 {showNav ? (
                     <div className="nav-content">
@@ -61,14 +58,18 @@ const Navbar = ({ showNav }: Props) => {
                 )}
 
                 <div className="flex items-center">
-                    <Button
+                    {/* <Button
                         aria-label="Toggle Theme Button"
                         style={{ minWidth: `50px` }}
                         size="small"
                         icon={<Sun />}
                         ghost
                         onClick={() => toggleTheme()}
-                    />
+                    /> */}
+                    <a href="/changelog">
+                        <span className="version-tag">{version}</span>
+                    </a>
+
                     <div
                         className="nav-mobile-icon flex-col flex-center"
                         onClick={() => setNavOpen(!navOpen)}>
@@ -93,6 +94,17 @@ const Navbar = ({ showNav }: Props) => {
                 ))}
             </div>
             <style jsx>{`
+                .version-tag {
+                    font-weight: bold;
+                    font-size: 12px;
+                    padding: 5px 5px;
+                    border-radius: 5px;
+                    border: 1px solid rgba(141, 147, 171, 0.3);
+                    margin-left: 10px;
+                }
+                a {
+                    color: inherit;
+                }
                 .nav-link {
                     color: inherit;
                 }

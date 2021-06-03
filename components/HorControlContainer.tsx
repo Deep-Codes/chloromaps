@@ -119,11 +119,19 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             errorToast
         );
     };
+    const toggleSource = (v: any) => {
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            hideSource: v
+        }));
+    };
     return (
         <div>
             <div className="control-container">
                 <div className="control-box">
                     <EditControls
+                        uploadDataConfig={uploadDataConfig}
                         map={map}
                         handleAttrChange={handleAttrChange}
                         randomiseData={randomiseData}
@@ -141,6 +149,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                 handleAttrChange={handleAttrChange}
                                 toggleHideLegend={toggleHideLegend}
                                 smoothGradient={smoothGradient}
+                                toggleSource={toggleSource}
                             />
                         </Tabs.Item>
                         <Tabs.Item label="Labels" value="2">
@@ -149,12 +158,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     </Tabs>
                 </div>
                 <div className="control-box">
-                    <ExportControls
-                        map={map}
-                        label={label}
-                        mapId={mapId}
-                        uploadDataConfig={uploadDataConfig}
-                    />
+                    <ExportControls map={map} label={label} mapId={mapId} />
                 </div>
             </div>
             <div className="control-container-tabs">
@@ -172,6 +176,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                 handleAttrChange={handleAttrChange}
                                 randomiseData={randomiseData}
                                 refreshMap={refreshMap}
+                                uploadDataConfig={uploadDataConfig}
                             />
                         </div>
                     </Tabs.Item>
@@ -197,6 +202,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                         handleAttrChange={handleAttrChange}
                                         toggleHideLegend={toggleHideLegend}
                                         smoothGradient={smoothGradient}
+                                        toggleSource={toggleSource}
                                     />
                                 </Tabs.Item>
                                 <Tabs.Item label="Labels" value="2">
@@ -213,12 +219,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         }
                         value="3">
                         <div className="control-box">
-                            <ExportControls
-                                label={label}
-                                map={map}
-                                mapId={mapId}
-                                uploadDataConfig={uploadDataConfig}
-                            />
+                            <ExportControls label={label} map={map} mapId={mapId} />
                         </div>
                     </Tabs.Item>
                 </Tabs>

@@ -13,6 +13,7 @@ const data = [
     [
         { text: 'Resources', link: '/' },
         { text: 'Acknowledgement', link: '/acknowledgement' },
+        //    { text: 'Contributions', link: '/contributions' },
         { text: 'Blogs', link: '/blogs' },
         { text: 'Open Source', link: '/open-source' },
         { text: 'Quiz', link: 'https://quiz-affinity.vercel.app/' },

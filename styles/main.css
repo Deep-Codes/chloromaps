@@ -107,3 +107,10 @@ input[type='number']::-webkit-outer-spin-button {
     font-size: 20px;
     opacity: 0.8;
 }
+.beta-tag {
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(141, 147, 171, 0.3);
+    margin-left: 10px;
+}

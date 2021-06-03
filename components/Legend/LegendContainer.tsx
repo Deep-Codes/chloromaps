@@ -6,6 +6,8 @@ interface Props {
     data: LegendData[];
     legendSmoothGradient: boolean;
     legendTextColor: string;
+    sourceText: string;
+    hideSource: boolean;
 }
 
 /*
@@ -19,10 +21,32 @@ if height = 30 then viewBox="0 0 364 30"
 
 */
 
-const LegendContainer = ({ data, legendSmoothGradient, legendTextColor }: Props) => {
+const LegendContainer = ({
+    data,
+    legendSmoothGradient,
+    legendTextColor,
+    hideSource,
+    sourceText
+}: Props) => {
     const calcH = data.length * 40;
     return (
         <>
+            {!hideSource ? (
+                <svg
+                    id="source"
+                    width="364"
+                    height={50}
+                    viewBox="0 0 364 50"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <svg height={30} y={5}>
+                        <text fontFamily="Arial" fill={legendTextColor} x="50" y="20">
+                            {sourceText}
+                        </text>
+                    </svg>
+                </svg>
+            ) : null}
+
             {legendSmoothGradient ? (
                 <LegendGradient legendTextColor={legendTextColor} gradArr={data} />
             ) : (

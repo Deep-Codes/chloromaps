@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MapStoreType } from '@/typings/map.store';
 import { Input, Spacer, Button } from '@geist-ui/react';
-import { Layers, RefreshCcw } from '@geist-ui/react-icons';
+import { Layers, RefreshCcw, Upload } from '@geist-ui/react-icons';
 import React from 'react';
 import ColorPickerInput from '../ColorPickerInput';
 import InputLabel from '../InputLabel';
@@ -12,9 +12,16 @@ interface Props {
     handleAttrChange: (v: string, a: string) => void;
     randomiseData: () => void;
     refreshMap: () => void;
+    uploadDataConfig: (e: any) => void;
 }
 
-const EditControls: React.FC<Props> = ({ map, handleAttrChange, randomiseData, refreshMap }) => (
+const EditControls: React.FC<Props> = ({
+    map,
+    handleAttrChange,
+    randomiseData,
+    refreshMap,
+    uploadDataConfig
+}) => (
     <>
         <InputLabel text="Border Width" />
         <Input
@@ -58,6 +65,30 @@ const EditControls: React.FC<Props> = ({ map, handleAttrChange, randomiseData, r
         <Button icon={<RefreshCcw />} onClick={() => refreshMap()}>
             Reset Map
         </Button>
+        <Spacer y={0.7} />
+        <InputLabel text="Upload Config" />
+        <div className="relative">
+            <Button icon={<Upload />}>
+                <input
+                    className="file-input pointer"
+                    type="file"
+                    onChange={(e) => uploadDataConfig(e)}
+                    // onClick={(e: any) => (e.target.value = null)}
+                />
+                Upload Config
+            </Button>
+        </div>
+        <style jsx>{`
+            .file-input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000000;
+                height: 100%;
+                opacity: 0;
+            }
+        `}</style>
     </>
 );
 

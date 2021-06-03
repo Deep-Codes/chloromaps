@@ -12,7 +12,9 @@ export const mapAtom = atom<MapStoreType>({
   legendTextColor: "white",
   hideStates: [],
   hideLegend: false,
-  legendSmoothGradient: false
+  legendSmoothGradient: false,
+  hideSource: false,
+  sourceText: ''
 })
 
 export const disableTooltip = atom<boolean>(false)

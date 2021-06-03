@@ -69,6 +69,13 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             legendSmoothGradient: v
         }));
     };
+    const toggleSource = (v: any) => {
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            hideSource: v
+        }));
+    };
     const refreshMap = () => {
         resetFullMap(stateCodes);
         // @ts-ignore
@@ -136,6 +143,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                 handleAttrChange={handleAttrChange}
                                 randomiseData={randomiseData}
                                 refreshMap={refreshMap}
+                                uploadDataConfig={uploadDataConfig}
                             />
                         </div>
                     </Tabs.Item>
@@ -161,6 +169,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                         handleAttrChange={handleAttrChange}
                                         toggleHideLegend={toggleHideLegend}
                                         smoothGradient={smoothGradient}
+                                        toggleSource={toggleSource}
                                     />
                                 </Tabs.Item>
                                 <Tabs.Item label="Labels" value="2">
@@ -177,12 +186,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                         }
                         value="3">
                         <div className="control-box">
-                            <ExportControls
-                                map={map}
-                                label={label}
-                                mapId={mapId}
-                                uploadDataConfig={uploadDataConfig}
-                            />
+                            <ExportControls map={map} label={label} mapId={mapId} />
                         </div>
                     </Tabs.Item>
                 </Tabs>
