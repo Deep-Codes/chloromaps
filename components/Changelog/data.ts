@@ -40,6 +40,19 @@ const changeLogData : ChangeLogType[] =  [
     ],
     version: `0.1.0-alpha`
   },
+  {
+    date: '3rd June 2021',
+    data: [{
+      type: 'fix',
+      text: 'Remove Light Mode , add Version Tag'
+    },
+    {
+      type: 'map',
+      text: 'Introducing '
+    }
+    ],
+    version: `0.2.0-alpha`
+  },
   
 ]
 
