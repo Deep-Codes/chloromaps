@@ -49,6 +49,10 @@ const changeLogData : ChangeLogType[] =  [
     {
       type: 'map',
       text: 'Introducing Argentina , Nigeria , Japan'
+    },
+    {
+      type: 'feat',
+      text: 'Adding Source Value to Legend'
     }
     ],
     version: `0.2.0-alpha`

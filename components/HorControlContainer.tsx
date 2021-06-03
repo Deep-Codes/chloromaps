@@ -119,6 +119,13 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             errorToast
         );
     };
+    const toggleSource = (v: any) => {
+        // @ts-ignore
+        setMap((st: MapStoreType) => ({
+            ...st,
+            hideSource: v
+        }));
+    };
     return (
         <div>
             <div className="control-container">
@@ -142,6 +149,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                 handleAttrChange={handleAttrChange}
                                 toggleHideLegend={toggleHideLegend}
                                 smoothGradient={smoothGradient}
+                                toggleSource={toggleSource}
                             />
                         </Tabs.Item>
                         <Tabs.Item label="Labels" value="2">
@@ -194,6 +202,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                         handleAttrChange={handleAttrChange}
                                         toggleHideLegend={toggleHideLegend}
                                         smoothGradient={smoothGradient}
+                                        toggleSource={toggleSource}
                                     />
                                 </Tabs.Item>
                                 <Tabs.Item label="Labels" value="2">

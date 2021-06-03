@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MapStoreType } from '@/typings/map.store';
-import { Spacer, Toggle } from '@geist-ui/react';
+import { Input, Spacer, Toggle } from '@geist-ui/react';
 import React from 'react';
 import LegendControls from '@/components/Legend/LegendControls';
 import ColorPickerInput from '../ColorPickerInput';
@@ -11,13 +11,15 @@ interface Props {
     handleAttrChange: (v: string, a: string) => void;
     toggleHideLegend: (b: any) => void;
     smoothGradient: (b: any) => void;
+    toggleSource: (b: any) => void;
 }
 
 const LegendAllControls: React.FC<Props> = ({
     map,
     handleAttrChange,
     toggleHideLegend,
-    smoothGradient
+    smoothGradient,
+    toggleSource
 }) => (
     <div>
         <ColorPickerInput
@@ -34,6 +36,16 @@ const LegendAllControls: React.FC<Props> = ({
         <Toggle onChange={(e: any) => smoothGradient(e.target.checked)} size="large" />
         <Spacer y={0.7} />
         <LegendControls />
+        <InputLabel beta text="Add Source" />
+        <Spacer y={0.7} />
+        <Input
+            value={map.sourceText}
+            onChange={(e) => handleAttrChange(e.target.value, 'sourceText')}
+            placeholder="Source Text"
+        />
+        <Spacer y={0.7} />
+        <InputLabel beta text="Hide Source" />
+        <Toggle onChange={(e: any) => toggleSource(e.target.checked)} size="large" />
     </div>
 );
 

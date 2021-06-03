@@ -112,6 +112,8 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                     data={map.legendData}
                     legendTextColor={map.legendTextColor}
                     legendSmoothGradient={map.legendSmoothGradient}
+                    hideSource={map.hideSource}
+                    sourceText={map.sourceText}
                 />
             )}
         </div>

@@ -52,15 +52,6 @@ const ExportControls: React.FC<Props> = ({ map, label, mapId }) => {
                 }}>
                 Save Config
             </Button>
-            <style jsx>{`
-                .beta-tag {
-                    font-size: 12px;
-                    padding: 2px 5px;
-                    border-radius: 5px;
-                    border: 1px solid rgba(141, 147, 171, 0.3);
-                    margin-left: 10px;
-                }
-            `}</style>
         </>
     );
 };
