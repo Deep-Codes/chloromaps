@@ -48,7 +48,7 @@ const changeLogData : ChangeLogType[] =  [
     },
     {
       type: 'map',
-      text: 'Introducing '
+      text: 'Introducing Argentina , Nigeria , Japan'
     }
     ],
     version: `0.2.0-alpha`

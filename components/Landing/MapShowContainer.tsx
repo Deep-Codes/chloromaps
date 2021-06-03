@@ -107,6 +107,24 @@ export const mapDt: MapShowcaseType[] = [
         id: 'TR'
     },
     {
+        name: 'Argentina',
+        text: 'All Provinces Regions of Argetina in Mercator Projection',
+        link: '/argentina',
+        id: 'TR'
+    },
+    {
+        name: 'Japan',
+        text: 'All Provinces Regions of Japan in Mercator Projection',
+        link: '/japan',
+        id: 'JP'
+    },
+    {
+        name: 'Nigeria',
+        text: 'All Provinces Regions of Nigeria in Mercator Projection',
+        link: '/nigeria',
+        id: 'NG'
+    },
+    {
         name: 'Africa',
         text: 'Africa , Based on Robinson Projection.',
         link: '/africa'

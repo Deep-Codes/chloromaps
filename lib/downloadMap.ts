@@ -31,6 +31,8 @@ const downloadMap = (id: string, type: 'png' | 'svg' | 'pdf') => {
             const clone = mapEl.cloneNode(true);
             // @ts-ignore
             clone.setAttribute('width', '');
+             // @ts-ignore
+            clone.setAttribute('height', '');
             // @ts-ignore
             doc.svg(clone, {
             }).then(() => {

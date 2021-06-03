@@ -12,7 +12,8 @@ interface Props {
         | 'Federative Units (States)'
         | 'Provinces and territories'
         | 'Administrative divisions'
-        | 'Republics';
+        | 'Republics'
+        | 'Prefectures';
 }
 
 const MapSEO: React.FC<Props> = ({ name, type = 'States' }) => {
