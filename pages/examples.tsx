@@ -6,17 +6,29 @@ const expData = [
     {
         title: `India's Population by State`,
         link: `/india`,
-        json: `india_population`
+        json: `india_population`,
+        author: {}
     },
     {
         title: `Usa's Population by State`,
         link: `/usa`,
-        json: `usa_population`
+        json: `usa_population`,
+        author: {}
+    },
+    {
+        title: `Press Freedom Index`,
+        link: `/world`,
+        json: `press_freedom_index`,
+        author: {
+            name: '@politicalmaps',
+            link: 'https://www.instagram.com/politicalmaps/'
+        }
     },
     {
         title: `Sweden's Population by State`,
         link: `/sweden`,
-        json: `sweden_population`
+        json: `sweden_population`,
+        author: {}
     }
 ];
 
@@ -39,6 +51,11 @@ const Example = () => (
                             }}>
                             Edit this Map
                         </Link>
+                        {d.author.name ? (
+                            <span className="author">
+                                By <a href={d.author.link}>{d.author.name}</a>
+                            </span>
+                        ) : null}
                     </div>
                 ))}
             </div>
@@ -56,6 +73,14 @@ const Example = () => (
                 display: grid;
                 grid-gap: 16pt;
                 gap: 16pt;
+            }
+            .author{
+                font-size: 14px;
+                margin: 5px 0;
+                opacity: 0.8;
+            }
+            .author a{
+                color: inherit;
             }
             .mb-20{
                 margin-bottom: 5rem;
