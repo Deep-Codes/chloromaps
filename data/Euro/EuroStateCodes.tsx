@@ -20,6 +20,7 @@ export const EuroStateCodes = {
     ie: 'Ireland',
     is: 'Iceland',
     it: 'Italy',
+    li: 'Leichtenstein',
     lt: 'Lithuania',
     lu: 'Luxembourg',
     lv: 'Latvia',
