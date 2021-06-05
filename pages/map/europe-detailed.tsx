@@ -7,7 +7,7 @@ import React from 'react';
 
 const Euro = () => (
     <MainLayout>
-        <MapSEO name="Euro" type="Countries" />
+        <MapSEO name="Europe Detailed Map" type="Countries" />
         <div className="flex justify-between container">
             <ControlContainer stateCodes={EuroStateCodes} mapId="euro-map" />
             <EuroMap />

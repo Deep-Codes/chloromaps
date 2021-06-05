@@ -31,6 +31,11 @@ export const mapDt: MapShowcaseType[] = [
         id: 'US'
     },
     {
+        name: 'Europe (Detailed)',
+        text: 'Very Detailed Both EU + Non-EU , Based on Robinson Projection.',
+        link: '/europe-detailed'
+    },
+    {
         name: 'Europe',
         text: 'Both EU + Non-EU , Based on Robinson Projection.',
         link: '/europe'

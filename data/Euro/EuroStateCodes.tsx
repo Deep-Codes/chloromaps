@@ -23,6 +23,7 @@ export const EuroStateCodes = {
     lt: 'Lithuania',
     lu: 'Luxembourg',
     lv: 'Latvia',
+    mc: 'Monaco',
     md: 'Moldova',
     mk: 'Macedonia',
     me: 'Montenegro',
@@ -43,5 +44,6 @@ export const EuroStateCodes = {
     cy: 'Cyprus',
     ru: 'Russia',
     az: 'Azerbaijan',
+    va: 'Vatican City',
     water_bodies: 'Water Bodies'
 };
