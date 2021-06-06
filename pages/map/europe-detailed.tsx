@@ -9,7 +9,7 @@ const Euro = () => (
     <MainLayout>
         <MapSEO name="Europe Detailed Map" type="Countries" />
         <div className="flex justify-between container">
-            <ControlContainer stateCodes={EuroStateCodes} mapId="euro-map" />
+            <ControlContainer hideWaterBodies stateCodes={EuroStateCodes} mapId="euro-map" />
             <EuroMap />
         </div>
     </MainLayout>
