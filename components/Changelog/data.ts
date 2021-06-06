@@ -57,6 +57,23 @@ const changeLogData : ChangeLogType[] =  [
     ],
     version: `0.2.0-alpha`
   },
+  {
+    date: '6th June 2021',
+    data: [{
+      type: 'fix',
+      text: 'Swap with Preact on Production'
+    },
+    {
+      type: 'map',
+      text: 'Introducing Europe Detailed , South Korea , Egypt'
+    },
+    {
+      type:'fix',
+      text: 'Merging SVG Paths'
+    }
+    ],
+    version: `0.3.0-alpha`
+  },
   
 ]
 

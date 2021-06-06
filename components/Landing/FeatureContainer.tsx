@@ -9,7 +9,7 @@ import FeatureCard, { FeatureType } from './FeatureCard';
 
 const featList: FeatureType[] = [
     {
-        heading: '50+ Maps',
+        heading: '20+ Maps',
         text: 'Maps of Countries and Regions Around the World in different Projections',
         icon: <MapIcon />
     },
@@ -20,7 +20,7 @@ const featList: FeatureType[] = [
     },
     {
         heading: 'Export',
-        text: 'Export Maps and Legends in .png .jpg in High Quality',
+        text: 'Export Maps and Legends in .png .jpg .pdf in High Quality',
         icon: <ImageIcon />
     },
     {

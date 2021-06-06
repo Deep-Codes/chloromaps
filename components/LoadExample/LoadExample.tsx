@@ -15,7 +15,8 @@ import { useToasts } from '@geist-ui/react';
 const exampleData = {
     india_population: require('@/configs/india.json'),
     usa_population: require('@/configs/usa.json'),
-    sweden_population: require('@/configs/sweden.json')
+    sweden_population: require('@/configs/sweden.json'),
+    press_freedom_index: require('@/configs/press_freedom_index.json')
 };
 
 const LoadExample = () => {

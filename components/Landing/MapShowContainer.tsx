@@ -31,6 +31,11 @@ export const mapDt: MapShowcaseType[] = [
         id: 'US'
     },
     {
+        name: 'Europe (Detailed)',
+        text: 'Very Detailed Both EU + Non-EU , Based on Robinson Projection.',
+        link: '/europe-detailed'
+    },
+    {
         name: 'Europe',
         text: 'Both EU + Non-EU , Based on Robinson Projection.',
         link: '/europe'
@@ -134,6 +139,18 @@ export const mapDt: MapShowcaseType[] = [
         text: 'All States included , Based on Mercator Projection.',
         link: '/sweden',
         id: 'SE'
+    },
+    {
+        name: 'Egypt',
+        text: 'All Governorates included , Based on Mercator Projection.',
+        link: '/egypt',
+        id: 'EG'
+    },
+    {
+        name: 'South Korea',
+        text: 'All Provinces included , Based on Mercator Projection.',
+        link: '/korea',
+        id: 'KR'
     }
 ];
 

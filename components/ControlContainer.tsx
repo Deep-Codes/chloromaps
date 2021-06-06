@@ -15,13 +15,15 @@ import ExportControls from './Controls/ExportControls';
 import LabelControls from './Controls/LabelControls';
 import LegendAllControls from './Controls/LegendAllControls';
 import InputLabel from './InputLabel';
+import HideWaterBodies from './MapAddons/HideWaterBodies';
 
 interface Props {
     mapId: string;
     stateCodes: { [key: string]: string };
+    hideWaterBodies?: boolean;
 }
 
-const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
+const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies }) => {
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
     const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
     const [, setTooltip] = useAtom(disableTooltip);
@@ -145,6 +147,12 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                                 refreshMap={refreshMap}
                                 uploadDataConfig={uploadDataConfig}
                             />
+                            {hideWaterBodies ? (
+                                <>
+                                    <Spacer y={0.7} />
+                                    <HideWaterBodies id="water_bodies" />
+                                </>
+                            ) : null}
                         </div>
                     </Tabs.Item>
                     <Tabs.Item

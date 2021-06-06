@@ -71,6 +71,7 @@
         "jotai": "^0.16.0",
         "jspdf": "^2.3.1",
         "next-seo": "^4.23.0",
+        "preact": "^10.5.13",
         "react": "^17.0.1",
         "react-colorful": "^5.1.4",
         "react-svgmt": "^1.1.11",

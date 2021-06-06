@@ -25,7 +25,8 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
     stateCodes,
     width,
     center,
-    children
+    children,
+    ...props
 }) => {
     const [hover, setHover] = React.useState('');
     const [map, setMap] = useAtom<MapStoreType>(mapAtom);
@@ -68,7 +69,8 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
                 version="1.2"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox={viewBox.join(' ')}
-                width={width}>
+                width={width}
+                {...props}>
                 <g
                     style={{ pointerEvents: 'visible' }}
                     onClick={(e: React.SyntheticEvent) => {
