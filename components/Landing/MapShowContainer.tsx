@@ -139,6 +139,18 @@ export const mapDt: MapShowcaseType[] = [
         text: 'All States included , Based on Mercator Projection.',
         link: '/sweden',
         id: 'SE'
+    },
+    {
+        name: 'Egypt',
+        text: 'All Governorates included , Based on Mercator Projection.',
+        link: '/egypt',
+        id: 'EG'
+    },
+    {
+        name: 'South Korea',
+        text: 'All Provinces included , Based on Mercator Projection.',
+        link: '/korea',
+        id: 'KR'
     }
 ];
 

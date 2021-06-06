@@ -13,7 +13,8 @@ interface Props {
         | 'Provinces and territories'
         | 'Administrative divisions'
         | 'Republics'
-        | 'Prefectures';
+        | 'Prefectures'
+        | 'Governorates';
 }
 
 const MapSEO: React.FC<Props> = ({ name, type = 'States' }) => {
