@@ -95,7 +95,7 @@ const LandingWorldMap = () => {
         <>
             <div className="head">
                 <h1 style={{ opacity: 0, color: 'transparent' }} id="grad-text">
-                    Develop and Ship Chloropeth Maps Faster
+                    Develop and Ship Choropleth Maps Faster
                 </h1>
             </div>
             <div className="flex flex-col map-container mx-auto" id="scroll-map">

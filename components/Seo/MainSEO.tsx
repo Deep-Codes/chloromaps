@@ -8,12 +8,12 @@ interface Props {
 
 const MainSEO: React.FC<Props> = ({ title, description }) => {
     const seoData = {
-        title: `${title} | Chloromaps - Develop and Ship Chloropeth Maps Faster`,
+        title: `${title} | Chloromaps - Develop and Ship Choropleth Maps Faster`,
         description: `${
             description || 'A Rapid Map Development and Editor , Ship maps Faster and without Pain.'
         }`,
         openGraph: {
-            title: `${title} | Chloromaps - Develop and Ship Chloropeth Maps Faster`,
+            title: `${title} | Chloromaps - Develop and Ship Choropleth Maps Faster`,
             description: `${
                 description ||
                 'A Rapid Map Development and Editor , Ship maps Faster and without Pain.'

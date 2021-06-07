@@ -11,7 +11,7 @@ const AllMaps = () => {
             <div className="flex flex-col mb-20">
                 <h1 className="main-heading">All Maps</h1>
                 <div className="main-description">
-                    Create Beautiful Chloropeth Visualisation from over 50+ Collections of Countries
+                    Create Beautiful Choropleth Visualisation from over 50+ Collections of Countries
                     & Continents
                 </div>
                 <div className="search-ctx">

@@ -1,5 +1,5 @@
 export default {
-    title: 'Chloromaps | Develop and Ship Chloropeth Maps Faster',
+    title: 'Chloromaps | Develop and Ship Choropleth Maps Faster',
     description: 'A Rapid Map Development and Editor , Ship maps Faster and without Pain.',
     author: 'Deepankar Bhade',
     openGraph: {
