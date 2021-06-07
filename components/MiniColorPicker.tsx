@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
 import { colorPickerPalette } from '@/data/colors';
+import getColorUsed from '@/lib/getColorUsed';
 import { MapStoreType } from '@/typings/map.store';
 import { useTheme } from '@geist-ui/react';
 import React from 'react';
@@ -16,6 +17,7 @@ interface Props {
 
 const MiniColorPicker: React.FC<Props> = ({ index, bgColor, map, setMap }) => {
     const theme = useTheme();
+    const uniquePalette: string[] = getColorUsed(map.mapData);
     const [open, setOpen] = React.useState<boolean>(false);
     const handleColor = (v: string) => {
         const copy = map.mapData;
@@ -48,7 +50,9 @@ const MiniColorPicker: React.FC<Props> = ({ index, bgColor, map, setMap }) => {
                                             onClick={() => handleColor(el)}
                                             key={el}
                                             style={{ backgroundColor: el }}
-                                            className="palette-box"
+                                            className={`palette-box ${
+                                                uniquePalette.includes(el) ? 'border' : ''
+                                            }`}
                                         />
                                     ))}
                                 </div>
@@ -64,6 +68,10 @@ const MiniColorPicker: React.FC<Props> = ({ index, bgColor, map, setMap }) => {
                     margin-right: 5px;
                     margin-bottom: 5px;
                     border-radius: 2px;
+                    border: 1px solid #121212;
+                }
+                .border {
+                    border: 1px solid white !important;
                 }
                 .picker {
                     background-color: ${theme.palette.accents_1};
