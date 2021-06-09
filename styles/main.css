@@ -1,6 +1,15 @@
 html {
     scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    outline: 1px solid #333;
+}
 .flex {
     display: flex;
 }
