@@ -2,7 +2,7 @@
 import getColorUsed from '@/lib/getColorUsed';
 import { MapStoreType } from '@/typings/map.store';
 import { Input, Spacer, Button } from '@geist-ui/react';
-import { Layers, RefreshCcw, Upload } from '@geist-ui/react-icons';
+import { Layers, RefreshCcw } from '@geist-ui/react-icons';
 import React from 'react';
 import ColorPickerInput from '../ColorPickerInput';
 import InputLabel from '../InputLabel';
@@ -73,26 +73,30 @@ const EditControls: React.FC<Props> = ({
             </Button>
             <Spacer y={0.7} />
             <InputLabel text="Upload Config" />
-            <div className="relative">
-                <Button icon={<Upload />}>
-                    <input
-                        className="file-input pointer"
-                        type="file"
-                        onChange={(e) => uploadDataConfig(e)}
-                        // onClick={(e: any) => (e.target.value = null)}
-                    />
-                    Upload Config
-                </Button>
+            <div className="fileUpload">
+                <span>Click to Upload Config</span>
+                <input
+                    onChange={(e) => uploadDataConfig(e)}
+                    id="uploadBtn"
+                    type="file"
+                    className="upload"
+                />
             </div>
             <style jsx>{`
-                .file-input {
+                .fileUpload {
+                    position: relative;
+                    overflow: hidden;
+                }
+                .fileUpload input.upload {
                     position: absolute;
                     top: 0;
-                    left: 0;
-                    width: 100%;
-                    z-index: 1000000;
-                    height: 100%;
+                    right: 0;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 20px;
+                    cursor: pointer;
                     opacity: 0;
+                    filter: alpha(opacity=0);
                 }
             `}</style>
         </>
