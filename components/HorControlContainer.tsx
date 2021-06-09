@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { colorPickerPalette } from '@/data/colors';
+import getColorUsed from '@/lib/getColorUsed';
 import resetFullMap from '@/lib/resetFullMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { labelAtom } from '@/store/label.store';
@@ -126,6 +127,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
             hideSource: v
         }));
     };
+    const uniquePalette = getColorUsed(map.mapData);
     return (
         <div>
             <div className="control-container">
@@ -145,6 +147,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                     <Tabs hideDivider initialValue="1">
                         <Tabs.Item label="Legend" value="1">
                             <LegendAllControls
+                                uniquePalette={uniquePalette}
                                 map={map}
                                 handleAttrChange={handleAttrChange}
                                 toggleHideLegend={toggleHideLegend}
@@ -198,6 +201,7 @@ const HorControlContainer: React.FC<Props> = ({ mapId, stateCodes }) => {
                             <Tabs hideDivider initialValue="1">
                                 <Tabs.Item label="Legend" value="1">
                                     <LegendAllControls
+                                        uniquePalette={uniquePalette}
                                         map={map}
                                         handleAttrChange={handleAttrChange}
                                         toggleHideLegend={toggleHideLegend}
