@@ -1,13 +1,13 @@
 import ControlContainer from '@/components/ControlContainer';
-import MapSEO from '@/components/Seo/MapSEO';
-import FranceMap from '@/data/France/France.map';
-import { FranceStateCodes } from '@/data/France/FranceStateCodes';
+import FranceMap from '@/data/France-Departments/France.map';
+import { FranceStateCodes } from '@/data/France-Departments/FranceStateCodes';
 import MainLayout from '@/layouts/MainLayout';
 import React from 'react';
+import MapSEO from '@/components/Seo/MapSEO';
 
 const France = () => (
     <MainLayout>
-        <MapSEO name="France" type="Regions" />
+        <MapSEO name="France" type="Departments" />
         <div className="flex justify-between container">
             <ControlContainer stateCodes={FranceStateCodes} mapId="france-map" />
             <FranceMap />

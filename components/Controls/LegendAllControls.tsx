@@ -12,6 +12,7 @@ interface Props {
     toggleHideLegend: (b: any) => void;
     smoothGradient: (b: any) => void;
     toggleSource: (b: any) => void;
+    uniquePalette: string[];
 }
 
 const LegendAllControls: React.FC<Props> = ({
@@ -19,10 +20,12 @@ const LegendAllControls: React.FC<Props> = ({
     handleAttrChange,
     toggleHideLegend,
     smoothGradient,
-    toggleSource
+    toggleSource,
+    uniquePalette
 }) => (
     <div>
         <ColorPickerInput
+            uniquePalette={uniquePalette}
             placeHolder="Legend Text Color"
             color={map.legendTextColor}
             setColor={handleAttrChange}

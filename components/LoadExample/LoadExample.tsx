@@ -16,7 +16,11 @@ const exampleData = {
     india_population: require('@/configs/india.json'),
     usa_population: require('@/configs/usa.json'),
     sweden_population: require('@/configs/sweden.json'),
-    press_freedom_index: require('@/configs/press_freedom_index.json')
+    press_freedom_index: require('@/configs/press_freedom_index.json'),
+    apple_gdp_comp: require('@/configs/apple_gdp_comp.json'),
+    europe_democraxy_index: require('@/configs/europe_democraxy_index.json'),
+    lgbtq_marriage: require('@/configs/lgbtq_marriage.json'),
+    most_searched_wonders: require('@/configs/most_searched_wonders.json')
 };
 
 const LoadExample = () => {

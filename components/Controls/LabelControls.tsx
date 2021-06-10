@@ -23,7 +23,7 @@ const LabelControls = () => {
                 ctx.innerHTML += `
                 <text class="draggable drag-label" id="label-text-${
                     count + 1
-                }" x="288" y="553" style="font-family: Arial; font-weight: 700; opacity: 1; font-size: ${
+                }" x="50%" y="50%" style="font-family: Arial; font-weight: 700; opacity: 1; font-size: ${
                     16 * label.scalingFactor
                 }px; fill:white; stroke:none;">${text}</text>
                 `;

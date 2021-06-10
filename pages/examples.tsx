@@ -29,6 +29,33 @@ const expData = [
         link: `/sweden`,
         json: `sweden_population`,
         author: {}
+    },
+    {
+        title: `Most searched wonder's of World`,
+        link: `/world`,
+        json: `most_searched_wonders`,
+        author: {
+            name: '@maps.grey',
+            link: 'https://www.instagram.com/maps.grey/'
+        }
+    },
+    {
+        title: `Democracy Index of European Countries`,
+        link: `/europe-detailed`,
+        json: `europe_democraxy_index`,
+        author: {}
+    },
+    {
+        title: `Countries with Less Gdp than Apple's Market Cap`,
+        link: `/world`,
+        json: `apple_gdp_comp`,
+        author: {}
+    },
+    {
+        title: `Countries where Same Sex Marriage is Legal`,
+        link: `/world`,
+        json: `lgbtq_marriage`,
+        author: {}
     }
 ];
 

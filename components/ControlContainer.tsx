@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { colorPickerPalette } from '@/data/colors';
+import getColorUsed from '@/lib/getColorUsed';
 import resetFullMap from '@/lib/resetFullMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { labelAtom } from '@/store/label.store';
@@ -128,6 +129,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
             errorToast
         );
     };
+    const uniquePalette = getColorUsed(map.mapData);
     return (
         <div className="mt">
             <div className="flex flex-col">
@@ -173,6 +175,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
                             <Tabs initialValue="1">
                                 <Tabs.Item label="Legend" value="1">
                                     <LegendAllControls
+                                        uniquePalette={uniquePalette}
                                         map={map}
                                         handleAttrChange={handleAttrChange}
                                         toggleHideLegend={toggleHideLegend}
@@ -217,6 +220,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
                     padding-top: 20px;
                     padding-bottom: 100px;
                     overflow-y: scroll;
+                    overflow-x: hidden;
                     position: relative;
                 }
             `}</style>

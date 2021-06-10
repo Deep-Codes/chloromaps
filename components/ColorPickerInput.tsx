@@ -10,9 +10,16 @@ interface Props {
     color: string;
     setColor: (v: string, a: string) => void;
     type: string;
+    uniquePalette: string[];
 }
 
-const ColorPickerInput: React.FC<Props> = ({ placeHolder, color, setColor, type }) => {
+const ColorPickerInput: React.FC<Props> = ({
+    placeHolder,
+    color,
+    setColor,
+    type,
+    uniquePalette
+}) => {
     const handleColor = (v: string) => {
         setColor(v, type);
     };
@@ -28,7 +35,11 @@ const ColorPickerInput: React.FC<Props> = ({ placeHolder, color, setColor, type 
                     {open && (
                         <>
                             <div className="absolute picker-container">
-                                <ColorPicker color={color} handleColor={handleColor} />
+                                <ColorPicker
+                                    uniquePalette={uniquePalette}
+                                    color={color}
+                                    handleColor={handleColor}
+                                />
                             </div>
                         </>
                     )}

@@ -88,6 +88,22 @@ const LandingWorldMap = () => {
         const idx = mapDt.findIndex((e) => e.id === id);
         // Map available
         if (idx > -1) {
+            // @ts-ignore
+            setMap({
+                defaultFillColor: 'black',
+                mapStrokeColor: 'white',
+                mapBackgroundColor: 'black',
+                mapStrokeWidth: '1',
+                mapFillColor: '#ff677d',
+                mapData: [],
+                legendData: [],
+                legendTextColor: 'white',
+                hideStates: [],
+                hideLegend: false,
+                legendSmoothGradient: false,
+                hideSource: false,
+                sourceText: ''
+            });
             router.push(`/map${mapDt[idx].link}`);
         }
     };

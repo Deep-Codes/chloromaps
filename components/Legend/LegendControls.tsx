@@ -86,6 +86,7 @@ const LegendControls = () => {
                     </div>
                     <MiniColorPicker index={i} map={map} setMap={setMap} bgColor={dt.fill} />
                     <Input
+                        width="150px"
                         size="mini"
                         placeholder="Legend Value"
                         value={dt.text}
@@ -127,7 +128,7 @@ const LegendControls = () => {
                 }
                 .wrapper {
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: space-around;
                     align-items: center;
                     margin-top: 0.5rem;
                     margin-bottom: 0.5rem;

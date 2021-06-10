@@ -19,6 +19,11 @@ export const mapDt: MapShowcaseType[] = [
         link: '/world'
     },
     {
+        name: 'World Mercator',
+        text: '180+ Countries Based on Mercator Projection.',
+        link: '/world-mercator'
+    },
+    {
         name: 'India',
         text: 'All Indian States Based on Mercator Projection.',
         link: '/india',
@@ -65,7 +70,13 @@ export const mapDt: MapShowcaseType[] = [
         id: 'DE'
     },
     {
-        name: 'France',
+        name: 'USA (Counties)',
+        text: "Map of USA and it's Counties",
+        link: '/usa-counties',
+        id: 'US-COUNTY'
+    },
+    {
+        name: 'France (Regions)',
         text: 'France, Based on Mercator Projection.',
         link: '/france',
         id: 'FR'
@@ -151,6 +162,24 @@ export const mapDt: MapShowcaseType[] = [
         text: 'All Provinces included , Based on Mercator Projection.',
         link: '/korea',
         id: 'KR'
+    },
+    {
+        name: 'France (Departments)',
+        text: 'All 101 Departments of France',
+        link: '/france-departments',
+        id: 'FR-DPR'
+    },
+    {
+        name: 'Mexico',
+        text: 'All States of Mexico',
+        link: '/mexico',
+        id: 'MX'
+    },
+    {
+        name: 'Italy',
+        text: 'All Regions of Italy',
+        link: '/italy',
+        id: 'IT'
     }
 ];
 

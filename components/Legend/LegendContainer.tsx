@@ -52,9 +52,9 @@ const LegendContainer = ({
             ) : (
                 <svg
                     id="legend"
-                    width="364"
+                    width="100%"
                     height={calcH}
-                    viewBox={`0 0 364 ${calcH}`}
+                    viewBox={`0 0 100% ${calcH}`}
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <g id="legend-group">

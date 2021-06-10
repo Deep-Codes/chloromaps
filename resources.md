@@ -28,3 +28,7 @@ http://xahlee.info/js/svg_user_coord_unit_length.html
 
 For Blank Maps:
 https://en.wikipedia.org/wiki/Wikipedia:Blank_maps
+
+<!-- Merging Paths -->
+
+https://stackoverflow.com/questions/5892549/is-there-a-way-to-merge-two-path-elements-svg-using-javascript
