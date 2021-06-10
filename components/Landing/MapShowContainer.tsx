@@ -70,6 +70,12 @@ export const mapDt: MapShowcaseType[] = [
         id: 'DE'
     },
     {
+        name: 'USA (Counties)',
+        text: "Map of USA and it's Counties",
+        link: '/usa-counties',
+        id: 'US-COUNTY'
+    },
+    {
         name: 'France (Regions)',
         text: 'France, Based on Mercator Projection.',
         link: '/france',

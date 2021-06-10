@@ -74,6 +74,23 @@ const changeLogData : ChangeLogType[] =  [
     ],
     version: `0.3.0-alpha`
   },
+  {
+    date: '10th June 2021',
+    data: [{
+      type: 'docs',
+      text: 'New Examples Added'
+    },
+    {
+      type: 'map',
+      text: 'France , Italy , USA Counties , World Mercator'
+    },
+    {
+      type:'feat',
+      text: 'Highlight Colors Already used in Palette'
+    }
+    ],
+    version: `0.4.0-alpha`
+  },
   
 ]
 
