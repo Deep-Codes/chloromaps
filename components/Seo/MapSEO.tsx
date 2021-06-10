@@ -16,7 +16,8 @@ interface Props {
         | 'Prefectures'
         | 'Governorates'
         | 'Departments'
-        | 'Regions';
+        | 'Regions'
+        | 'Counties';
 }
 
 const MapSEO: React.FC<Props> = ({ name, type = 'States' }) => {
