@@ -123,3 +123,56 @@ input[type='number']::-webkit-outer-spin-button {
     border: 1px solid rgba(141, 147, 171, 0.3);
     margin-left: 10px;
 }
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+tr:hover {
+    background-color: #111;
+}
+table thead th td {
+    height: 2.5rem;
+}
+table tbody tr td {
+    height: 3.125rem;
+}
+table th,
+table td {
+    padding: 0 0.625rem;
+    text-align: left;
+}
+table th {
+    height: 2.5rem;
+    color: #888;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    background: #111;
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #333;
+}
+table th:nth-child(1) {
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+    border-radius: 4px 0 0 4px;
+    border-top: 1px solid #333;
+}
+table th:last-child {
+    border-bottom: 1px solid #333;
+    border-radius: 0 4px 4px 0;
+    border-right: 1px solid #333;
+    border-top: 1px solid #333;
+}
+table tr td {
+    color: #999;
+    font-size: 0.875rem;
+    height: 2.5rem;
+}
+table td:nth-child(1) {
+    border-left: 1px solid transparent;
+}
+table tr:not(:last-of-type) td {
+    border-bottom: 1px solid #333;
+}
