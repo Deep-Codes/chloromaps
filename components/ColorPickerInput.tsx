@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Input, useTheme } from '@geist-ui/react';
+import { Input } from '@geist-ui/react';
 import React from 'react';
 import ColorPicker from './ColorPicker';
 import InputLabel from './InputLabel';
@@ -23,7 +23,6 @@ const ColorPickerInput: React.FC<Props> = ({
     const handleColor = (v: string) => {
         setColor(v, type);
     };
-    const theme = useTheme();
     const [open, setOpen] = React.useState<boolean>(false);
     return (
         <>
@@ -58,14 +57,14 @@ const ColorPickerInput: React.FC<Props> = ({
                     .picker-box {
                         width: 50px;
                         background-color: ${color};
-                        border: 1px solid ${theme.palette.accents_2};
+                        border: 1px solid #333;
                         border-right: 0;
                         border-top-left-radius: 5px;
                         border-bottom-left-radius: 5px;
                     }
                     .picker-container {
-                        background-color: ${theme.palette.accents_1};
-                        border: 1px solid ${theme.palette.accents_2};
+                        background-color: #111;
+                        border: 1px solid #333;
                         padding: 20px;
                         z-index: 1000;
                         top: 125%;
