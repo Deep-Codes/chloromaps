@@ -6,91 +6,44 @@ import getMapData from '@/labs/utils/getMapData';
 import getPaletteData from '@/labs/utils/getPaletteData';
 import sortObject from '@/labs/utils/sortObject';
 import MainLayout from '@/layouts/MainLayout';
+import { LabMapStoreType } from '@/typings/lab.store';
 import { Button, Input, Spacer } from '@geist-ui/react';
 import UsaMap from 'labs/usa.map';
+import { count } from 'node:console';
 import React from 'react';
 
-interface MapLabData {
-    fill: string;
-    code: string;
-    hide: boolean;
-    val: number;
-}
-
 const Lab = () => {
-    const [data, setData] = React.useState<MapLabData[]>([]);
-    const [count, setCount] = React.useState<number>(10);
-    const [palette, setPalette] = React.useState<string[]>(['#b9fffc', '#7579e7']);
-    const addPalette = () => {
-        const el = document.getElementById('add-palette');
-        if (el) {
-            const copy = palette;
-            copy.push(el.value);
-            setPalette(copy);
-            console.log(copy);
-        }
-    };
-    const randData = createRandomData(UsaStateCodes);
-    const sortRandData = sortObject(randData);
-    React.useEffect(() => {
-        const legendArr = getLegendList(sortRandData, count);
-        const paletteArr = getPaletteData(count, palette);
-        const mapData: MapLabData[] = getMapData({
-            sortedData: sortRandData,
-            legendList: legendArr,
-            paletteData: paletteArr
+    const [data, setData] = React.useState<LabMapStoreType>({
+        mapData: [],
+        count: 10,
+        paletteArr: ['#f9d56e', '#ff1e56']
+    });
+    const getRandomData = () => {
+        const randData = createRandomData(UsaStateCodes);
+        const sortedData = sortObject(randData);
+        const legendList = getLegendList(sortedData, data.count);
+        const paletteData = getPaletteData(data.count, data.paletteArr);
+        const mapData = getMapData({
+            sortedData,
+            legendList,
+            paletteData
         });
-        setData(mapData);
         mapData.forEach((e) => {
             const el = document.getElementById(e.code);
             if (el) {
                 el.style.fill = e.fill;
             }
         });
-        console.log(randData, sortRandData, legendArr, paletteArr, mapData);
-    }, [palette]);
+        setData({
+            mapData,
+            count: 10,
+            paletteArr: data.paletteArr
+        });
+    };
     return (
         <MainLayout>
             <div className="flex justify-between container items-start">
-                <div className="flex flex-col">
-                    {palette.map((e) => (
-                        <LabColorPicker key={e} color={e} />
-                    ))}
-                    <div className="flex items-center my-2">
-                        <Input size="small" id="add-palette" placeholder="Hex Code" />
-                        <Spacer inline x={0.5} />
-                        <Button auto size="small" onClick={() => addPalette()}>
-                            Add
-                        </Button>
-                    </div>
-                    <Input
-                        type="number"
-                        value={count.toString()}
-                        onChange={(e) => setCount(+e.target.value)}
-                    />
-                    <div className="tb-ctx">
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th>Code</th>
-                                    <th>Name</th>
-                                    <th>Value</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {data.map((e) => (
-                                    <tr key={e.code}>
-                                        <td>{e.code}</td>
-                                        {/* @ts-ignore */}
-                                        <td>{UsaStateCodes[e.code]}</td>
-                                        <td>{e.val}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
+                <Button onClick={() => getRandomData()}>Random Data</Button>
                 <UsaMap />
             </div>
             <style jsx>{`
