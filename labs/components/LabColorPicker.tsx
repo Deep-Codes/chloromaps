@@ -1,28 +1,53 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Input } from '@geist-ui/react';
+import { Input, useClickAway } from '@geist-ui/react';
+import { ChevronDown, ChevronUp, XCircle } from '@geist-ui/react-icons';
 import React from 'react';
 import { HexColorPicker } from 'react-colorful';
 
 interface Props {
     color: string;
+    index: number;
+    changePaletteColor: (v: string, i: number) => void;
+    removePalette: (i: number) => void;
+    handleLegendPosChange: (i: number, type: boolean) => void;
 }
 
-const LabColorPicker: React.FC<Props> = ({ color }) => {
+const LabColorPicker: React.FC<Props> = ({
+    color,
+    index,
+    changePaletteColor,
+    removePalette,
+    handleLegendPosChange
+}) => {
     const [open, setOpen] = React.useState(false);
-
+    const [p, setP] = React.useState(color);
+    const ref = React.useRef<React.LegacyRef<HTMLDivElement>>();
+    // @ts-ignore
+    useClickAway(ref, () => changePaletteColor(p, index));
     return (
         <div className="picker-ctx relative">
-            <div className="absolute picker" style={{ display: `${open ? 'block' : 'none'}` }}>
-                <HexColorPicker color={color} />
+            <div
+                // @ts-ignore
+                ref={ref}
+                className="absolute picker"
+                style={{ display: `${open ? 'block' : 'none'}` }}>
+                <HexColorPicker color={color} onChange={(e) => setP(e)} />
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
                 <div
-                    className="color-box"
+                    className="color-box "
                     style={{ backgroundColor: color }}
                     onClick={() => setOpen(!open)}
                 />
                 <Input size="mini" className="input" type="text" value={color} />
+                <div className="cross-icon pointer" onClick={() => removePalette(index)}>
+                    <XCircle />
+                </div>
+                <div className="flex-center flex-col up-down pointer">
+                    <ChevronUp onClick={() => handleLegendPosChange(index, true)} />
+                    <ChevronDown onClick={() => handleLegendPosChange(index, false)} />
+                </div>
             </div>
             <style jsx>{`
                 .color-box {
@@ -36,6 +61,13 @@ const LabColorPicker: React.FC<Props> = ({ color }) => {
                 .picker-ctx {
                     margin: 0.5rem 0;
                 }
+                .up-down {
+                    opacity: 0.6;
+                    height: 30px;
+                }
+                .up-down:hover {
+                    opacity: 1;
+                }
                 .picker {
                     z-index: 100;
                     background-color: #111;
@@ -44,6 +76,12 @@ const LabColorPicker: React.FC<Props> = ({ color }) => {
                     border-radius: 5px;
                     top: 40px;
                     left: 0px;
+                }
+                .cross-icon:hover {
+                    opacity: 1;
+                }
+                .cross-icon {
+                    opacity: 0.6;
                 }
             `}</style>
         </div>
