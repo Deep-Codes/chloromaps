@@ -84,17 +84,17 @@ text {
 }
 .map-container {
     margin-top: 30px;
-    overflow-x: hidden;
     margin-left: auto;
     margin-right: auto;
     overflow-x: scroll;
     position: relative;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
     .container {
         flex-direction: column-reverse;
     }
     .map-container {
+        width: 100%;
         margin-left: 0;
         margin-right: 0;
     }
