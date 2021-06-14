@@ -23,13 +23,6 @@ const MainLayout = ({ children, showNav = false }: Props) => (
         </footer>
 
         <style jsx>{`
-            .page {
-                display: flex;
-                flex-direction: column;
-                max-width: 1000px;
-                margin: 0 auto;
-                overflow-x: hidden !important;
-            }
             .navbar-ctx {
                 width: 100%;
                 position: sticky;
@@ -48,10 +41,6 @@ const MainLayout = ({ children, showNav = false }: Props) => (
                 backdrop-filter: blur(20px);
             }
             @media screen and (max-width: 1000px) {
-                .page {
-                    width: 100%;
-                    padding: 0 10px;
-                }
                 .navbar-ctx,
                 .footer-ctx {
                     padding: 0 10px;

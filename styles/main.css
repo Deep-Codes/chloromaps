@@ -1,6 +1,23 @@
 html {
     scroll-behavior: smooth;
 }
+.page {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: hidden !important;
+}
+@media screen and (max-width: 1000px) {
+    .page {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .navbar-ctx,
+    .footer-ctx {
+        padding: 0 10px;
+    }
+}
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
