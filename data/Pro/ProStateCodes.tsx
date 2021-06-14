@@ -213,5 +213,6 @@ export const ProStateCodes = {
     CW: 'Curaco (Netherlands)',
     IC: 'Canary Islands (Spain)',
     ANTARTICA: 'Antartica',
-    'NEW-CADELONIA': 'New Caledonia'
+    'NEW-CADELONIA': 'New Caledonia',
+    XK: 'Kosovo'
 };

@@ -7,10 +7,10 @@ import React from 'react';
 
 const Pro = () => (
     <MapMainLayout>
-        <MapSEO name="Pro" type="Countries" />
+        <MapSEO name="World Map Eckert IV Project" type="Countries" />
         <div className="flex flex-col-rev">
             <div className="page">
-                <HorControlContainer stateCodes={ProStateCodes} mapId="pro-map" />
+                <HorControlContainer stateCodes={ProStateCodes} mapId="world-eckert-iv" />
             </div>
             <ProMap />
         </div>

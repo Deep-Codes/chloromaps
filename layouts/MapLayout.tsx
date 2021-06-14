@@ -52,7 +52,7 @@ const MapLayout: React.FC<PropsWithChildren<Props>> = ({
             {hover !== '' && (
                 <ReactTooltip id={name}>
                     {/* @ts-ignore */}
-                    <span style={{ fontWeight: 'bold' }}>{hover}</span>
+                    <span style={{ fontWeight: 'bold' }}>{stateCodes[hover]}</span>
                 </ReactTooltip>
             )}
             <svg
