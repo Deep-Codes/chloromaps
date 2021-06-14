@@ -7,7 +7,7 @@ const MercatorMap = () => (
         name="mercator"
         // @ts-ignore
         strokeWidth={0.5}
-        width={1000}
+        width={1200}
         viewBox={[0, 0, 1010, 666]}
         stateCodes={MercatorStateCodes}>
         <path
