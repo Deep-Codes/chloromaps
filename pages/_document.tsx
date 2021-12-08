@@ -26,7 +26,6 @@ class MyDocument extends Document {
                 <Head>
                     <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
                     <link href="/static/favicons/site.webmanifest" rel="manifest" />
-                    <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="" />
                     <link
                         href="/static/favicons/apple-touch-icon.png"
                         rel="apple-touch-icon"
@@ -71,6 +70,13 @@ class MyDocument extends Document {
                         });
                     `
                         }}
+                    />
+                    <script
+                        async
+                        defer
+                        data-domains="chloromaps.com"
+                        src="https://stats.dpnkr.in/umami.js"
+                        data-website-id="1f893bb1-4c01-4440-9757-62cd6ee6bd10"
                     />
                 </Head>
                 <body>
