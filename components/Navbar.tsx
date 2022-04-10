@@ -4,6 +4,7 @@ import React from 'react';
 import { Menu, X } from '@geist-ui/react-icons';
 import Logo from '@/assets/logo/Logo';
 import version from '@/data/version';
+import Link from 'next/link';
 
 interface Props {
     showNav: boolean;
@@ -12,9 +13,8 @@ interface Props {
 const navArr = [
     { text: 'Features', link: '/#feature' },
     { text: 'Examples', link: '/examples' },
-    { text: 'Maps', link: '/maps' },
-    { text: 'Tutorial', link: '/tutorial' },
-    { text: 'Instagram', link: 'https://www.instagram.com/maps_affinity/' }
+    { text: 'Maps', link: '/maps' }
+    // { text: 'Tutorial', link: '/tutorial' }
 ];
 
 const Navbar = ({ showNav }: Props) => {
@@ -44,14 +44,18 @@ const Navbar = ({ showNav }: Props) => {
                 {showNav ? (
                     <div className="nav-content">
                         {navArr.map((el) => (
-                            <a
-                                className="nav-link"
-                                key={el.text}
-                                aria-label={`Link to ${el.text}`}
-                                href={el.link}>
-                                {el.text}
-                            </a>
+                            <Link key={el.text} aria-label={`Link to ${el.text}`} href={el.link}>
+                                <a className="nav-link">{el.text}</a>
+                            </Link>
                         ))}
+                        <a
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            className="nav-link"
+                            aria-label="Link to my Instagram page"
+                            href="https://www.instagram.com/maps_affinity/">
+                            Instagram
+                        </a>
                     </div>
                 ) : (
                     ''

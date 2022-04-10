@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -7,14 +8,14 @@ const data = [
         { text: 'Home', link: '/' },
         { text: 'About', link: '/about' },
         { text: 'Inspiration', link: '/inspiration' },
-        { text: 'Changelog', link: '/changelog' },
-        { text: 'Contact', link: '/contact' }
+        { text: 'Changelog', link: '/changelog' }
+        // { text: 'Contact', link: '/contact' }
     ],
     [
-        { text: 'Resources', link: '/' },
+        // { text: 'Resources', link: '/' },
         { text: 'Acknowledgement', link: '/acknowledgement' },
         //    { text: 'Contributions', link: '/contributions' },
-        { text: 'Blogs', link: '/blogs' },
+        // { text: 'Blogs', link: '/blogs' },
         { text: 'Open Source', link: '/open-source' },
         { text: 'Quiz', link: 'https://quiz-affinity.vercel.app/' },
         { text: 'Maps', link: '/maps' }
@@ -23,15 +24,15 @@ const data = [
         { text: 'Socials', link: '/' },
         { text: 'Instagram', link: 'https://www.instagram.com/maps_affinity/' },
         { text: 'Twitter', link: 'https://twitter.com/DeepankarBhade' },
-        { text: 'Github', link: 'https://github.com/Deep-Codes' },
-        { text: 'Feedback', link: '/feedback' }
-    ],
-    [
-        { text: 'Policies', link: '/' },
-        { text: 'Terms', link: 'terms' },
-        { text: 'Privacy', link: 'privacy' },
-        { text: 'License', link: 'license' }
+        { text: 'Github', link: 'https://github.com/Deep-Codes' }
+        // { text: 'Feedback', link: '/feedback' }
     ]
+    // [
+    //     { text: 'Policies', link: '/' },
+    //     { text: 'Terms', link: 'terms' },
+    //     { text: 'Privacy', link: 'privacy' },
+    //     { text: 'License', link: 'license' }
+    // ]
 ];
 
 const Footer = () => {
@@ -62,15 +63,35 @@ const Footer = () => {
                             ) : (
                                 <div key={uuidv4()}>
                                     <div className="footer-content mob pointer">
-                                        <a href={el.link} aria-label={el.text}>
-                                            {el.text}
-                                        </a>
+                                        {el.link.startsWith('http') ? (
+                                            <a
+                                                rel="noopener noreferrer"
+                                                target="_blank"
+                                                href={el.link}
+                                                aria-label={el.text}>
+                                                {el.text}
+                                            </a>
+                                        ) : (
+                                            <Link href={el.link}>
+                                                <a className="nav-link">{el.text}</a>
+                                            </Link>
+                                        )}
                                     </div>
                                     {j === open ? (
                                         <div className="footer-content-mob mob">
-                                            <a href={el.link} aria-label={el.text}>
-                                                {el.text}
-                                            </a>
+                                            {el.link.startsWith('http') ? (
+                                                <a
+                                                    rel="noopener noreferrer"
+                                                    target="_blank"
+                                                    href={el.link}
+                                                    aria-label={el.text}>
+                                                    {el.text}
+                                                </a>
+                                            ) : (
+                                                <Link href={el.link}>
+                                                    <a className="nav-link">{el.text}</a>
+                                                </Link>
+                                            )}
                                         </div>
                                     ) : (
                                         ''
