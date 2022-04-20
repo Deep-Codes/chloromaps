@@ -10,6 +10,7 @@
       "@/data/*": ["data/*"],
       "@/store/*": ["store/*"],
       "@/configs/*": ["configs/*"],
+      "@/labs/*": ["labs/*"],
     },
     "strictNullChecks": true,
     "moduleResolution": "node",

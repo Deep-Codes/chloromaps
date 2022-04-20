@@ -176,3 +176,7 @@ table td:nth-child(1) {
 table tr:not(:last-of-type) td {
     border-bottom: 1px solid #333;
 }
+.my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
