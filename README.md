@@ -6,7 +6,7 @@
 
 ## Motivation
 
-When I was 17 back in 2019 I created an Instagram page called `@maps_affinity` during my summer break. I used to curate and post content around choropleth visualizations. I used to use other 3rd part software like mapchart to curate those maps. Always wanted to build my version of it but I wasn't programming back then.
+When I was 17 back in 2019 I created an Instagram page called [@maps_affinity](https://www.instagram.com/maps_affinity/) during my summer break. I used to curate and post content around choropleth visualizations. I used to use other 3rd part software like mapchart to curate those maps. Always wanted to build my version of it but I wasn't programming back then.
 
 Started programming in 2020 May, at this point the page grew to over 19,000+ followers and had hit 1million+ impressions. I tried and failed twice to build it. Nevertheless, I am glad I don't get disappointed by my failure and instead take breaks and move on.
 
@@ -54,9 +54,23 @@ After failing to build it twice and I finally shipped Chloromaps.com, the produc
 -   [Mexico 🇲🇽](https://chloromaps.com/map/mexico)
 -   [Italy 🇮🇹](https://chloromaps.com/map/italy)
 
+## Contributing
+
+Although I no longer plan to mantain this project, feel free to fork, create issues, submit PRs (would be happy to review).
+
+### Setup
+
+```bash
+# install packages
+yarn
+
+# run dev server
+yarn dev
+```
+
 ## Acknowledgement
 
-Chloromaps would never be possible without the availability of Amazing Libraries and the Support of some People.
+Chloromaps would never be possible without the availability of Amazing Libraries and the Support of some People. Chloromaps take a lot of design inspiration from Vercel and uses [Geist](https://github.com/geist-org/geist-ui) a library I contribute to ✨.
 
 ### Libraries and Frameworks Used in the Development
 
@@ -78,3 +92,9 @@ Chloromaps would never be possible without the availability of Amazing Libraries
 
 -   [Simple Maps](https://simplemaps.com/resources/svg-maps)
 -   [Wikipedia's Blank Maps](https://en.wikipedia.org/wiki/Wikipedia:Blank_maps)
+
+## Things that can be improved
+
+-   Tabs, Modals, Popover should follow Aria guidelines
+-   Styling solution could have been better
+-   All maps could have been generalised inside `/map/[slug]` route

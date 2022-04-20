@@ -38,9 +38,9 @@ const Navbar = ({ showNav }: Props) => {
     return (
         <>
             <div className="nav">
-                <a href="/" aria-label="Go to Home Page">
+                <Link href="/" aria-label="Go to Home Page">
                     <Logo className="pointer" />
-                </a>
+                </Link>
                 {showNav ? (
                     <div className="nav-content">
                         {navArr.map((el) => (
@@ -70,9 +70,9 @@ const Navbar = ({ showNav }: Props) => {
                         ghost
                         onClick={() => toggleTheme()}
                     /> */}
-                    <a href="/changelog">
-                        <span className="version-tag">{version}</span>
-                    </a>
+                    <Link aria-label="Link to Changelog" href="/changelog">
+                        <a className="version-tag">{version}</a>
+                    </Link>
 
                     <div
                         className="nav-mobile-icon flex-col flex-center"
