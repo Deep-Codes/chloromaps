@@ -176,3 +176,31 @@ table td:nth-child(1) {
 table tr:not(:last-of-type) td {
     border-bottom: 1px solid #333;
 }
+.banner{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+.banner a{
+    color: inherit;
+}
+.cross-btn{
+    color: #888;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: inline-flex;
+}
+@media screen and (max-width: 1000px) {
+    .banner{
+        display: none;
+    }
+}

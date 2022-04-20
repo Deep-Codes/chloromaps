@@ -2,6 +2,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import React from 'react';
+import Banner from '@/components/Banner';
 
 interface Props {
     children: React.ReactNode;
@@ -10,6 +11,7 @@ interface Props {
 
 const MainLayout = ({ children, showNav = false }: Props) => (
     <>
+        <Banner />
         <nav id="nav" className="navbar-ctx">
             <Navbar showNav={showNav} />
         </nav>
