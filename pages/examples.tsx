@@ -39,12 +39,12 @@ const expData = [
             link: 'https://www.instagram.com/maps.grey/'
         }
     },
-    {
-        title: `Democracy Index of European Countries`,
-        link: `/europe-detailed`,
-        json: `europe_democraxy_index`,
-        author: {}
-    },
+    // {
+    //     title: `Democracy Index of European Countries`,
+    //     link: `/europe-detailed`,
+    //     json: `europe_democraxy_index`,
+    //     author: {}
+    // },
     {
         title: `Countries with Less Gdp than Apple's Market Cap`,
         link: `/world`,
