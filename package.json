@@ -1,26 +1,20 @@
 {
-    "name": "deepankars-personal-website",
+    "name": "chloromaps.com",
     "version": "1.0.0",
     "main": "dist/index.js",
     "module": "esm/index.js",
     "types": "dist/index.d.ts",
     "unpkg": "dist/index.min.js",
     "license": "MIT",
-    "description": "Basic React Component Library Boiler Plate",
-    "homepage": "https://deep-codes.github.io/component-library-template",
+    "description": "Develop and Ship Choropleth Maps Faster",
+    "homepage": "https://chloromaps.com",
     "bugs": {
-        "url": "https://github.com/Deep-Codes/component-library-template/issues"
+        "url": "https://github.com/Deep-Codes/chloromaps"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Deep-Codes/component-library-template"
+        "url": "https://github.com/Deep-Codes/chloromaps"
     },
-    "keywords": [
-        "affinity-ui",
-        "components",
-        "react components",
-        "react ui"
-    ],
     "scripts": {
         "dev": "next",
         "build": "next build",
@@ -55,7 +49,7 @@
         "eslint-plugin-prettier": "^3.3.1",
         "eslint-plugin-react": "^7.22.0",
         "eslint-plugin-react-hooks": "^4.2.0",
-        "next": "^10.0.9",
+        "next": "^12.1.5",
         "prettier": "^2.2.1",
         "prettier-eslint": "^12.0.0",
         "prettier-eslint-cli": "^5.0.0",
