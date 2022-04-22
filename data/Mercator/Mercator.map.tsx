@@ -5,7 +5,6 @@ import { MercatorStateCodes } from './MercatorStateCodes';
 const MercatorMap = () => (
     <MapLayout
         name="mercator"
-        // @ts-ignore
         strokeWidth={0.5}
         width={1000}
         viewBox={[0, 0, 1010, 666]}

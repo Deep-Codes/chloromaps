@@ -7,12 +7,14 @@ import fillAllMap from '@/lib/fillAllMap';
 import importLabelConfig from '@/lib/importLabelConfig';
 import { labelAtom } from '@/store/label.store';
 import { mapAtom } from '@/store/map.store';
-import { LabelStoreType } from '@/typings/label.store';
-import { MapStoreType } from '@/typings/map.store';
 import { useAtom } from 'jotai';
 import { useToasts } from '@geist-ui/react';
 
-const exampleData = {
+interface ExampleMapType {
+    [key: string]: ExportConfigType;
+}
+
+const exampleData: ExampleMapType = {
     india_population: require('@/configs/india.json'),
     usa_population: require('@/configs/usa.json'),
     sweden_population: require('@/configs/sweden.json'),
@@ -25,8 +27,8 @@ const exampleData = {
 
 const LoadExample = () => {
     const router = useRouter();
-    const [, setMap] = useAtom<MapStoreType>(mapAtom);
-    const [, setLabel] = useAtom<LabelStoreType>(labelAtom);
+    const [, setMap] = useAtom(mapAtom);
+    const [, setLabel] = useAtom(labelAtom);
     const [, setToast] = useToasts();
     const successToast = () =>
         setToast({
@@ -41,15 +43,13 @@ const LoadExample = () => {
             delay: 5000
         });
     React.useEffect(() => {
-        if (router.query.data) {
-            // @ts-ignore
-            const data: ExportConfigType = exampleData[router.query.data];
+        if (router.query.data as string) {
+            const slug = router.query.data as string;
+            const data: ExportConfigType = exampleData[slug];
             if (data) {
-                // @ts-ignore
                 setMap(data.mapData);
                 fillAllMap(data.mapData.mapData, data.mapData.defaultFillColor);
                 const labData = importLabelConfig(data.labelData);
-                // @ts-ignore
                 setLabel(labData);
                 successToast();
             } else {

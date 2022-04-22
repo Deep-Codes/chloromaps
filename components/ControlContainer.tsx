@@ -5,7 +5,6 @@ import resetFullMap from '@/lib/resetFullMap';
 import uploadConfig from '@/lib/uploadConfig';
 import { labelAtom } from '@/store/label.store';
 import { disableTooltip, mapAtom } from '@/store/map.store';
-import { LabelStoreType } from '@/typings/label.store';
 import { LegendData, MapData, MapStoreType } from '@/typings/map.store';
 import { Spacer, Tabs, Toggle, useToasts } from '@geist-ui/react';
 import { Edit, Upload, Type } from '@geist-ui/react-icons';
@@ -25,12 +24,11 @@ interface Props {
 }
 
 const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies }) => {
-    const [map, setMap] = useAtom<MapStoreType>(mapAtom);
-    const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
+    const [map, setMap] = useAtom(mapAtom);
+    const [label, setLabel] = useAtom(labelAtom);
     const [, setTooltip] = useAtom(disableTooltip);
     const [, setToast] = useToasts();
     const handleAttrChange = (v: string, a: string) => {
-        // @ts-ignore
         setMap((st: MapStoreType) => ({
             ...st,
             [a]: v
@@ -51,7 +49,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
                 hide: false
             });
         });
-        // @ts-ignore
+
         setMap((st: MapStoreType) => ({
             ...st,
             mapData,
@@ -59,21 +57,18 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
         }));
     };
     const toggleHideLegend = (b: any) => {
-        // @ts-ignore
         setMap((st: MapStoreType) => ({
             ...st,
             hideLegend: b
         }));
     };
     const smoothGradient = (v: any) => {
-        // @ts-ignore
         setMap((st: MapStoreType) => ({
             ...st,
             legendSmoothGradient: v
         }));
     };
     const toggleSource = (v: any) => {
-        // @ts-ignore
         setMap((st: MapStoreType) => ({
             ...st,
             hideSource: v
@@ -81,7 +76,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
     };
     const refreshMap = () => {
         resetFullMap(stateCodes);
-        // @ts-ignore
+
         setMap((st: MapStoreType) => ({
             ...st,
             mapStrokeWidth: '1',
@@ -93,7 +88,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
             hideLegend: false,
             legendSmoothGradient: false
         }));
-        // @ts-ignore
+
         setLabel({
             data: [],
             scalingFactor: 1
@@ -103,7 +98,7 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
             el.innerHTML = '';
         }
     };
-    const uploadDataConfig = (e: any) => {
+    const uploadDataConfig = (e: React.ChangeEvent<HTMLInputElement>) => {
         const successToast = () =>
             setToast({
                 text: 'Succesfullly Loaded Map Configuration.',
@@ -116,14 +111,11 @@ const ControlContainer: React.FC<Props> = ({ mapId, stateCodes, hideWaterBodies 
                 type: 'error',
                 delay: 5000
             });
-        // @ts-ignore
         uploadConfig(
-            // @ts-ignore
-            e.target.files[0],
+            e.target.files![0],
             setMap,
             setLabel,
-            // @ts-ignore
-            map.defaultFillColors,
+            map.defaultFillColor,
             mapId,
             successToast,
             errorToast

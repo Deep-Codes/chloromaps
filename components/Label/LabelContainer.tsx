@@ -12,10 +12,9 @@ import MiniLabelColorPicker from './MiniLabelColorPicker';
 
 const LabelContainer: React.FC = () => {
     const theme = useTheme();
-    const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
+    const [label, setLabel] = useAtom(labelAtom);
     const removeLabel = (i: number) => {
         label.data.splice(i, 1);
-        // @ts-ignore
         setLabel((st: LabelStoreType) => ({
             ...st,
             data: label.data
@@ -29,7 +28,6 @@ const LabelContainer: React.FC = () => {
         const copy = label.data;
         const obj = copy[i];
         obj.hide = !obj.hide;
-        // @ts-ignore
         setLabel((st: LabelStoreType) => ({
             ...st,
             data: copy
@@ -42,7 +40,7 @@ const LabelContainer: React.FC = () => {
     const updateTextLabel = (i: number, v: string) => {
         const copy = label.data;
         copy[i].text = v;
-        // @ts-ignore
+
         setLabel((st: LabelStoreType) => ({
             ...st,
             data: copy

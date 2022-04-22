@@ -14,7 +14,7 @@ import { mapDt } from './MapShowContainer';
 const LandingWorldMap = () => {
     const router = useRouter();
     const [hover, setHover] = React.useState('');
-    const [map, setMap] = useAtom<MapStoreType>(mapAtom);
+    const [map, setMap] = useAtom(mapAtom);
     React.useMemo(() => {
         fillAllMap(map.mapData, map.defaultFillColor);
     }, [map]);
@@ -37,7 +37,7 @@ const LandingWorldMap = () => {
                 hide: false
             });
         });
-        // @ts-ignore
+
         setMap((st: MapStoreType) => ({
             ...st,
             legendData,
@@ -76,19 +76,15 @@ const LandingWorldMap = () => {
         const idx = mapDt.findIndex((e) => e.id === id);
         // Map available
         if (idx > -1) {
-            return (
-                // @ts-ignore
-                <span>{WorldCountryCodes[id]} , Click to Edit.</span>
-            );
+            return <span>{WorldCountryCodes[id]} , Click to Edit.</span>;
         }
-        // @ts-ignore
+
         return <span>{WorldCountryCodes[id]}</span>;
     };
     const routerToMap = (id: string) => {
         const idx = mapDt.findIndex((e) => e.id === id);
         // Map available
         if (idx > -1) {
-            // @ts-ignore
             setMap({
                 defaultFillColor: 'black',
                 mapStrokeColor: 'white',
@@ -117,7 +113,6 @@ const LandingWorldMap = () => {
             <div className="flex flex-col map-container mx-auto" id="scroll-map">
                 {hover !== '' && (
                     <ReactTooltip id="world">
-                        {/* @ts-ignore */}
                         <span style={{ fontWeight: 'bold' }}>{parseHover(hover)}</span>
                     </ReactTooltip>
                 )}

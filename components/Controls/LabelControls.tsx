@@ -12,7 +12,7 @@ import InputLabel from '../InputLabel';
 import LabelContainer from '../Label/LabelContainer';
 
 const LabelControls = () => {
-    const [label, setLabel] = useAtom<LabelStoreType>(labelAtom);
+    const [label, setLabel] = useAtom(labelAtom);
     const [text, setText] = React.useState('');
     const addLabel = () => {
         if (text !== '') {
@@ -35,7 +35,7 @@ const LabelControls = () => {
                 };
                 const newArr = label.data;
                 newArr.push(labObj);
-                // @ts-ignore
+
                 setLabel((st: LabelStoreType) => ({
                     ...st,
                     data: newArr
