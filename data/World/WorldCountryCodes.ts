@@ -1,4 +1,8 @@
-export const WorldCountryCodes = {
+interface Map {
+  [key: string]: string
+}
+
+export const WorldCountryCodes: Map = {
   AF: 'Afghanistan',
   AO: 'Angola',
   AL: 'Albania',

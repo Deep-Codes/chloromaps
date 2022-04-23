@@ -5,8 +5,7 @@ import { EuroStateCodes } from './EuroStateCodes';
 const EuroMap = () => (
     <MapLayout
         name="euro"
-        // @ts-ignore
-        strokeWidth="0.5"
+        strokeWidth={0.5}
         width={650}
         viewBox={[0, 0, 574, 522]}
         stateCodes={EuroStateCodes}>

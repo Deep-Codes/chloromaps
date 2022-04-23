@@ -15,7 +15,6 @@ export const Table = () => (
             {countryList.map((e) => (
                 <tr key={e}>
                     <td>{e}</td>
-                    {/* @ts-ignore */}
                     <td>{WorldCountryCodes[e]}</td>
                 </tr>
             ))}
@@ -96,7 +95,6 @@ const Users = () => {
                 </div>
                 {hover !== '' && (
                     <ReactTooltip id="world">
-                        {/* @ts-ignore */}
                         <span style={{ fontWeight: 'bold' }}>{WorldCountryCodes[hover]}</span>
                     </ReactTooltip>
                 )}

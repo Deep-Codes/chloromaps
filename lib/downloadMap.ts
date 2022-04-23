@@ -28,14 +28,10 @@ const downloadMap = (id: string, type: 'png' | 'svg' | 'pdf') => {
             // This is mainly done to avoid Pdf being cropped
             // library issue mostly
             // cloning the svg element and setting width to '' solves it
-            const clone = mapEl.cloneNode(true);
-            // @ts-ignore
+            const clone = mapEl.cloneNode(true) as HTMLElement;
             clone.setAttribute('width', '');
-             // @ts-ignore
             clone.setAttribute('height', '');
-            // @ts-ignore
-            doc.svg(clone, {
-            }).then(() => {
+            doc.svg(clone, {}).then(() => {
                 // save the created pdf
                 doc.save('map.pdf');
             });

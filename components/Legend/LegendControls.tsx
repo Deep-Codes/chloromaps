@@ -4,7 +4,6 @@
 import reOrderArrayElements from '@/lib/reOrderArrElements';
 import resetMap from '@/lib/resetMap';
 import { mapAtom } from '@/store/map.store';
-import { MapStoreType } from '@/typings/map.store';
 import { Input } from '@geist-ui/react';
 import { Eye, XCircle, EyeOff, ChevronUp, ChevronDown } from '@geist-ui/react-icons';
 import { useAtom } from 'jotai';
@@ -13,7 +12,7 @@ import InputLabel from '../InputLabel';
 import MiniColorPicker from '../MiniColorPicker';
 
 const LegendControls = () => {
-    const [map, setMap] = useAtom<MapStoreType>(mapAtom);
+    const [map, setMap] = useAtom(mapAtom);
     const toggleHideLegend = (i: number, f: string) => {
         const lgDataCopy = map.legendData;
         lgDataCopy[i].hide = !lgDataCopy[i].hide;
@@ -23,7 +22,7 @@ const LegendControls = () => {
                 mp.hide = !mp.hide;
             }
         });
-        // @ts-ignore
+
         setMap((prev) => ({
             ...prev,
             mapData: mapDataCopy,
@@ -33,7 +32,7 @@ const LegendControls = () => {
     const handleLegendText = (i: number, v: string) => {
         const lgDataCopy = map.legendData;
         lgDataCopy[i].text = v;
-        // @ts-ignore
+
         setMap((prev) => ({
             ...prev,
             legendData: lgDataCopy
@@ -45,7 +44,7 @@ const LegendControls = () => {
         const legDatCopy = map.legendData;
         resetMap(removeCodes, 'none');
         legDatCopy.splice(i, 1);
-        // @ts-ignore
+
         setMap((prev) => ({
             ...prev,
             legendData: legDatCopy,
@@ -68,7 +67,7 @@ const LegendControls = () => {
                 reOrderArrayElements(copy, copy[idx], idx, idx + 1);
             }
         }
-        // @ts-ignore
+
         setMap((prev) => ({
             ...prev,
             legendData: copy

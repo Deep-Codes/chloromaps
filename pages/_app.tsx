@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import { GeistProvider, CssBaseline } from '@geist-ui/react';
-import { useAtom } from 'jotai';
+import { useAtom, Provider } from 'jotai';
 import { themeAtom } from '@/store/theme.store';
 import '../styles/main.css';
 import 'inter-ui/inter.css';
@@ -28,13 +28,13 @@ const Application: NextPage<AppProps<{}>> = ({ Component, pageProps }) => {
         };
     }, [router.events]);
     return (
-        <>
+        <Provider>
             <DefaultSeo {...SEO} />
             <GeistProvider themeType={theme ? 'dark' : 'light'}>
                 <CssBaseline />
                 <Component {...pageProps} toggleTheme={switchThemes} />
             </GeistProvider>
-        </>
+        </Provider>
     );
 };
 
