@@ -5,7 +5,7 @@ import { WorldCountryCodes } from './WorldCountryCodes';
 export const WorldMap = () => (
     <MapLayout
         name="world"
-        width={1000}
+        width={1200}
         viewBox={[50, 0, 1412, 707]}
         stateCodes={WorldCountryCodes}>
         <path

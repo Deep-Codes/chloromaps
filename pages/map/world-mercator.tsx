@@ -2,17 +2,19 @@ import HorControlContainer from '@/components/HorControlContainer';
 import MapSEO from '@/components/Seo/MapSEO';
 import MercatorMap from '@/data/Mercator/Mercator.map';
 import { MercatorStateCodes } from '@/data/Mercator/MercatorStateCodes';
-import MainLayout from '@/layouts/MainLayout';
+import MapMainLayout from '@/layouts/MapMainLayout';
 import React from 'react';
 
 const Mercator = () => (
-    <MainLayout>
+    <MapMainLayout>
         <MapSEO name="World Map Mercator Projection" type="Countries" />
         <div className="flex flex-col-rev">
-            <HorControlContainer stateCodes={MercatorStateCodes} mapId="mercator-map" />
+            <div className="page">
+                <HorControlContainer stateCodes={MercatorStateCodes} mapId="mercator-map" />
+            </div>
             <MercatorMap />
         </div>
-    </MainLayout>
+    </MapMainLayout>
 );
 
 export default Mercator;

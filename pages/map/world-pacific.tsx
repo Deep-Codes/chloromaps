@@ -1,18 +1,20 @@
 import HorControlContainer from '@/components/HorControlContainer';
 import WorldPacificMap from '@/data/WorldPacific/WorldPacific.map';
 import { WorldPacificStateCodes } from '@/data/WorldPacific/WorldPacificStateCodes';
-import MainLayout from '@/layouts/MainLayout';
 import React from 'react';
 import MapSEO from '@/components/Seo/MapSEO';
+import MapMainLayout from '@/layouts/MapMainLayout';
 
 const WorldPacific = () => (
-    <MainLayout>
+    <MapMainLayout>
         <MapSEO name="World Pacific" type="Countries" />
-        <div className="flex flex-col-rev ">
-            <HorControlContainer stateCodes={WorldPacificStateCodes} mapId="worldpacific-map" />
+        <div className="flex flex-col-rev">
+            <div className="page">
+                <HorControlContainer stateCodes={WorldPacificStateCodes} mapId="worldpacific-map" />
+            </div>
             <WorldPacificMap />
         </div>
-    </MainLayout>
+    </MapMainLayout>
 );
 
 export default WorldPacific;

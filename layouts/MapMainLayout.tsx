@@ -2,23 +2,19 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import React from 'react';
-import Banner from '@/components/Banner';
 
 interface Props {
     children: React.ReactNode;
     showNav?: boolean;
 }
 
-const MainLayout = ({ children, showNav = false }: Props) => (
+const MapMainLayout = ({ children, showNav = false }: Props) => (
     <>
-        <Banner />
         <nav id="nav" className="navbar-ctx">
             <Navbar showNav={showNav} />
         </nav>
 
-        <div className="page">
-            <main>{children}</main>
-        </div>
+        <main>{children}</main>
 
         <footer className="footer-ctx">
             <Footer />
@@ -52,4 +48,4 @@ const MainLayout = ({ children, showNav = false }: Props) => (
     </>
 );
 
-export default MainLayout;
+export default MapMainLayout;

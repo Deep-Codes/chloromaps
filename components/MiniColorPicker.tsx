@@ -5,7 +5,7 @@
 import { colorPickerPalette } from '@/data/colors';
 import getColorUsed from '@/lib/getColorUsed';
 import { MapStoreType } from '@/typings/map.store';
-import { useTheme } from '@geist-ui/react';
+import { useClickAway, useTheme } from '@geist-ui/react';
 import React from 'react';
 
 interface Props {
@@ -34,9 +34,18 @@ const MiniColorPicker: React.FC<Props> = ({ index, bgColor, map, setMap }) => {
             mapData: copy
         }));
     };
+    const ref = React.useRef<HTMLDivElement>();
+    // @ts-ignore
+    useClickAway(ref, () => {
+        if (open) {
+            setOpen(false);
+        }
+    });
     return (
         <>
             <div
+                // @ts-ignore
+                ref={ref}
                 style={{ backgroundColor: bgColor }}
                 onClick={() => setOpen(!open)}
                 className="box pointer">
