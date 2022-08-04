@@ -75,7 +75,7 @@ class MyDocument extends Document {
                         async
                         defer
                         data-domains="chloromaps.com"
-                        src="https://stats.dpnkr.in/umami.js"
+                        src="https://graphs.dpnkr.in/bruh.js"
                         data-website-id="1f893bb1-4c01-4440-9757-62cd6ee6bd10"
                     />
                 </Head>
