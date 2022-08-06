@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Input, useTheme } from '@geist-ui/react';
+import { Input, useClickAway, useTheme } from '@geist-ui/react';
 import React from 'react';
 import ColorPicker from './ColorPicker';
 import InputLabel from './InputLabel';
@@ -24,12 +24,21 @@ const ColorPickerInput: React.FC<Props> = ({
         setColor(v, type);
     };
     const theme = useTheme();
+    const ref = React.useRef<HTMLDivElement>();
     const [open, setOpen] = React.useState<boolean>(false);
+    // @ts-ignore
+    useClickAway(ref, () => {
+        if (open) {
+            setOpen(false);
+        }
+    });
     return (
         <>
             <InputLabel text={placeHolder} />
             <div className="flex">
                 <div
+                    // @ts-ignore
+                    ref={ref}
                     className="flex-center picker-box pointer relative"
                     onClick={() => setOpen(!open)}>
                     {open && (

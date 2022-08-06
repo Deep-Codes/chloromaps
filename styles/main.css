@@ -1,6 +1,23 @@
 html {
     scroll-behavior: smooth;
 }
+.page {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: hidden !important;
+}
+@media screen and (max-width: 1000px) {
+    .page {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .navbar-ctx,
+    .footer-ctx {
+        padding: 0 10px;
+    }
+}
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -67,17 +84,17 @@ text {
 }
 .map-container {
     margin-top: 30px;
-    overflow-x: hidden;
     margin-left: auto;
     margin-right: auto;
     overflow-x: scroll;
     position: relative;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
     .container {
         flex-direction: column-reverse;
     }
     .map-container {
+        width: 100%;
         margin-left: 0;
         margin-right: 0;
     }

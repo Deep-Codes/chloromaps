@@ -5,7 +5,7 @@ import { WorldPacificStateCodes } from './WorldPacificStateCodes';
 const WorldPacificMap = () => (
     <MapLayout
         name="worldpacific"
-        width={1000}
+        width={1200}
         viewBox={[0, 0, 2000, 868]}
         stateCodes={WorldPacificStateCodes}>
         <path
